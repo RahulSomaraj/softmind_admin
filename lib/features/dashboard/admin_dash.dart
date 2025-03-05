@@ -10,41 +10,36 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(40),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildOverviewCards(),
-          const SizedBox(height: 20),
-          const StatisticsChart(),
-          const SizedBox(height: 20),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(child: const UpcomingClassesTable()),
-              const SizedBox(width: 16),
-              Expanded(child: const TaskManagementSection()),
-            ],
-          ),
-          const SizedBox(height: 20),
-          const RecentActivityList(),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildOverviewCards(),
+        const SizedBox(height: 20),
+        const StatisticsChart(),
+        const SizedBox(height: 20),
+        const Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(child: UpcomingClassesTable()),
+            SizedBox(width: 16),
+            Expanded(child: TaskManagementSection()),
+          ],
+        ),
+        const SizedBox(height: 20),
+        const RecentActivityList(),
+      ],
     );
   }
 
   /// Overview Cards (Users, Classes, Tasks)
   Widget _buildOverviewCards() {
-    return Row(
+    return const Row(
       children: [
-        const DashboardCard(
-            title: "Total Users", value: "1,205", icon: Icons.people),
-        const SizedBox(width: 16),
-        const DashboardCard(
-            title: "Active Classes", value: "15", icon: Icons.class_),
-        const SizedBox(width: 16),
-        const DashboardCard(
+        DashboardCard(title: "Total Users", value: "1,205", icon: Icons.people),
+        SizedBox(width: 16),
+        DashboardCard(title: "Active Classes", value: "15", icon: Icons.class_),
+        SizedBox(width: 16),
+        DashboardCard(
             title: "Completed Tasks", value: "237", icon: Icons.task_alt),
       ],
     );

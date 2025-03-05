@@ -1,4 +1,10 @@
-import 'package:softmind_admin/common/dialog_util.dart';
+import 'package:softmind_admin/common/text_style.dart';
+import 'package:softmind_admin/common/widgets/common_button.dart';
+import 'package:softmind_admin/common/widgets/common_dialogs.dart';
+import 'package:softmind_admin/common/widgets/common_divider.dart';
+import 'package:softmind_admin/common/widgets/common_pagination.dart';
+import 'package:softmind_admin/common/widgets/common_searchbar.dart';
+import 'package:softmind_admin/common/widgets/common_widget_util.dart';
 import 'package:softmind_admin/features/users/bloc/user_bloc.dart';
 import 'package:softmind_admin/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -15,143 +21,136 @@ class UserListPage extends StatefulWidget {
 class _UserListPageState extends State<UserListPage> {
   final TextEditingController _searchController = TextEditingController();
 
-  void _showDeleteDialog(BuildContext context, String userId) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          title: Center(
-            child: const Text(
-              "Confirm Delete",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          content: const Text(
-            "Are you sure you want to delete this user?",
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => context.pop(),
-              child: const Text(
-                "Cancel",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-              onPressed: () {
-                _deleteUser(userId);
-                context.pop();
-              },
-              child: const Text(
-                "Delete",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        );
-      },
-    );
+  int rowsPerPage = 10;
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<UserBloc>().add(const FetchAllUsers());
   }
 
   void _deleteUser(String userId) {
     context.read<UserBloc>().add(DeleteUser(userId: userId));
-
-    Future.delayed(const Duration(milliseconds: 500), () {
-      DialogUtil.showSuccessDialog(context, "User deleted successfully!");
-    });
   }
 
   @override
   Widget build(BuildContext context) {
+    return BlocListener<UserBloc, UserState>(
+      listener: (context, state) {
+        if (state is UserDeletedSuccess) {
+          DialogUtil.showSuccessDialog(context, state.message);
+        } else if (state is UserError) {
+          DialogUtil.showErrorDialog(context, state.message);
+        }
+      },
+      child: _buildTableSection(),
+    );
+  }
+
+  Widget _buildTableSection() {
+    return Card(
+      color: Colors.white,
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Column(
+          children: [
+            _buildHeaderSection(),
+            const SizedBox(height: 20),
+            const GetDivider(),
+            _buildDataSection(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDataSection() {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         if (state is UserLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return WidgetUtil.showLoading();
         } else if (state is UserLoaded) {
           return Column(
             children: [
-              _buildUserTable(state.users, state.currentPage, state.totalPages),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                  columnSpacing: (MediaQuery.of(context).size.width - 300) / 7,
+                  dividerThickness: 0,
+                  dataRowMinHeight: 56,
+                  dataRowMaxHeight: 56,
+                  columns: [
+                    _buildColumn('ID'),
+                    _buildColumn('Name'),
+                    _buildColumn('Email'),
+                    _buildColumn('Phone Number'),
+                    _buildColumn('Actions'),
+                  ],
+                  rows: state.users.asMap().entries.map((entry) {
+                    return _buildUserRow(
+                        entry.key, entry.value, state.currentPage);
+                  }).toList(),
+                ),
+              ),
+              const SizedBox(height: 30),
+              _buildPaginationBar(state.currentPage, state.totalPages),
             ],
           );
         } else if (state is UserError) {
-          return Center(
-              child: Text(state.message,
-                  style: const TextStyle(color: Colors.red)));
+          return WidgetUtil.showError();
         }
         return const Center(child: Text("No Users Found"));
       },
     );
   }
 
-  Widget _buildUserTable(
-      List<UserModel> users, int currentPage, int totalPages) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: IntrinsicWidth(
-            child: Card(
-              color: Colors.white,
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Column(
-                  children: [
-                    _buildHeaderSection(),
-                    SizedBox(height: 20),
-                    Divider(),
-                    DataTable(
-                      columnSpacing: 260,
-                      dataRowMinHeight: 55,
-                      dataRowMaxHeight: 55,
-                      columns: const [
-                        DataColumn(
-                          label: Padding(
-                            padding: EdgeInsets.only(left: 30),
-                            child: Text('ID',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                          ),
-                        ),
-                        DataColumn(
-                            label: Text('Name',
-                                style: TextStyle(fontWeight: FontWeight.bold))),
-                        DataColumn(
-                            label: Text('Email',
-                                style: TextStyle(fontWeight: FontWeight.bold))),
-                        DataColumn(
-                            label: Text('Phone Number',
-                                style: TextStyle(fontWeight: FontWeight.bold))),
-                        DataColumn(
-                            label: Text('Actions',
-                                style: TextStyle(fontWeight: FontWeight.bold))),
-                      ],
-                      rows: users.asMap().entries.map((entry) {
-                        return _buildUserRow(
-                            entry.key, entry.value, currentPage);
-                      }).toList(),
-                    ),
-                    SizedBox(height: 30),
-                    _buildPaginationBar(currentPage, totalPages),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
+  DataColumn _buildColumn(String label) {
+    return DataColumn(
+      label: SizedBox(
+        width: 120,
+        child: Text(label, style: AppTextStyle.tableHeadstyle),
+      ),
     );
+  }
+
+  DataRow _buildUserRow(int index, UserModel user, int currentPage) {
+    int rowNumber = ((currentPage - 1) * rowsPerPage) + index + 1;
+    return DataRow(cells: [
+      DataCell(Text('$rowNumber')),
+      DataCell(Text(user.name)),
+      DataCell(Text(user.email)),
+      DataCell(Text(user.phoneNumber)),
+      DataCell(
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.edit,
+                  color: Color.fromARGB(255, 59, 59, 59)),
+              onPressed: () {
+                context.push('/add-edit-user', extra: user);
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.delete,
+                  color: Color.fromARGB(255, 20, 20, 20)),
+              onPressed: () {
+                DialogUtil.showConfirmationDialog(
+                  context: context,
+                  title: "Confirm Delete",
+                  content: "Are you sure you want to delete this item?",
+                  onConfirm: () {
+                    _deleteUser(user.id);
+                  },
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    ]);
   }
 
   Padding _buildHeaderSection() {
@@ -161,11 +160,11 @@ class _UserListPageState extends State<UserListPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Users Management",
             style: TextStyle(
               color: Colors.black,
-              fontSize: 20,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -179,187 +178,63 @@ class _UserListPageState extends State<UserListPage> {
   }
 
   Widget _buildSearchBar() {
-    return Container(
-      width: 200,
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: Colors.grey.shade400,
-          width: 1,
-        ),
-      ),
-      child: Row(
-        children: [
-          const SizedBox(width: 8),
-          const Icon(
-            Icons.search,
-            color: Colors.black,
-            size: 20,
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: TextField(
-              controller: _searchController,
-              decoration: const InputDecoration(
-                hintText: "Search...",
-                hintStyle: TextStyle(fontSize: 14),
-                border: InputBorder.none,
-              ),
-              style: const TextStyle(fontSize: 14),
-              onChanged: (query) {
-                if (query.isNotEmpty) {
-                  context.read<UserBloc>().add(
-                      FetchAllUsers(page: 1, limit: 10, searchQuery: query));
-                } else {
-                  context
-                      .read<UserBloc>()
-                      .add(FetchAllUsers(page: 1, limit: 10, searchQuery: ''));
-                }
-              },
-            ),
-          ),
-        ],
-      ),
+    return GetSearchBar(
+      controller: _searchController,
+      onChanged: (query) {
+        context.read<UserBloc>().add(FetchAllUsers(
+            page: 1, limit: 10, searchQuery: query.isNotEmpty ? query : ''));
+      },
     );
   }
 
   Widget _buildAddButton() {
-    return SizedBox(
+    return GetButton(
+      text: "Add User",
+      icon: Icons.add,
       width: 150,
       height: 50,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black,
-          foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        onPressed: () {
-          context.push('/add-user');
-        },
-        child: Row(
-          children: [
-            Icon(
-              Icons.add,
-              color: Colors.white,
-              size: 20,
-            ),
-            SizedBox(width: 8),
-            const Text('Add User'),
-          ],
-        ),
-      ),
+      backgroundColor: Colors.black,
+      textColor: Colors.white,
+      onPressed: () {
+        context.push('/add-edit-user');
+      },
     );
   }
-
-  int rowsPerPage = 10;
 
   Widget _buildPaginationBar(int currentPage, int totalPages) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Padding(
-        padding: const EdgeInsets.only(right: 20, bottom: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            const Text("Rows per page: "),
-            const SizedBox(width: 8),
-            DropdownButton<int>(
-              value: rowsPerPage,
-              dropdownColor: Colors.white,
-              items: [10, 20].map((int value) {
-                return DropdownMenuItem<int>(
-                  value: value,
-                  child: Text(value.toString()),
-                );
-              }).toList(),
-              onChanged: (value) {
-                if (value != null) {
-                  setState(() {
-                    rowsPerPage = value;
-                  });
-                  context
-                      .read<UserBloc>()
-                      .add(FetchAllUsers(page: 1, limit: rowsPerPage));
-                }
-              },
-            ),
-            const SizedBox(width: 20),
-            GestureDetector(
-              onTap: currentPage > 1
-                  ? () {
-                      context.read<UserBloc>().add(FetchAllUsers(
-                          page: currentPage - 1, limit: rowsPerPage));
-                    }
-                  : null,
-              child: Icon(
-                Icons.chevron_left,
-                size: 28,
-                color: currentPage > 1 ? Colors.black : Colors.grey[400],
-              ),
-            ),
-            const SizedBox(width: 15),
-            Text(
-              "Page $currentPage of $totalPages",
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(width: 15),
-            GestureDetector(
-              onTap: currentPage < totalPages
-                  ? () {
-                      context.read<UserBloc>().add(FetchAllUsers(
-                          page: currentPage + 1, limit: rowsPerPage));
-                    }
-                  : null,
-              child: Icon(
-                Icons.chevron_right,
-                size: 28,
-                color:
-                    currentPage < totalPages ? Colors.black : Colors.grey[400],
-              ),
-            ),
-          ],
-        ),
-      ),
+    return GetPagination(
+      currentPage: currentPage,
+      totalPages: totalPages,
+      rowsPerPage: rowsPerPage,
+      onPageChanged: (newPage) {
+        context.read<UserBloc>().add(UserEvent.changePage(newPage: newPage));
+      },
+      onRowsPerPageChanged: (newRowsPerPage) {
+        context
+            .read<UserBloc>()
+            .add(UserEvent.changeRowsPerPage(newRowsPerPage: newRowsPerPage));
+      },
     );
   }
 
-  DataRow _buildUserRow(int index, UserModel user, int currentPage) {
-    int rowNumber = ((currentPage - 1) * rowsPerPage) + index + 1;
-    return DataRow(cells: [
-      DataCell(Padding(
-        padding: const EdgeInsets.only(left: 30),
-        child: Text('$rowNumber'),
-      )),
-      DataCell(Text(user.name)),
-      DataCell(Text(user.email)),
-      DataCell(Text(user.phoneNumber)),
-      DataCell(
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.edit,
-                  color: Color.fromARGB(255, 59, 59, 59)),
-              onPressed: () {
-                context.push('/edit-user', extra: user);
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.delete,
-                  color: Color.fromARGB(255, 20, 20, 20)),
-              onPressed: () {
-                _showDeleteDialog(context, user.id);
-              },
-            ),
-          ],
-        ),
-      ),
-    ]);
-  }
+  // Widget _buildPaginationBar(int currentPage, int totalPages) {
+  //   return GetPagination(
+  //     currentPage: currentPage,
+  //     totalPages: totalPages,
+  //     rowsPerPage: rowsPerPage,
+  //     onPageChanged: (newPage) {
+  //       context
+  //           .read<UserBloc>()
+  //           .add(FetchAllUsers(page: newPage, limit: rowsPerPage));
+  //     },
+  //     onRowsPerPageChanged: (newRowsPerPage) {
+  //       setState(() {
+  //         rowsPerPage = newRowsPerPage;
+  //       });
+  //       context
+  //           .read<UserBloc>()
+  //           .add(FetchAllUsers(page: 1, limit: rowsPerPage));
+  //     },
+  //   );
+  // }
 }

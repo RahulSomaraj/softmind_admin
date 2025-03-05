@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:softmind_admin/common/app_colors.dart';
 
 class AppThemes {
   static final ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: AppColors.backgroundColor,
     // brightness: Brightness.light,
     // highlightColor: Colors.transparent,
     // focusColor: Colors.transparent,

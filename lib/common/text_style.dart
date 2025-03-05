@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTextStyle {
   static final TextStyle labelStyle = GoogleFonts.dmSans(
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.greyColor2,
   );
@@ -21,15 +21,16 @@ class AppTextStyle {
     color: AppColors.blackColor,
   );
 
+  static TextStyle drawerTextstyle = GoogleFonts.dmSans(
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: Colors.grey.shade700,
+  );
+
   static final TextStyle buttonTextstyle = GoogleFonts.dmSans(
     fontSize: 16,
     fontWeight: FontWeight.w500,
     color: AppColors.primaryColor,
-  );
-
-  static TextStyle drawerTextstyle = GoogleFonts.dmSans(
-    fontWeight: FontWeight.w400,
-    fontSize: 16,
   );
 
   static final TextStyle texttstyle = GoogleFonts.dmSans(
@@ -46,5 +47,17 @@ class AppTextStyle {
   static final TextStyle errortextStyle = GoogleFonts.dmSans(
     fontSize: 12,
     color: AppColors.redColor,
+  );
+
+  static final TextStyle tableHeadstyle = GoogleFonts.dmSans(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    color: AppColors.blackColor,
+  );
+
+  static final TextStyle dropdownStyle = GoogleFonts.inter(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: AppColors.blackColor,
   );
 }

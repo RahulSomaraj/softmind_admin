@@ -2,9 +2,9 @@ class UserModel {
   final String id;
   final String? profilePic;
   final String? type;
-  final String name; // ✅ Ensure `name` is always non-null
-  final String phoneNumber; // ✅ Ensure `phoneNumber` is always non-null
-  final String email; // ✅ Ensure `email` is always non-null
+  final String name;
+  final String phoneNumber;
+  final String email;
   final String? password;
   final String? username;
   final bool? isDeleted;
@@ -29,13 +29,12 @@ class UserModel {
     this.updatedAt,
   });
 
-  /// ✅ Fix: Handle `null` values properly
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['_id'] ?? '',
       profilePic: json['profilePic'],
       type: json['type'],
-      name: json['name'] ?? '', // ✅ Use `?? ''` to avoid null assignment errors
+      name: json['name'] ?? '',
       phoneNumber: json['phoneNumber'] ?? '',
       email: json['email'] ?? '',
       password: json['password'],
@@ -54,13 +53,12 @@ class UserModel {
     );
   }
 
-  /// ✅ Fix: `toJson()` only includes non-null values
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
     if (id.isNotEmpty) data['_id'] = id;
     if (profilePic != null) data['profilePic'] = profilePic;
     if (type != null) data['type'] = type;
-    data['name'] = name; // ✅ Always send `name` (non-null)
+    data['name'] = name;
     data['phoneNumber'] = phoneNumber;
     data['email'] = email;
     if (password != null) data['password'] = password;
@@ -73,7 +71,6 @@ class UserModel {
     return data;
   }
 
-  /// ✅ Copy method to update only changed fields
   UserModel copyWith({
     String? profilePic,
     String? type,
@@ -92,7 +89,7 @@ class UserModel {
       id: id,
       profilePic: profilePic ?? this.profilePic,
       type: type ?? this.type,
-      name: name ?? this.name, // ✅ Ensure `name` is non-null
+      name: name ?? this.name,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       email: email ?? this.email,
       password: password ?? this.password,

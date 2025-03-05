@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:softmind_admin/common/data_storage.dart';
 import 'package:softmind_admin/common/text_style.dart';
-import 'package:softmind_admin/common/widgets/drawer.dart';
-import 'package:flutter/material.dart';
+import 'package:softmind_admin/features/drawer/ui/drawer.dart';
 
 class AdminLayout extends StatefulWidget {
   final Widget child;
@@ -15,6 +15,7 @@ class AdminLayout extends StatefulWidget {
 class _AdminLayoutState extends State<AdminLayout> {
   String? userType;
   String? userName;
+  bool _isCollapsed = false;
 
   @override
   void initState() {
@@ -50,25 +51,38 @@ class _AdminLayoutState extends State<AdminLayout> {
     return Scaffold(
       body: Row(
         children: [
-          AdminDrawer(userType: userType),
+          AdminDrawer(
+            userType: userType,
+            isCollapsed: _isCollapsed,
+            toggleDrawer: () {
+              setState(() {
+                _isCollapsed = !_isCollapsed;
+              });
+            },
+          ),
           Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return SingleChildScrollView(
-                  child: ConstrainedBox(
-                    constraints:
-                        BoxConstraints(minHeight: constraints.maxHeight),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        _buildProfileBar(),
-                        widget.child,
-                      ],
-                    ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildProfileBar(),
+                Expanded(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return SingleChildScrollView(
+                        child: ConstrainedBox(
+                          constraints:
+                              BoxConstraints(minHeight: constraints.maxHeight),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 25, right: 25, bottom: 25),
+                            child: widget.child,
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ],
             ),
           ),
         ],
@@ -78,7 +92,7 @@ class _AdminLayoutState extends State<AdminLayout> {
 
   Widget _buildProfileBar() {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(bottom: 25),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
         decoration: BoxDecoration(
@@ -93,26 +107,38 @@ class _AdminLayoutState extends State<AdminLayout> {
           ],
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              userName ?? "Guest",
-              style: AppTextStyle.title2Textstyle.copyWith(
-                color: Colors.black,
-              ),
+            IconButton(
+              icon: const Icon(Icons.menu, size: 28, color: Colors.black),
+              onPressed: () {
+                setState(() {
+                  _isCollapsed = !_isCollapsed;
+                });
+              },
             ),
-            const SizedBox(width: 10),
-            CircleAvatar(
-              radius: 22,
-              backgroundColor: const Color.fromARGB(255, 56, 110, 219),
-              child: Text(
-                getInitials(userName ?? "Guest"),
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 22,
+                  backgroundColor: const Color(0xFF7FA6F5),
+                  child: Text(
+                    getInitials(userName ?? "Guest"),
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(width: 10),
+                Text(
+                  userName ?? "Guest",
+                  style: AppTextStyle.title2Textstyle.copyWith(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

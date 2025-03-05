@@ -1,11 +1,12 @@
-import 'package:softmind_admin/common/app_colors.dart';
-import 'package:softmind_admin/common/dialog_util.dart';
-import 'package:softmind_admin/common/text_style.dart';
-import 'package:softmind_admin/features/login/bloc/auth_bloc.dart';
-import 'package:softmind_admin/features/widgets/input_decoration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:softmind_admin/common/app_colors.dart';
+import 'package:softmind_admin/common/text_style.dart';
+import 'package:softmind_admin/common/widgets/common_dialogs.dart';
+import 'package:softmind_admin/common/widgets/common_input.dart';
+import 'package:softmind_admin/common/widgets/common_button.dart';
+import 'package:softmind_admin/features/login/bloc/auth_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,8 +19,6 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
-
-  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -78,33 +77,20 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildUsernameField() {
-    return TextFormField(
+    return GetInput(
+      label: "Username",
       controller: _usernameController,
-      decoration: textFieldDecoration('Username'),
-      style: AppTextStyle.texttstyle,
-      validator: (value) =>
-          (value == null || value.isEmpty) ? "Enter Username" : null,
+      isEmail: false,
+      onSaved: (value) {},
     );
   }
 
   Widget _buildPasswordField() {
-    return TextFormField(
+    return GetInput(
+      label: "Password",
       controller: _passwordController,
-      obscureText: _obscureText,
-      decoration: textFieldDecoration('Password').copyWith(
-        suffixIcon: IconButton(
-          icon: Icon(
-            _obscureText ? Icons.visibility_off : Icons.visibility,
-            color: Colors.grey,
-          ),
-          onPressed: () => setState(() {
-            _obscureText = !_obscureText;
-          }),
-        ),
-      ),
-      style: AppTextStyle.texttstyle,
-      validator: (value) =>
-          (value == null || value.isEmpty) ? "Enter Password" : null,
+      isPassword: true,
+      onSaved: (value) {},
     );
   }
 
@@ -118,32 +104,20 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
       builder: (context, state) {
-        return SizedBox(
-          width: double.infinity,
-          height: 50,
-          child: ElevatedButton(
-            onPressed: () {
-              if (_loginFormKey.currentState!.validate()) {
-                context.read<AuthBloc>().add(
-                      AuthEvent.login(
-                        username: _usernameController.text.trim(),
-                        password: _passwordController.text.trim(),
-                      ),
-                    );
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.blueColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            child: state.maybeWhen(
-              loading: () =>
-                  const CircularProgressIndicator(color: Colors.white),
-              orElse: () => Text("Login", style: AppTextStyle.buttonTextstyle),
-            ),
-          ),
+        return GetButton(
+          text: "Login",
+          backgroundColor: AppColors.blueColor,
+          isLoading: state.maybeWhen(loading: () => true, orElse: () => false),
+          onPressed: () {
+            if (_loginFormKey.currentState!.validate()) {
+              context.read<AuthBloc>().add(
+                    AuthEvent.login(
+                      username: _usernameController.text.trim(),
+                      password: _passwordController.text.trim(),
+                    ),
+                  );
+            }
+          },
         );
       },
     );

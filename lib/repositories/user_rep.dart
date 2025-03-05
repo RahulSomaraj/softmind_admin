@@ -64,8 +64,6 @@ class UserRepository {
   }
 
   Future<String> createUser(UserModel userData) async {
-    print(userData.toJson());
-
     try {
       final response = await _dio.post(
         "/users",
