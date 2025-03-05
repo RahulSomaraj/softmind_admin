@@ -207,34 +207,18 @@ class _UserListPageState extends State<UserListPage> {
       totalPages: totalPages,
       rowsPerPage: rowsPerPage,
       onPageChanged: (newPage) {
-        context.read<UserBloc>().add(UserEvent.changePage(newPage: newPage));
-      },
-      onRowsPerPageChanged: (newRowsPerPage) {
         context
             .read<UserBloc>()
-            .add(UserEvent.changeRowsPerPage(newRowsPerPage: newRowsPerPage));
+            .add(FetchAllUsers(page: newPage, limit: rowsPerPage));
+      },
+      onRowsPerPageChanged: (newRowsPerPage) {
+        setState(() {
+          rowsPerPage = newRowsPerPage;
+        });
+        context
+            .read<UserBloc>()
+            .add(FetchAllUsers(page: 1, limit: rowsPerPage));
       },
     );
   }
-
-  // Widget _buildPaginationBar(int currentPage, int totalPages) {
-  //   return GetPagination(
-  //     currentPage: currentPage,
-  //     totalPages: totalPages,
-  //     rowsPerPage: rowsPerPage,
-  //     onPageChanged: (newPage) {
-  //       context
-  //           .read<UserBloc>()
-  //           .add(FetchAllUsers(page: newPage, limit: rowsPerPage));
-  //     },
-  //     onRowsPerPageChanged: (newRowsPerPage) {
-  //       setState(() {
-  //         rowsPerPage = newRowsPerPage;
-  //       });
-  //       context
-  //           .read<UserBloc>()
-  //           .add(FetchAllUsers(page: 1, limit: rowsPerPage));
-  //     },
-  //   );
-  // }
 }

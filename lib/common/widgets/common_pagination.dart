@@ -30,7 +30,7 @@ class GetPagination extends StatelessWidget {
             DropdownButton<int>(
               value: rowsPerPage,
               dropdownColor: Colors.white,
-              items: [10, 20, 50, 100].map((int value) {
+              items: [10, 20, 50].map((int value) {
                 return DropdownMenuItem<int>(
                   value: value,
                   child: Text(value.toString()),
