@@ -6,9 +6,7 @@ class UserState with _$UserState {
   const factory UserState.loading() = UserLoading;
 
   const factory UserState.loaded({
-    required List<UserModel> users,
-    required int totalPages,
-    required int currentPage,
+    required UserResponseModel users,
   }) = UserLoaded;
   const factory UserState.userUpdatedSuccess(String message) =
       UserUpdatedSuccess;

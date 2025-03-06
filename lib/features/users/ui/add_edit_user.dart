@@ -7,7 +7,7 @@ import 'package:softmind_admin/common/widgets/common_header.dart';
 import 'package:softmind_admin/common/widgets/common_input.dart';
 import 'package:softmind_admin/common/widgets/common_list.dart';
 import 'package:softmind_admin/features/users/bloc/user_bloc.dart';
-import 'package:softmind_admin/models/user_model.dart';
+import 'package:softmind_admin/models/user/user_model.dart';
 import 'package:go_router/go_router.dart';
 
 class AddEditUser extends StatefulWidget {
@@ -32,9 +32,9 @@ class _AddEditUserState extends State<AddEditUser> {
   void initState() {
     super.initState();
     _name = widget.user?.name ?? '';
-    _email = widget.user?.email ?? '';
-    _phone = widget.user?.phoneNumber ?? '';
-    _userType = widget.user?.type ?? 'AD';
+    _email = widget.user?.contactEmail ?? '';
+    _phone = widget.user?.contactNumber ?? '';
+    _userType = widget.user?.userType ?? DataListUtils.getShortForm('User');
     _password = '';
   }
 
@@ -42,20 +42,36 @@ class _AddEditUserState extends State<AddEditUser> {
     if (_userFormKey.currentState!.validate()) {
       _userFormKey.currentState!.save();
 
-      final user = UserModel(
-        id: widget.user?.id ?? '',
-        name: _name,
-        email: _email,
-        phoneNumber: _phone,
-        type: DataListUtils.getShortForm(_userType),
-        password:
-            _password.isNotEmpty ? _password : widget.user?.password ?? '',
-      );
-
       if (widget.user == null) {
-        context.read<UserBloc>().add(UserEvent.addUser(userData: user));
+        final newUser = UserModel(
+          id: 0,
+          name: _name,
+          countryCode: "+91",
+          contactEmail: _email,
+          contactNumber: _phone,
+          userType: DataListUtils.getShortForm(_userType),
+          password: _password,
+        );
+
+        context.read<UserBloc>().add(UserEvent.addUser(userData: newUser));
       } else {
-        context.read<UserBloc>().add(UpdateUser(updatedUser: user));
+        Map<String, dynamic> updatedFields = {};
+
+        if (_name != widget.user!.name) updatedFields["name"] = _name;
+        if (_email != widget.user!.contactEmail) {
+          updatedFields["contactEmail"] = _email;
+        }
+        if (_phone != widget.user!.contactNumber) {
+          updatedFields["contactNumber"] = _phone;
+        }
+        if (_userType != widget.user!.userType) {
+          updatedFields["userType"] = _userType;
+        }
+
+        if (updatedFields.isNotEmpty) {
+          context.read<UserBloc>().add(UpdateUser(
+              userId: widget.user!.id!, updatedFields: updatedFields));
+        }
       }
     }
   }
@@ -67,7 +83,7 @@ class _AddEditUserState extends State<AddEditUser> {
         if (state is UserAddedSuccess) {
           DialogUtil.showSuccessDialog(
             context,
-            "User added successfully.",
+            state.message,
             onOkPressed: () {
               context.pop();
             },
@@ -75,7 +91,7 @@ class _AddEditUserState extends State<AddEditUser> {
         } else if (state is UserUpdatedSuccess) {
           DialogUtil.showSuccessDialog(
             context,
-            "User updated successfully!",
+            state.message,
             onOkPressed: () {
               context.pop();
             },
@@ -156,11 +172,12 @@ class _AddEditUserState extends State<AddEditUser> {
                     errorMsg: "Select a user type",
                   ),
                   const SizedBox(height: 15),
-                  GetInput(
-                    label: "Password",
-                    isPassword: true,
-                    onSaved: (value) => _password = value!,
-                  ),
+                  if (widget.user == null)
+                    GetInput(
+                      label: "Password",
+                      isPassword: true,
+                      onSaved: (value) => _password = value!,
+                    ),
                   const SizedBox(height: 20),
                   GetButton(
                     text: widget.user == null ? "Add User" : "Update User",

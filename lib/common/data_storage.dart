@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:softmind_admin/models/login_model.dart';
+import 'package:softmind_admin/models/login/login_response_model.dart';
 
 class SharedPrefs {
   static final SharedPrefs _instance = SharedPrefs._internal();
@@ -36,7 +36,7 @@ class SharedPrefs {
 Future<void> saveLoginResponse(LoginResponse loginResponse) async {
   final sharedPrefs = SharedPrefs();
   await sharedPrefs.setString('token', loginResponse.token);
-  await sharedPrefs.setString('name', loginResponse.userName);
+  await sharedPrefs.setString('name', loginResponse.name);
   await sharedPrefs.setString('refreshToken', loginResponse.refreshToken);
   await sharedPrefs.setString('userType', loginResponse.userType);
   await sharedPrefs.setString('email', loginResponse.email);

@@ -83,9 +83,9 @@ class _AdminDrawerState extends State<AdminDrawer> {
       children: [
         _buildDrawerItem('/dashboard', Icons.dashboard, "Dashboard"),
         _buildDrawerItem('/users', Icons.people, "Users"),
-        _buildDrawerItem('/classes', Icons.class_, "Classes"),
-        _buildDrawerItem('/tasks', Icons.task, "Tasks"),
         _buildDrawerItem('/appointments', Icons.calendar_today, "Appointments"),
+        _buildDrawerItem('/tasks', Icons.task, "Tasks"),
+        _buildDrawerItem('/classes', Icons.class_, "Classes"),
         _buildDrawerItem('/reports', Icons.bar_chart, "Reports"),
         _buildDrawerItem('/settings', Icons.settings, "Settings"),
       ],

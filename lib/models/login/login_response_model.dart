@@ -1,8 +1,8 @@
 class LoginResponse {
-  final String id;
+  final int id;
   final String token;
   final String refreshToken;
-  final String userName;
+  final String name;
   final String email;
   final String userType;
 
@@ -10,7 +10,7 @@ class LoginResponse {
     required this.id,
     required this.token,
     required this.refreshToken,
-    required this.userName,
+    required this.name,
     required this.email,
     required this.userType,
   });
@@ -20,24 +20,9 @@ class LoginResponse {
       id: json['id'],
       token: json['token'],
       refreshToken: json['refreshToken'],
-      userName: json['userName'],
+      name: json['name'],
       email: json['email'],
       userType: json['userType'],
     );
-  }
-}
-
-String getFullUserType(String shortCode) {
-  switch (shortCode) {
-    case 'SA':
-      return "Super Admin";
-    case 'AD':
-      return "Admin";
-    case 'NU':
-      return "Normal User";
-    case 'SR':
-      return "Showroom";
-    default:
-      return "Unknown";
   }
 }

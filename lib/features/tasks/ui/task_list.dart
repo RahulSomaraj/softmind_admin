@@ -2,45 +2,43 @@ import 'package:softmind_admin/common/text_style.dart';
 import 'package:softmind_admin/common/widgets/common_button.dart';
 import 'package:softmind_admin/common/widgets/common_dialogs.dart';
 import 'package:softmind_admin/common/widgets/common_divider.dart';
-import 'package:softmind_admin/common/widgets/common_list.dart';
 import 'package:softmind_admin/common/widgets/common_pagination.dart';
 import 'package:softmind_admin/common/widgets/common_searchbar.dart';
 import 'package:softmind_admin/common/widgets/common_widget_util.dart';
-import 'package:softmind_admin/features/users/bloc/user_bloc.dart';
-import 'package:softmind_admin/models/user/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:softmind_admin/features/tasks/bloc/task_bloc.dart';
+import 'package:softmind_admin/models/task/task_response_model.dart';
 
-class UserListPage extends StatefulWidget {
-  const UserListPage({super.key});
+class TaskList extends StatefulWidget {
+  const TaskList({super.key});
 
   @override
-  State<UserListPage> createState() => _UserListPageState();
+  State<TaskList> createState() => _TaskListState();
 }
 
-class _UserListPageState extends State<UserListPage> {
+class _TaskListState extends State<TaskList> {
   final TextEditingController _searchController = TextEditingController();
-
   int rowsPerPage = 10;
 
   @override
   void initState() {
     super.initState();
-    context.read<UserBloc>().add(const FetchAllUsers());
+    // context.read<TaskBloc>().add(const FetchAllTasks());
   }
 
-  void _deleteUser(int? userId) {
-    context.read<UserBloc>().add(DeleteUser(userId: userId));
+  void _deleteTask(int? taskId) {
+    context.read<TaskBloc>().add(DeleteTask(taskId: taskId));
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<UserBloc, UserState>(
+    return BlocListener<TaskBloc, TaskState>(
       listener: (context, state) {
-        if (state is UserDeletedSuccess) {
+        if (state is TaskDeletedSuccess) {
           DialogUtil.showSuccessDialog(context, state.message);
-        } else if (state is UserError) {
+        } else if (state is TaskError) {
           DialogUtil.showErrorDialog(context, state.message);
         }
       },
@@ -68,17 +66,21 @@ class _UserListPageState extends State<UserListPage> {
   }
 
   Widget _buildDataSection() {
-    return BlocBuilder<UserBloc, UserState>(
+    return BlocBuilder<TaskBloc, TaskState>(
       builder: (context, state) {
-        if (state is UserLoading) {
-          return WidgetUtil.showLoading(); // ✅ Show loading animation
-        } else if (state is UserLoaded) {
-          final userList = state.users.users; // ✅ Extract users list
-          final currentPage = state.users.currentPage;
-          final totalPages = state.users.totalPages;
+        if (state is TaskLoading) {
+          return WidgetUtil.showLoading();
+        } else if (state is TaskLoaded) {
+          final taskList = state.tasks.tasks;
+          final currentPage = state.tasks.currentPage;
+          final totalPages = state.tasks.totalPages;
 
-          if (userList.isEmpty) {
-            return const Center(child: Text("No Users Found"));
+          if (taskList.isEmpty) {
+            return const Center(
+                child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Text("No Tasks Found", style: TextStyle(fontSize: 16)),
+            ));
           }
 
           return Column(
@@ -86,21 +88,20 @@ class _UserListPageState extends State<UserListPage> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(
-                  columnSpacing:
-                      (MediaQuery.of(context).size.width - 300) / 10.5,
+                  columnSpacing: (MediaQuery.of(context).size.width - 300) / 16,
                   dividerThickness: 0,
                   dataRowMinHeight: 56,
                   dataRowMaxHeight: 56,
                   columns: [
                     _buildColumn('ID'),
                     _buildColumn('Name'),
-                    _buildColumn('Email'),
-                    _buildColumn('Phone Number'),
-                    _buildColumn('User Type'),
+                    _buildColumn('Description'),
+                    _buildColumn('Create Time'),
+                    _buildColumn('Update Time'),
                     _buildColumn('Actions'),
                   ],
-                  rows: userList.asMap().entries.map((entry) {
-                    return _buildUserRow(entry.key, entry.value, currentPage);
+                  rows: taskList.asMap().entries.map((entry) {
+                    return _buildTaskRow(entry.key, entry.value, currentPage);
                   }).toList(),
                 ),
               ),
@@ -108,10 +109,10 @@ class _UserListPageState extends State<UserListPage> {
               _buildPaginationBar(currentPage, totalPages),
             ],
           );
-        } else if (state is UserError) {
+        } else if (state is TaskError) {
           return WidgetUtil.showError();
         }
-        return const Center(child: Text("No Users Found"));
+        return const Center(child: Text("No Tasks Found"));
       },
     );
   }
@@ -119,20 +120,20 @@ class _UserListPageState extends State<UserListPage> {
   DataColumn _buildColumn(String label) {
     return DataColumn(
       label: SizedBox(
-        width: 120,
+        width: 140,
         child: Text(label, style: AppTextStyle.tableHeadstyle),
       ),
     );
   }
 
-  DataRow _buildUserRow(int index, UserModel user, int currentPage) {
+  DataRow _buildTaskRow(int index, TaskModel task, int currentPage) {
     int rowNumber = ((currentPage - 1) * rowsPerPage) + index + 1;
     return DataRow(cells: [
       DataCell(Text('$rowNumber')),
-      DataCell(Text(user.name)),
-      DataCell(Text(user.contactEmail)),
-      DataCell(Text(user.contactNumber)),
-      DataCell(Text(DataListUtils.getFullType(user.userType))),
+      DataCell(Text(task.name)),
+      DataCell(Text(task.description)),
+      DataCell(Text(task.createdAt)),
+      DataCell(Text(task.lastUpdatedAt)),
       DataCell(
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -141,7 +142,7 @@ class _UserListPageState extends State<UserListPage> {
               icon: const Icon(Icons.edit,
                   color: Color.fromARGB(255, 59, 59, 59)),
               onPressed: () {
-                context.push('/add-edit-user', extra: user);
+                context.push('/add-edit-task', extra: task);
               },
             ),
             IconButton(
@@ -151,9 +152,9 @@ class _UserListPageState extends State<UserListPage> {
                 DialogUtil.showConfirmationDialog(
                   context: context,
                   title: "Confirm Delete",
-                  content: "Are you sure you want to delete this item?",
+                  content: "Are you sure you want to delete this task?",
                   onConfirm: () {
-                    _deleteUser(user.id);
+                    _deleteTask(task.id);
                   },
                 );
               },
@@ -172,7 +173,7 @@ class _UserListPageState extends State<UserListPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
-            "Users Management",
+            "Task List",
             style: TextStyle(
               color: Colors.black,
               fontSize: 25,
@@ -192,22 +193,24 @@ class _UserListPageState extends State<UserListPage> {
     return GetSearchBar(
       controller: _searchController,
       onChanged: (query) {
-        context.read<UserBloc>().add(FetchAllUsers(
-            page: 1, limit: 10, searchQuery: query.isNotEmpty ? query : ''));
+        context.read<TaskBloc>().add(FetchAllTasks(
+            page: 1,
+            limit: rowsPerPage,
+            searchQuery: query.isNotEmpty ? query : ''));
       },
     );
   }
 
   Widget _buildAddButton() {
     return GetButton(
-      text: "Add User",
+      text: "Add Task",
       icon: Icons.add,
-      width: 150,
+      width: 180,
       height: 50,
       backgroundColor: Colors.black,
       textColor: Colors.white,
       onPressed: () {
-        context.push('/add-edit-user');
+        context.push('/add-edit-task');
       },
     );
   }
@@ -219,16 +222,16 @@ class _UserListPageState extends State<UserListPage> {
       rowsPerPage: rowsPerPage,
       onPageChanged: (newPage) {
         context
-            .read<UserBloc>()
-            .add(FetchAllUsers(page: newPage, limit: rowsPerPage));
+            .read<TaskBloc>()
+            .add(FetchAllTasks(page: newPage, limit: rowsPerPage));
       },
       onRowsPerPageChanged: (newRowsPerPage) {
         setState(() {
           rowsPerPage = newRowsPerPage;
         });
         context
-            .read<UserBloc>()
-            .add(FetchAllUsers(page: 1, limit: rowsPerPage));
+            .read<TaskBloc>()
+            .add(FetchAllTasks(page: 1, limit: rowsPerPage));
       },
     );
   }

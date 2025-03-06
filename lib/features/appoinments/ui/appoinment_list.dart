@@ -2,45 +2,45 @@ import 'package:softmind_admin/common/text_style.dart';
 import 'package:softmind_admin/common/widgets/common_button.dart';
 import 'package:softmind_admin/common/widgets/common_dialogs.dart';
 import 'package:softmind_admin/common/widgets/common_divider.dart';
-import 'package:softmind_admin/common/widgets/common_list.dart';
 import 'package:softmind_admin/common/widgets/common_pagination.dart';
 import 'package:softmind_admin/common/widgets/common_searchbar.dart';
 import 'package:softmind_admin/common/widgets/common_widget_util.dart';
-import 'package:softmind_admin/features/users/bloc/user_bloc.dart';
-import 'package:softmind_admin/models/user/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:softmind_admin/features/appoinments/bloc/appointment_bloc.dart';
+import 'package:softmind_admin/models/appointment/appointment_response_model.dart';
 
-class UserListPage extends StatefulWidget {
-  const UserListPage({super.key});
+class AppointmentList extends StatefulWidget {
+  const AppointmentList({super.key});
 
   @override
-  State<UserListPage> createState() => _UserListPageState();
+  State<AppointmentList> createState() => _AppointmentListState();
 }
 
-class _UserListPageState extends State<UserListPage> {
+class _AppointmentListState extends State<AppointmentList> {
   final TextEditingController _searchController = TextEditingController();
-
   int rowsPerPage = 10;
 
   @override
   void initState() {
     super.initState();
-    context.read<UserBloc>().add(const FetchAllUsers());
+    // context.read<AppointmentBloc>().add(const FetchAllAppointments());
   }
 
-  void _deleteUser(int? userId) {
-    context.read<UserBloc>().add(DeleteUser(userId: userId));
+  void _deleteAppointment(int? appointmentId) {
+    context
+        .read<AppointmentBloc>()
+        .add(DeleteAppointment(appointmentId: appointmentId));
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<UserBloc, UserState>(
+    return BlocListener<AppointmentBloc, AppointmentState>(
       listener: (context, state) {
-        if (state is UserDeletedSuccess) {
+        if (state is AppointmentDeletedSuccess) {
           DialogUtil.showSuccessDialog(context, state.message);
-        } else if (state is UserError) {
+        } else if (state is AppointmentError) {
           DialogUtil.showErrorDialog(context, state.message);
         }
       },
@@ -68,17 +68,22 @@ class _UserListPageState extends State<UserListPage> {
   }
 
   Widget _buildDataSection() {
-    return BlocBuilder<UserBloc, UserState>(
+    return BlocBuilder<AppointmentBloc, AppointmentState>(
       builder: (context, state) {
-        if (state is UserLoading) {
-          return WidgetUtil.showLoading(); // ✅ Show loading animation
-        } else if (state is UserLoaded) {
-          final userList = state.users.users; // ✅ Extract users list
-          final currentPage = state.users.currentPage;
-          final totalPages = state.users.totalPages;
+        if (state is AppointmentLoading) {
+          return WidgetUtil.showLoading();
+        } else if (state is AppointmentLoaded) {
+          final appointmentList = state.appointments.appointments;
+          final currentPage = state.appointments.currentPage;
+          final totalPages = state.appointments.totalPages;
 
-          if (userList.isEmpty) {
-            return const Center(child: Text("No Users Found"));
+          if (appointmentList.isEmpty) {
+            return const Center(
+                child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child:
+                  Text("No Appointments Found", style: TextStyle(fontSize: 16)),
+            ));
           }
 
           return Column(
@@ -86,21 +91,22 @@ class _UserListPageState extends State<UserListPage> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(
-                  columnSpacing:
-                      (MediaQuery.of(context).size.width - 300) / 10.5,
+                  columnSpacing: (MediaQuery.of(context).size.width - 300) / 16,
                   dividerThickness: 0,
                   dataRowMinHeight: 56,
                   dataRowMaxHeight: 56,
                   columns: [
                     _buildColumn('ID'),
-                    _buildColumn('Name'),
-                    _buildColumn('Email'),
-                    _buildColumn('Phone Number'),
-                    _buildColumn('User Type'),
+                    _buildColumn('Date'),
+                    _buildColumn('Time'),
+                    _buildColumn('Patient Name'),
+                    _buildColumn('Doctor Name'),
+                    _buildColumn('Status'),
                     _buildColumn('Actions'),
                   ],
-                  rows: userList.asMap().entries.map((entry) {
-                    return _buildUserRow(entry.key, entry.value, currentPage);
+                  rows: appointmentList.asMap().entries.map((entry) {
+                    return _buildAppointmentRow(
+                        entry.key, entry.value, currentPage);
                   }).toList(),
                 ),
               ),
@@ -108,10 +114,10 @@ class _UserListPageState extends State<UserListPage> {
               _buildPaginationBar(currentPage, totalPages),
             ],
           );
-        } else if (state is UserError) {
+        } else if (state is AppointmentError) {
           return WidgetUtil.showError();
         }
-        return const Center(child: Text("No Users Found"));
+        return const Center(child: Text("No Appointments Found"));
       },
     );
   }
@@ -119,20 +125,22 @@ class _UserListPageState extends State<UserListPage> {
   DataColumn _buildColumn(String label) {
     return DataColumn(
       label: SizedBox(
-        width: 120,
+        width: 140,
         child: Text(label, style: AppTextStyle.tableHeadstyle),
       ),
     );
   }
 
-  DataRow _buildUserRow(int index, UserModel user, int currentPage) {
+  DataRow _buildAppointmentRow(
+      int index, AppointmentModel appointment, int currentPage) {
     int rowNumber = ((currentPage - 1) * rowsPerPage) + index + 1;
     return DataRow(cells: [
       DataCell(Text('$rowNumber')),
-      DataCell(Text(user.name)),
-      DataCell(Text(user.contactEmail)),
-      DataCell(Text(user.contactNumber)),
-      DataCell(Text(DataListUtils.getFullType(user.userType))),
+      DataCell(Text(appointment.appointmentDate)),
+      DataCell(Text(appointment.appointmentTime)),
+      DataCell(Text(appointment.patient.name)),
+      DataCell(Text(appointment.referredTo.name)),
+      const DataCell(Text("Pending")),
       DataCell(
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -141,7 +149,7 @@ class _UserListPageState extends State<UserListPage> {
               icon: const Icon(Icons.edit,
                   color: Color.fromARGB(255, 59, 59, 59)),
               onPressed: () {
-                context.push('/add-edit-user', extra: user);
+                context.push('/add-edit-appointment', extra: appointment);
               },
             ),
             IconButton(
@@ -151,9 +159,9 @@ class _UserListPageState extends State<UserListPage> {
                 DialogUtil.showConfirmationDialog(
                   context: context,
                   title: "Confirm Delete",
-                  content: "Are you sure you want to delete this item?",
+                  content: "Are you sure you want to delete this appointment?",
                   onConfirm: () {
-                    _deleteUser(user.id);
+                    _deleteAppointment(appointment.id);
                   },
                 );
               },
@@ -172,7 +180,7 @@ class _UserListPageState extends State<UserListPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
-            "Users Management",
+            "Appointments",
             style: TextStyle(
               color: Colors.black,
               fontSize: 25,
@@ -192,22 +200,24 @@ class _UserListPageState extends State<UserListPage> {
     return GetSearchBar(
       controller: _searchController,
       onChanged: (query) {
-        context.read<UserBloc>().add(FetchAllUsers(
-            page: 1, limit: 10, searchQuery: query.isNotEmpty ? query : ''));
+        context.read<AppointmentBloc>().add(FetchAllAppointments(
+            page: 1,
+            limit: rowsPerPage,
+            searchQuery: query.isNotEmpty ? query : ''));
       },
     );
   }
 
   Widget _buildAddButton() {
     return GetButton(
-      text: "Add User",
+      text: "Add Appointment",
       icon: Icons.add,
-      width: 150,
+      width: 180,
       height: 50,
       backgroundColor: Colors.black,
       textColor: Colors.white,
       onPressed: () {
-        context.push('/add-edit-user');
+        context.push('/add-edit-appointment');
       },
     );
   }
@@ -219,16 +229,16 @@ class _UserListPageState extends State<UserListPage> {
       rowsPerPage: rowsPerPage,
       onPageChanged: (newPage) {
         context
-            .read<UserBloc>()
-            .add(FetchAllUsers(page: newPage, limit: rowsPerPage));
+            .read<AppointmentBloc>()
+            .add(FetchAllAppointments(page: newPage, limit: rowsPerPage));
       },
       onRowsPerPageChanged: (newRowsPerPage) {
         setState(() {
           rowsPerPage = newRowsPerPage;
         });
         context
-            .read<UserBloc>()
-            .add(FetchAllUsers(page: 1, limit: rowsPerPage));
+            .read<AppointmentBloc>()
+            .add(FetchAllAppointments(page: 1, limit: rowsPerPage));
       },
     );
   }

@@ -18,77 +18,68 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllUsers,
+    required TResult Function(int? userId) deleteUser,
+    required TResult Function(int userId, Map<String, dynamic> updatedFields)
+        updateUser,
+    required TResult Function(UserModel userData) addUser,
     required TResult Function(int newPage) changePage,
     required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllUsers,
+    TResult? Function(int? userId)? deleteUser,
+    TResult? Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult? Function(UserModel userData)? addUser,
     TResult? Function(int newPage)? changePage,
     TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? userId)? deleteUser,
+    TResult Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult Function(UserModel userData)? addUser,
     TResult Function(int newPage)? changePage,
     TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(FetchAllUsers value) fetchAllUsers,
+    required TResult Function(DeleteUser value) deleteUser,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(AddUser value) addUser,
     required TResult Function(ChangePage value) changePage,
     required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(FetchAllUsers value)? fetchAllUsers,
+    TResult? Function(DeleteUser value)? deleteUser,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(AddUser value)? addUser,
     TResult? Function(ChangePage value)? changePage,
     TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(FetchAllUsers value)? fetchAllUsers,
+    TResult Function(DeleteUser value)? deleteUser,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(AddUser value)? addUser,
     TResult Function(ChangePage value)? changePage,
     TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,149 +103,6 @@ class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent>
 
   /// Create a copy of UserEvent
   /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'UserEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int? page, int? limit, String? searchQuery)
-        fetchAllUsers,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int? page, int? limit, String? searchQuery)?
-        fetchAllUsers,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(FetchAllUsers value) fetchAllUsers,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(FetchAllUsers value)? fetchAllUsers,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(FetchAllUsers value)? fetchAllUsers,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements UserEvent {
-  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -303,17 +151,13 @@ class __$$FetchAllUsersImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchAllUsersImpl implements FetchAllUsers {
-  const _$FetchAllUsersImpl(
-      {this.page = 1, this.limit = 10, this.searchQuery = ''});
+  const _$FetchAllUsersImpl({this.page, this.limit, this.searchQuery});
 
   @override
-  @JsonKey()
   final int? page;
   @override
-  @JsonKey()
   final int? limit;
   @override
-  @JsonKey()
   final String? searchQuery;
 
   @override
@@ -346,15 +190,14 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllUsers,
+    required TResult Function(int? userId) deleteUser,
+    required TResult Function(int userId, Map<String, dynamic> updatedFields)
+        updateUser,
+    required TResult Function(UserModel userData) addUser,
     required TResult Function(int newPage) changePage,
     required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
   }) {
     return fetchAllUsers(page, limit, searchQuery);
   }
@@ -362,15 +205,14 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllUsers,
+    TResult? Function(int? userId)? deleteUser,
+    TResult? Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult? Function(UserModel userData)? addUser,
     TResult? Function(int newPage)? changePage,
     TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
   }) {
     return fetchAllUsers?.call(page, limit, searchQuery);
   }
@@ -378,14 +220,13 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? userId)? deleteUser,
+    TResult Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult Function(UserModel userData)? addUser,
     TResult Function(int newPage)? changePage,
     TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
     required TResult orElse(),
   }) {
     if (fetchAllUsers != null) {
@@ -397,14 +238,12 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(FetchAllUsers value) fetchAllUsers,
+    required TResult Function(DeleteUser value) deleteUser,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(AddUser value) addUser,
     required TResult Function(ChangePage value) changePage,
     required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
   }) {
     return fetchAllUsers(this);
   }
@@ -412,14 +251,12 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(FetchAllUsers value)? fetchAllUsers,
+    TResult? Function(DeleteUser value)? deleteUser,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(AddUser value)? addUser,
     TResult? Function(ChangePage value)? changePage,
     TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
   }) {
     return fetchAllUsers?.call(this);
   }
@@ -427,14 +264,12 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(FetchAllUsers value)? fetchAllUsers,
+    TResult Function(DeleteUser value)? deleteUser,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(AddUser value)? addUser,
     TResult Function(ChangePage value)? changePage,
     TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
     required TResult orElse(),
   }) {
     if (fetchAllUsers != null) {
@@ -458,6 +293,546 @@ abstract class FetchAllUsers implements UserEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchAllUsersImplCopyWith<_$FetchAllUsersImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteUserImplCopyWith<$Res> {
+  factory _$$DeleteUserImplCopyWith(
+          _$DeleteUserImpl value, $Res Function(_$DeleteUserImpl) then) =
+      __$$DeleteUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? userId});
+}
+
+/// @nodoc
+class __$$DeleteUserImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$DeleteUserImpl>
+    implements _$$DeleteUserImplCopyWith<$Res> {
+  __$$DeleteUserImplCopyWithImpl(
+      _$DeleteUserImpl _value, $Res Function(_$DeleteUserImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = freezed,
+  }) {
+    return _then(_$DeleteUserImpl(
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteUserImpl implements DeleteUser {
+  const _$DeleteUserImpl({required this.userId});
+
+  @override
+  final int? userId;
+
+  @override
+  String toString() {
+    return 'UserEvent.deleteUser(userId: $userId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteUserImpl &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteUserImplCopyWith<_$DeleteUserImpl> get copyWith =>
+      __$$DeleteUserImplCopyWithImpl<_$DeleteUserImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? page, int? limit, String? searchQuery)
+        fetchAllUsers,
+    required TResult Function(int? userId) deleteUser,
+    required TResult Function(int userId, Map<String, dynamic> updatedFields)
+        updateUser,
+    required TResult Function(UserModel userData) addUser,
+    required TResult Function(int newPage) changePage,
+    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+  }) {
+    return deleteUser(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? page, int? limit, String? searchQuery)?
+        fetchAllUsers,
+    TResult? Function(int? userId)? deleteUser,
+    TResult? Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult? Function(UserModel userData)? addUser,
+    TResult? Function(int newPage)? changePage,
+    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+  }) {
+    return deleteUser?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? userId)? deleteUser,
+    TResult Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult Function(UserModel userData)? addUser,
+    TResult Function(int newPage)? changePage,
+    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    required TResult orElse(),
+  }) {
+    if (deleteUser != null) {
+      return deleteUser(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllUsers value) fetchAllUsers,
+    required TResult Function(DeleteUser value) deleteUser,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(AddUser value) addUser,
+    required TResult Function(ChangePage value) changePage,
+    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+  }) {
+    return deleteUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllUsers value)? fetchAllUsers,
+    TResult? Function(DeleteUser value)? deleteUser,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(AddUser value)? addUser,
+    TResult? Function(ChangePage value)? changePage,
+    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+  }) {
+    return deleteUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllUsers value)? fetchAllUsers,
+    TResult Function(DeleteUser value)? deleteUser,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(AddUser value)? addUser,
+    TResult Function(ChangePage value)? changePage,
+    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    required TResult orElse(),
+  }) {
+    if (deleteUser != null) {
+      return deleteUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteUser implements UserEvent {
+  const factory DeleteUser({required final int? userId}) = _$DeleteUserImpl;
+
+  int? get userId;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteUserImplCopyWith<_$DeleteUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserImplCopyWith<$Res> {
+  factory _$$UpdateUserImplCopyWith(
+          _$UpdateUserImpl value, $Res Function(_$UpdateUserImpl) then) =
+      __$$UpdateUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int userId, Map<String, dynamic> updatedFields});
+}
+
+/// @nodoc
+class __$$UpdateUserImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$UpdateUserImpl>
+    implements _$$UpdateUserImplCopyWith<$Res> {
+  __$$UpdateUserImplCopyWithImpl(
+      _$UpdateUserImpl _value, $Res Function(_$UpdateUserImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+    Object? updatedFields = null,
+  }) {
+    return _then(_$UpdateUserImpl(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      updatedFields: null == updatedFields
+          ? _value._updatedFields
+          : updatedFields // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserImpl implements UpdateUser {
+  const _$UpdateUserImpl(
+      {required this.userId, required final Map<String, dynamic> updatedFields})
+      : _updatedFields = updatedFields;
+
+  @override
+  final int userId;
+  final Map<String, dynamic> _updatedFields;
+  @override
+  Map<String, dynamic> get updatedFields {
+    if (_updatedFields is EqualUnmodifiableMapView) return _updatedFields;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_updatedFields);
+  }
+
+  @override
+  String toString() {
+    return 'UserEvent.updateUser(userId: $userId, updatedFields: $updatedFields)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserImpl &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            const DeepCollectionEquality()
+                .equals(other._updatedFields, _updatedFields));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, userId, const DeepCollectionEquality().hash(_updatedFields));
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
+      __$$UpdateUserImplCopyWithImpl<_$UpdateUserImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? page, int? limit, String? searchQuery)
+        fetchAllUsers,
+    required TResult Function(int? userId) deleteUser,
+    required TResult Function(int userId, Map<String, dynamic> updatedFields)
+        updateUser,
+    required TResult Function(UserModel userData) addUser,
+    required TResult Function(int newPage) changePage,
+    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+  }) {
+    return updateUser(userId, updatedFields);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? page, int? limit, String? searchQuery)?
+        fetchAllUsers,
+    TResult? Function(int? userId)? deleteUser,
+    TResult? Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult? Function(UserModel userData)? addUser,
+    TResult? Function(int newPage)? changePage,
+    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+  }) {
+    return updateUser?.call(userId, updatedFields);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? userId)? deleteUser,
+    TResult Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult Function(UserModel userData)? addUser,
+    TResult Function(int newPage)? changePage,
+    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    required TResult orElse(),
+  }) {
+    if (updateUser != null) {
+      return updateUser(userId, updatedFields);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllUsers value) fetchAllUsers,
+    required TResult Function(DeleteUser value) deleteUser,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(AddUser value) addUser,
+    required TResult Function(ChangePage value) changePage,
+    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+  }) {
+    return updateUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllUsers value)? fetchAllUsers,
+    TResult? Function(DeleteUser value)? deleteUser,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(AddUser value)? addUser,
+    TResult? Function(ChangePage value)? changePage,
+    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+  }) {
+    return updateUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllUsers value)? fetchAllUsers,
+    TResult Function(DeleteUser value)? deleteUser,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(AddUser value)? addUser,
+    TResult Function(ChangePage value)? changePage,
+    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    required TResult orElse(),
+  }) {
+    if (updateUser != null) {
+      return updateUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateUser implements UserEvent {
+  const factory UpdateUser(
+      {required final int userId,
+      required final Map<String, dynamic> updatedFields}) = _$UpdateUserImpl;
+
+  int get userId;
+  Map<String, dynamic> get updatedFields;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddUserImplCopyWith<$Res> {
+  factory _$$AddUserImplCopyWith(
+          _$AddUserImpl value, $Res Function(_$AddUserImpl) then) =
+      __$$AddUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel userData});
+
+  $UserModelCopyWith<$Res> get userData;
+}
+
+/// @nodoc
+class __$$AddUserImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$AddUserImpl>
+    implements _$$AddUserImplCopyWith<$Res> {
+  __$$AddUserImplCopyWithImpl(
+      _$AddUserImpl _value, $Res Function(_$AddUserImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userData = null,
+  }) {
+    return _then(_$AddUserImpl(
+      userData: null == userData
+          ? _value.userData
+          : userData // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ));
+  }
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get userData {
+    return $UserModelCopyWith<$Res>(_value.userData, (value) {
+      return _then(_value.copyWith(userData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddUserImpl implements AddUser {
+  const _$AddUserImpl({required this.userData});
+
+  @override
+  final UserModel userData;
+
+  @override
+  String toString() {
+    return 'UserEvent.addUser(userData: $userData)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddUserImpl &&
+            (identical(other.userData, userData) ||
+                other.userData == userData));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userData);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddUserImplCopyWith<_$AddUserImpl> get copyWith =>
+      __$$AddUserImplCopyWithImpl<_$AddUserImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? page, int? limit, String? searchQuery)
+        fetchAllUsers,
+    required TResult Function(int? userId) deleteUser,
+    required TResult Function(int userId, Map<String, dynamic> updatedFields)
+        updateUser,
+    required TResult Function(UserModel userData) addUser,
+    required TResult Function(int newPage) changePage,
+    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+  }) {
+    return addUser(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? page, int? limit, String? searchQuery)?
+        fetchAllUsers,
+    TResult? Function(int? userId)? deleteUser,
+    TResult? Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult? Function(UserModel userData)? addUser,
+    TResult? Function(int newPage)? changePage,
+    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+  }) {
+    return addUser?.call(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? userId)? deleteUser,
+    TResult Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult Function(UserModel userData)? addUser,
+    TResult Function(int newPage)? changePage,
+    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    required TResult orElse(),
+  }) {
+    if (addUser != null) {
+      return addUser(userData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllUsers value) fetchAllUsers,
+    required TResult Function(DeleteUser value) deleteUser,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(AddUser value) addUser,
+    required TResult Function(ChangePage value) changePage,
+    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+  }) {
+    return addUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllUsers value)? fetchAllUsers,
+    TResult? Function(DeleteUser value)? deleteUser,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(AddUser value)? addUser,
+    TResult? Function(ChangePage value)? changePage,
+    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+  }) {
+    return addUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllUsers value)? fetchAllUsers,
+    TResult Function(DeleteUser value)? deleteUser,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(AddUser value)? addUser,
+    TResult Function(ChangePage value)? changePage,
+    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    required TResult orElse(),
+  }) {
+    if (addUser != null) {
+      return addUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddUser implements UserEvent {
+  const factory AddUser({required final UserModel userData}) = _$AddUserImpl;
+
+  UserModel get userData;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddUserImplCopyWith<_$AddUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -529,15 +904,14 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllUsers,
+    required TResult Function(int? userId) deleteUser,
+    required TResult Function(int userId, Map<String, dynamic> updatedFields)
+        updateUser,
+    required TResult Function(UserModel userData) addUser,
     required TResult Function(int newPage) changePage,
     required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
   }) {
     return changePage(newPage);
   }
@@ -545,15 +919,14 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllUsers,
+    TResult? Function(int? userId)? deleteUser,
+    TResult? Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult? Function(UserModel userData)? addUser,
     TResult? Function(int newPage)? changePage,
     TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
   }) {
     return changePage?.call(newPage);
   }
@@ -561,14 +934,13 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? userId)? deleteUser,
+    TResult Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult Function(UserModel userData)? addUser,
     TResult Function(int newPage)? changePage,
     TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
     required TResult orElse(),
   }) {
     if (changePage != null) {
@@ -580,14 +952,12 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(FetchAllUsers value) fetchAllUsers,
+    required TResult Function(DeleteUser value) deleteUser,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(AddUser value) addUser,
     required TResult Function(ChangePage value) changePage,
     required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
   }) {
     return changePage(this);
   }
@@ -595,14 +965,12 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(FetchAllUsers value)? fetchAllUsers,
+    TResult? Function(DeleteUser value)? deleteUser,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(AddUser value)? addUser,
     TResult? Function(ChangePage value)? changePage,
     TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
   }) {
     return changePage?.call(this);
   }
@@ -610,14 +978,12 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(FetchAllUsers value)? fetchAllUsers,
+    TResult Function(DeleteUser value)? deleteUser,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(AddUser value)? addUser,
     TResult Function(ChangePage value)? changePage,
     TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
     required TResult orElse(),
   }) {
     if (changePage != null) {
@@ -709,15 +1075,14 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllUsers,
+    required TResult Function(int? userId) deleteUser,
+    required TResult Function(int userId, Map<String, dynamic> updatedFields)
+        updateUser,
+    required TResult Function(UserModel userData) addUser,
     required TResult Function(int newPage) changePage,
     required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
   }) {
     return changeRowsPerPage(newRowsPerPage);
   }
@@ -725,15 +1090,14 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllUsers,
+    TResult? Function(int? userId)? deleteUser,
+    TResult? Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult? Function(UserModel userData)? addUser,
     TResult? Function(int newPage)? changePage,
     TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
   }) {
     return changeRowsPerPage?.call(newRowsPerPage);
   }
@@ -741,14 +1105,13 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? userId)? deleteUser,
+    TResult Function(int userId, Map<String, dynamic> updatedFields)?
+        updateUser,
+    TResult Function(UserModel userData)? addUser,
     TResult Function(int newPage)? changePage,
     TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
     required TResult orElse(),
   }) {
     if (changeRowsPerPage != null) {
@@ -760,14 +1123,12 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(FetchAllUsers value) fetchAllUsers,
+    required TResult Function(DeleteUser value) deleteUser,
+    required TResult Function(UpdateUser value) updateUser,
+    required TResult Function(AddUser value) addUser,
     required TResult Function(ChangePage value) changePage,
     required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
   }) {
     return changeRowsPerPage(this);
   }
@@ -775,14 +1136,12 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(FetchAllUsers value)? fetchAllUsers,
+    TResult? Function(DeleteUser value)? deleteUser,
+    TResult? Function(UpdateUser value)? updateUser,
+    TResult? Function(AddUser value)? addUser,
     TResult? Function(ChangePage value)? changePage,
     TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
   }) {
     return changeRowsPerPage?.call(this);
   }
@@ -790,14 +1149,12 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(FetchAllUsers value)? fetchAllUsers,
+    TResult Function(DeleteUser value)? deleteUser,
+    TResult Function(UpdateUser value)? updateUser,
+    TResult Function(AddUser value)? addUser,
     TResult Function(ChangePage value)? changePage,
     TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
     required TResult orElse(),
   }) {
     if (changeRowsPerPage != null) {
@@ -821,694 +1178,12 @@ abstract class ChangeRowsPerPage implements UserEvent {
 }
 
 /// @nodoc
-abstract class _$$AddUserImplCopyWith<$Res> {
-  factory _$$AddUserImplCopyWith(
-          _$AddUserImpl value, $Res Function(_$AddUserImpl) then) =
-      __$$AddUserImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({UserModel userData});
-}
-
-/// @nodoc
-class __$$AddUserImplCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$AddUserImpl>
-    implements _$$AddUserImplCopyWith<$Res> {
-  __$$AddUserImplCopyWithImpl(
-      _$AddUserImpl _value, $Res Function(_$AddUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userData = null,
-  }) {
-    return _then(_$AddUserImpl(
-      userData: null == userData
-          ? _value.userData
-          : userData // ignore: cast_nullable_to_non_nullable
-              as UserModel,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AddUserImpl implements AddUser {
-  const _$AddUserImpl({required this.userData});
-
-  @override
-  final UserModel userData;
-
-  @override
-  String toString() {
-    return 'UserEvent.addUser(userData: $userData)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddUserImpl &&
-            (identical(other.userData, userData) ||
-                other.userData == userData));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, userData);
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddUserImplCopyWith<_$AddUserImpl> get copyWith =>
-      __$$AddUserImplCopyWithImpl<_$AddUserImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int? page, int? limit, String? searchQuery)
-        fetchAllUsers,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
-  }) {
-    return addUser(userData);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int? page, int? limit, String? searchQuery)?
-        fetchAllUsers,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
-  }) {
-    return addUser?.call(userData);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (addUser != null) {
-      return addUser(userData);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(FetchAllUsers value) fetchAllUsers,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
-  }) {
-    return addUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(FetchAllUsers value)? fetchAllUsers,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
-  }) {
-    return addUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(FetchAllUsers value)? fetchAllUsers,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (addUser != null) {
-      return addUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AddUser implements UserEvent {
-  const factory AddUser({required final UserModel userData}) = _$AddUserImpl;
-
-  UserModel get userData;
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddUserImplCopyWith<_$AddUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateUserImplCopyWith<$Res> {
-  factory _$$UpdateUserImplCopyWith(
-          _$UpdateUserImpl value, $Res Function(_$UpdateUserImpl) then) =
-      __$$UpdateUserImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({UserModel updatedUser});
-}
-
-/// @nodoc
-class __$$UpdateUserImplCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$UpdateUserImpl>
-    implements _$$UpdateUserImplCopyWith<$Res> {
-  __$$UpdateUserImplCopyWithImpl(
-      _$UpdateUserImpl _value, $Res Function(_$UpdateUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? updatedUser = null,
-  }) {
-    return _then(_$UpdateUserImpl(
-      updatedUser: null == updatedUser
-          ? _value.updatedUser
-          : updatedUser // ignore: cast_nullable_to_non_nullable
-              as UserModel,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateUserImpl implements UpdateUser {
-  const _$UpdateUserImpl({required this.updatedUser});
-
-  @override
-  final UserModel updatedUser;
-
-  @override
-  String toString() {
-    return 'UserEvent.updateUser(updatedUser: $updatedUser)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateUserImpl &&
-            (identical(other.updatedUser, updatedUser) ||
-                other.updatedUser == updatedUser));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, updatedUser);
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
-      __$$UpdateUserImplCopyWithImpl<_$UpdateUserImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int? page, int? limit, String? searchQuery)
-        fetchAllUsers,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
-  }) {
-    return updateUser(updatedUser);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int? page, int? limit, String? searchQuery)?
-        fetchAllUsers,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
-  }) {
-    return updateUser?.call(updatedUser);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (updateUser != null) {
-      return updateUser(updatedUser);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(FetchAllUsers value) fetchAllUsers,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
-  }) {
-    return updateUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(FetchAllUsers value)? fetchAllUsers,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
-  }) {
-    return updateUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(FetchAllUsers value)? fetchAllUsers,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (updateUser != null) {
-      return updateUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UpdateUser implements UserEvent {
-  const factory UpdateUser({required final UserModel updatedUser}) =
-      _$UpdateUserImpl;
-
-  UserModel get updatedUser;
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DeleteUserImplCopyWith<$Res> {
-  factory _$$DeleteUserImplCopyWith(
-          _$DeleteUserImpl value, $Res Function(_$DeleteUserImpl) then) =
-      __$$DeleteUserImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String userId});
-}
-
-/// @nodoc
-class __$$DeleteUserImplCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$DeleteUserImpl>
-    implements _$$DeleteUserImplCopyWith<$Res> {
-  __$$DeleteUserImplCopyWithImpl(
-      _$DeleteUserImpl _value, $Res Function(_$DeleteUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userId = null,
-  }) {
-    return _then(_$DeleteUserImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DeleteUserImpl implements DeleteUser {
-  const _$DeleteUserImpl({required this.userId});
-
-  @override
-  final String userId;
-
-  @override
-  String toString() {
-    return 'UserEvent.deleteUser(userId: $userId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteUserImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, userId);
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeleteUserImplCopyWith<_$DeleteUserImpl> get copyWith =>
-      __$$DeleteUserImplCopyWithImpl<_$DeleteUserImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int? page, int? limit, String? searchQuery)
-        fetchAllUsers,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
-  }) {
-    return deleteUser(userId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int? page, int? limit, String? searchQuery)?
-        fetchAllUsers,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
-  }) {
-    return deleteUser?.call(userId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (deleteUser != null) {
-      return deleteUser(userId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(FetchAllUsers value) fetchAllUsers,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
-  }) {
-    return deleteUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(FetchAllUsers value)? fetchAllUsers,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
-  }) {
-    return deleteUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(FetchAllUsers value)? fetchAllUsers,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (deleteUser != null) {
-      return deleteUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DeleteUser implements UserEvent {
-  const factory DeleteUser({required final String userId}) = _$DeleteUserImpl;
-
-  String get userId;
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteUserImplCopyWith<_$DeleteUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UserListNavigationImplCopyWith<$Res> {
-  factory _$$UserListNavigationImplCopyWith(_$UserListNavigationImpl value,
-          $Res Function(_$UserListNavigationImpl) then) =
-      __$$UserListNavigationImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$UserListNavigationImplCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$UserListNavigationImpl>
-    implements _$$UserListNavigationImplCopyWith<$Res> {
-  __$$UserListNavigationImplCopyWithImpl(_$UserListNavigationImpl _value,
-      $Res Function(_$UserListNavigationImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$UserListNavigationImpl implements UserListNavigation {
-  const _$UserListNavigationImpl();
-
-  @override
-  String toString() {
-    return 'UserEvent.userListNavigation()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserListNavigationImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int? page, int? limit, String? searchQuery)
-        fetchAllUsers,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
-    required TResult Function(UserModel userData) addUser,
-    required TResult Function(UserModel updatedUser) updateUser,
-    required TResult Function(String userId) deleteUser,
-    required TResult Function() userListNavigation,
-  }) {
-    return userListNavigation();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int? page, int? limit, String? searchQuery)?
-        fetchAllUsers,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult? Function(UserModel userData)? addUser,
-    TResult? Function(UserModel updatedUser)? updateUser,
-    TResult? Function(String userId)? deleteUser,
-    TResult? Function()? userListNavigation,
-  }) {
-    return userListNavigation?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    TResult Function(UserModel userData)? addUser,
-    TResult Function(UserModel updatedUser)? updateUser,
-    TResult Function(String userId)? deleteUser,
-    TResult Function()? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (userListNavigation != null) {
-      return userListNavigation();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(FetchAllUsers value) fetchAllUsers,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-    required TResult Function(AddUser value) addUser,
-    required TResult Function(UpdateUser value) updateUser,
-    required TResult Function(DeleteUser value) deleteUser,
-    required TResult Function(UserListNavigation value) userListNavigation,
-  }) {
-    return userListNavigation(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(FetchAllUsers value)? fetchAllUsers,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult? Function(AddUser value)? addUser,
-    TResult? Function(UpdateUser value)? updateUser,
-    TResult? Function(DeleteUser value)? deleteUser,
-    TResult? Function(UserListNavigation value)? userListNavigation,
-  }) {
-    return userListNavigation?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(FetchAllUsers value)? fetchAllUsers,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    TResult Function(AddUser value)? addUser,
-    TResult Function(UpdateUser value)? updateUser,
-    TResult Function(DeleteUser value)? deleteUser,
-    TResult Function(UserListNavigation value)? userListNavigation,
-    required TResult orElse(),
-  }) {
-    if (userListNavigation != null) {
-      return userListNavigation(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UserListNavigation implements UserEvent {
-  const factory UserListNavigation() = _$UserListNavigationImpl;
-}
-
-/// @nodoc
 mixin _$UserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
@@ -1520,8 +1195,7 @@ mixin _$UserState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
@@ -1533,8 +1207,7 @@ mixin _$UserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,
@@ -1645,9 +1318,7 @@ class _$UserInitialImpl implements UserInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
@@ -1662,8 +1333,7 @@ class _$UserInitialImpl implements UserInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
@@ -1678,8 +1348,7 @@ class _$UserInitialImpl implements UserInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,
@@ -1790,9 +1459,7 @@ class _$UserLoadingImpl implements UserLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
@@ -1807,8 +1474,7 @@ class _$UserLoadingImpl implements UserLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
@@ -1823,8 +1489,7 @@ class _$UserLoadingImpl implements UserLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,
@@ -1898,7 +1563,9 @@ abstract class _$$UserLoadedImplCopyWith<$Res> {
           _$UserLoadedImpl value, $Res Function(_$UserLoadedImpl) then) =
       __$$UserLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<UserModel> users, int totalPages, int currentPage});
+  $Res call({UserResponseModel users});
+
+  $UserResponseModelCopyWith<$Res> get users;
 }
 
 /// @nodoc
@@ -1915,51 +1582,37 @@ class __$$UserLoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? users = null,
-    Object? totalPages = null,
-    Object? currentPage = null,
   }) {
     return _then(_$UserLoadedImpl(
       users: null == users
-          ? _value._users
+          ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
-      totalPages: null == totalPages
-          ? _value.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-      currentPage: null == currentPage
-          ? _value.currentPage
-          : currentPage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as UserResponseModel,
     ));
+  }
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserResponseModelCopyWith<$Res> get users {
+    return $UserResponseModelCopyWith<$Res>(_value.users, (value) {
+      return _then(_value.copyWith(users: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$UserLoadedImpl implements UserLoaded {
-  const _$UserLoadedImpl(
-      {required final List<UserModel> users,
-      required this.totalPages,
-      required this.currentPage})
-      : _users = users;
-
-  final List<UserModel> _users;
-  @override
-  List<UserModel> get users {
-    if (_users is EqualUnmodifiableListView) return _users;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_users);
-  }
+  const _$UserLoadedImpl({required this.users});
 
   @override
-  final int totalPages;
-  @override
-  final int currentPage;
+  final UserResponseModel users;
 
   @override
   String toString() {
-    return 'UserState.loaded(users: $users, totalPages: $totalPages, currentPage: $currentPage)';
+    return 'UserState.loaded(users: $users)';
   }
 
   @override
@@ -1967,16 +1620,11 @@ class _$UserLoadedImpl implements UserLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserLoadedImpl &&
-            const DeepCollectionEquality().equals(other._users, _users) &&
-            (identical(other.totalPages, totalPages) ||
-                other.totalPages == totalPages) &&
-            (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage));
+            (identical(other.users, users) || other.users == users));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_users), totalPages, currentPage);
+  int get hashCode => Object.hash(runtimeType, users);
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -1991,16 +1639,14 @@ class _$UserLoadedImpl implements UserLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
     required TResult Function(String message) error,
     required TResult Function() userListNavigated,
   }) {
-    return loaded(users, totalPages, currentPage);
+    return loaded(users);
   }
 
   @override
@@ -2008,15 +1654,14 @@ class _$UserLoadedImpl implements UserLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
     TResult? Function(String message)? error,
     TResult? Function()? userListNavigated,
   }) {
-    return loaded?.call(users, totalPages, currentPage);
+    return loaded?.call(users);
   }
 
   @override
@@ -2024,8 +1669,7 @@ class _$UserLoadedImpl implements UserLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,
@@ -2034,7 +1678,7 @@ class _$UserLoadedImpl implements UserLoaded {
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(users, totalPages, currentPage);
+      return loaded(users);
     }
     return orElse();
   }
@@ -2090,14 +1734,10 @@ class _$UserLoadedImpl implements UserLoaded {
 }
 
 abstract class UserLoaded implements UserState {
-  const factory UserLoaded(
-      {required final List<UserModel> users,
-      required final int totalPages,
-      required final int currentPage}) = _$UserLoadedImpl;
+  const factory UserLoaded({required final UserResponseModel users}) =
+      _$UserLoadedImpl;
 
-  List<UserModel> get users;
-  int get totalPages;
-  int get currentPage;
+  UserResponseModel get users;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -2177,9 +1817,7 @@ class _$UserUpdatedSuccessImpl implements UserUpdatedSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
@@ -2194,8 +1832,7 @@ class _$UserUpdatedSuccessImpl implements UserUpdatedSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
@@ -2210,8 +1847,7 @@ class _$UserUpdatedSuccessImpl implements UserUpdatedSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,
@@ -2359,9 +1995,7 @@ class _$UserAddedSuccessImpl implements UserAddedSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
@@ -2376,8 +2010,7 @@ class _$UserAddedSuccessImpl implements UserAddedSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
@@ -2392,8 +2025,7 @@ class _$UserAddedSuccessImpl implements UserAddedSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,
@@ -2540,9 +2172,7 @@ class _$UserDeletedSuccessImpl implements UserDeletedSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
@@ -2557,8 +2187,7 @@ class _$UserDeletedSuccessImpl implements UserDeletedSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
@@ -2573,8 +2202,7 @@ class _$UserDeletedSuccessImpl implements UserDeletedSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,
@@ -2721,9 +2349,7 @@ class _$UserErrorImpl implements UserError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
@@ -2738,8 +2364,7 @@ class _$UserErrorImpl implements UserError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
@@ -2754,8 +2379,7 @@ class _$UserErrorImpl implements UserError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,
@@ -2874,9 +2498,7 @@ class _$UserListNavigatedImpl implements UserListNavigated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<UserModel> users, int totalPages, int currentPage)
-        loaded,
+    required TResult Function(UserResponseModel users) loaded,
     required TResult Function(String message) userUpdatedSuccess,
     required TResult Function(String message) userAddedSuccess,
     required TResult Function(String message) userDeletedSuccess,
@@ -2891,8 +2513,7 @@ class _$UserListNavigatedImpl implements UserListNavigated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult? Function(UserResponseModel users)? loaded,
     TResult? Function(String message)? userUpdatedSuccess,
     TResult? Function(String message)? userAddedSuccess,
     TResult? Function(String message)? userDeletedSuccess,
@@ -2907,8 +2528,7 @@ class _$UserListNavigatedImpl implements UserListNavigated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<UserModel> users, int totalPages, int currentPage)?
-        loaded,
+    TResult Function(UserResponseModel users)? loaded,
     TResult Function(String message)? userUpdatedSuccess,
     TResult Function(String message)? userAddedSuccess,
     TResult Function(String message)? userDeletedSuccess,

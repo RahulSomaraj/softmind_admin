@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:softmind_admin/common/data_storage.dart';
+import 'package:softmind_admin/models/api_response_model.dart';
 
 class ApiService {
   static final ApiService _instance = ApiService._internal();
@@ -11,7 +12,7 @@ class ApiService {
 
   ApiService._internal() {
     _dio = Dio(BaseOptions(
-      baseUrl: 'https://uat.ado-dad.com/',
+      baseUrl: 'https://uatapi.softmindindia.com/',
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 15),
     ));
@@ -80,6 +81,33 @@ class ApiService {
 
   Future<void> logout() async {
     await clearUserData();
+  }
+}
+
+class ApiErrorHandler {
+  static ApiResponse handleError(DioException e) {
+    if (e.response != null) {
+      final responseData = e.response?.data;
+
+      if (responseData is Map<String, dynamic> &&
+          responseData.containsKey('message')) {
+        final message = responseData['message'];
+
+        if (message is List<dynamic>) {
+          return ApiResponse(
+              success: false, message: message.join("\n")); // ✅ Multiple errors
+        }
+        return ApiResponse(
+            success: false, message: message.toString()); // ✅ Single error
+      }
+
+      return ApiResponse(
+          success: false,
+          message: "An error occurred: ${e.response?.statusCode}");
+    } else {
+      return ApiResponse(
+          success: false, message: "Network error: ${e.message}");
+    }
   }
 }
 

@@ -9,7 +9,7 @@ class GetInput extends StatefulWidget {
   final bool isEmail;
   final bool isPhone;
   final bool isPassword;
-  final String? initialValue; // ✅ Added initial value
+  final String? initialValue;
 
   const GetInput({
     super.key,
@@ -19,7 +19,7 @@ class GetInput extends StatefulWidget {
     this.isEmail = false,
     this.isPhone = false,
     this.isPassword = false,
-    this.initialValue, // ✅ Accept initialValue
+    this.initialValue,
   });
 
   @override
@@ -48,7 +48,7 @@ class _GetInputState extends State<GetInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: _internalController, // ✅ Uses controller or initialValue
+      controller: _internalController,
       decoration: CommonDecoration.textFieldDecoration(
         labelText: widget.label,
         isPassword: widget.isPassword,
@@ -78,7 +78,7 @@ class _GetInputState extends State<GetInput> {
           return "Enter a valid email address";
         }
         if (widget.isPhone && !RegExp(r"^[0-9]{10,}$").hasMatch(value)) {
-          return "Enter a valid phone number (10+ digits)";
+          return "Enter a valid phone number";
         }
         if (widget.isPassword && value.length < 6) {
           return "Password must be at least 6 characters long";

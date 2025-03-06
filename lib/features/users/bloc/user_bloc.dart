@@ -1,4 +1,5 @@
-import 'package:softmind_admin/models/user_model.dart';
+import 'package:softmind_admin/models/user/user_model.dart';
+import 'package:softmind_admin/models/user/user_response_model.dart';
 import 'package:softmind_admin/repositories/user_rep.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -22,17 +23,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(const UserState.loading());
 
     try {
-      final userResponse = await userRepository.fetchAllUsers(
+      final apiResponse = await userRepository.fetchAllUsers(
         page: event.page ?? 1,
         limit: event.limit ?? 10,
         searchQuery: event.searchQuery ?? '',
       );
 
-      emit(UserState.loaded(
-        users: userResponse.users,
-        totalPages: userResponse.totalPages,
-        currentPage: userResponse.currentPage,
-      ));
+      if (apiResponse.success && apiResponse.data != null) {
+        emit(UserLoaded(users: apiResponse.data));
+      } else {
+        emit(UserError(apiResponse.message));
+      }
     } catch (e) {
       emit(const UserState.error("Failed to fetch users"));
     }
@@ -42,8 +43,14 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(const UserLoading());
 
     try {
-      await userRepository.deleteUser(event.userId);
-      emit(const UserState.userDeletedSuccess("User deleted successfully!"));
+      final apiResponse = await userRepository.deleteUser(event.userId);
+
+      if (apiResponse.success) {
+        emit(UserDeletedSuccess(apiResponse.message));
+      } else {
+        emit(UserError(apiResponse.message));
+      }
+
       add(const FetchAllUsers());
     } catch (e) {
       emit(const UserError("Failed to delete user"));
@@ -53,9 +60,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<void> _onUpdateUser(UpdateUser event, Emitter<UserState> emit) async {
     emit(const UserLoading());
     try {
-      await userRepository.updateUser(event.updatedUser);
+      final apiResponse =
+          await userRepository.updateUser(event.userId, event.updatedFields);
 
-      emit(const UserState.userUpdatedSuccess("User updated successfully!"));
+      if (apiResponse.success) {
+        emit(UserUpdatedSuccess(apiResponse.message));
+      } else {
+        emit(UserError(apiResponse.message));
+      }
+
       add(const FetchAllUsers());
     } catch (e) {
       emit(const UserState.error("Failed to update user"));
@@ -65,12 +78,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<void> _onAddUser(AddUser event, Emitter<UserState> emit) async {
     emit(const UserState.loading());
     try {
-      await userRepository.createUser(event.userData);
-      emit(const UserState.userAddedSuccess("User Added successfully!"));
+      final apiResponse = await userRepository.createUser(event.userData);
+
+      if (apiResponse.success) {
+        emit(UserAddedSuccess(apiResponse.message));
+      } else {
+        emit(UserError(apiResponse.message));
+      }
 
       add(const FetchAllUsers());
     } catch (e) {
-      emit(const UserState.error("Failed to add user"));
+      emit(const UserError("Failed to add user"));
     }
   }
 }

@@ -26,10 +26,10 @@ class MyApp extends StatelessWidget {
           create: (context) => AuthBloc(authRepository: AuthRepository())
             ..add(const AuthEvent.checkLoginStatus()),
         ),
-        BlocProvider(
-          create: (context) => UserBloc(userRepository: UserRepository())
-            ..add(const FetchAllUsers()),
-        ),
+        // BlocProvider(
+        //   create: (context) => UserBloc(userRepository: UserRepository())
+        //     ..add(const FetchAllUsers()),
+        // ),
       ],
       child: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {

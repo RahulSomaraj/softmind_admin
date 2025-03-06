@@ -4,9 +4,12 @@ part of 'user_bloc.dart';
 class UserEvent with _$UserEvent {
   const factory UserEvent.fetchAllUsers(
       {int? page, int? limit, String? searchQuery}) = FetchAllUsers;
-  const factory UserEvent.deleteUser({required String userId}) = DeleteUser;
-  const factory UserEvent.updateUser({required UserModel updatedUser}) =
-      UpdateUser;
+  const factory UserEvent.deleteUser({required int? userId}) = DeleteUser;
+  const factory UserEvent.updateUser({
+    required int userId,
+    required Map<String, dynamic> updatedFields,
+  }) = UpdateUser;
+
   const factory UserEvent.addUser({required UserModel userData}) = AddUser;
 
   const factory UserEvent.changePage({required int newPage}) = ChangePage;
