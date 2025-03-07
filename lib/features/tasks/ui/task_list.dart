@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:softmind_admin/common/text_style.dart';
 import 'package:softmind_admin/common/widgets/common_button.dart';
 import 'package:softmind_admin/common/widgets/common_dialogs.dart';
@@ -88,7 +89,7 @@ class _TaskListState extends State<TaskList> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(
-                  columnSpacing: (MediaQuery.of(context).size.width - 300) / 16,
+                  columnSpacing: (MediaQuery.of(context).size.width - 300) / 20,
                   dividerThickness: 0,
                   dataRowMinHeight: 56,
                   dataRowMaxHeight: 56,
@@ -96,8 +97,8 @@ class _TaskListState extends State<TaskList> {
                     _buildColumn('ID'),
                     _buildColumn('Name'),
                     _buildColumn('Description'),
-                    _buildColumn('Create Time'),
-                    _buildColumn('Update Time'),
+                    _buildColumn('Created Time'),
+                    _buildColumn('Updated Time'),
                     _buildColumn('Actions'),
                   ],
                   rows: taskList.asMap().entries.map((entry) {
@@ -132,8 +133,9 @@ class _TaskListState extends State<TaskList> {
       DataCell(Text('$rowNumber')),
       DataCell(Text(task.name)),
       DataCell(Text(task.description)),
-      DataCell(Text(task.createdAt)),
-      DataCell(Text(task.lastUpdatedAt)),
+      DataCell(Text(DateFormat('yyyy-MM-dd HH:mm:ss').format(task.createdAt))),
+      DataCell(
+          Text(DateFormat('yyyy-MM-dd HH:mm:ss').format(task.lastUpdatedAt))),
       DataCell(
         Row(
           mainAxisSize: MainAxisSize.min,

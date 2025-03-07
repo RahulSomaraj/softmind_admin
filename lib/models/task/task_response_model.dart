@@ -21,8 +21,8 @@ class TaskModel with _$TaskModel {
     required int id,
     required String name,
     required String description,
-    required String createdAt,
-    required String lastUpdatedAt,
+    required DateTime createdAt,
+    required DateTime lastUpdatedAt,
     DateTime? deletedAt,
   }) = _TaskModel;
 

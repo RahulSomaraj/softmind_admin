@@ -29,8 +29,8 @@ _$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       description: json['description'] as String,
-      createdAt: json['createdAt'] as String,
-      lastUpdatedAt: json['lastUpdatedAt'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      lastUpdatedAt: DateTime.parse(json['lastUpdatedAt'] as String),
       deletedAt: json['deletedAt'] == null
           ? null
           : DateTime.parse(json['deletedAt'] as String),
@@ -41,7 +41,7 @@ Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'createdAt': instance.createdAt,
-      'lastUpdatedAt': instance.lastUpdatedAt,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'lastUpdatedAt': instance.lastUpdatedAt.toIso8601String(),
       'deletedAt': instance.deletedAt?.toIso8601String(),
     };

@@ -11,7 +11,6 @@ import 'package:softmind_admin/features/tasks/ui/task_list.dart';
 import 'package:softmind_admin/features/users/bloc/user_bloc.dart';
 import 'package:softmind_admin/features/users/ui/add_edit_user.dart';
 import 'package:softmind_admin/features/users/ui/user_list.dart';
-import 'package:softmind_admin/models/appointment/appointment_response_model.dart';
 import 'package:softmind_admin/models/task/task_response_model.dart';
 import 'package:softmind_admin/models/user/user_model.dart';
 import 'package:flutter/material.dart';
@@ -86,18 +85,18 @@ class AppRoutes {
           //     );
           //   },
           // ),
-          // GoRoute(
-          //   path: '/add-edit-tasks',
-          //   pageBuilder: (context, state) {
-          //     final task = state.extra as TaskModel?;
-          //     return MaterialPage(
-          //       child: BlocProvider.value(
-          //         value: context.read<TaskBloc>(),
-          //         child: AddEditTask(task: task),
-          //       ),
-          //     );
-          //   },
-          // ),
+          GoRoute(
+            path: '/add-edit-task',
+            pageBuilder: (context, state) {
+              final task = state.extra as TaskModel?;
+              return MaterialPage(
+                child: BlocProvider.value(
+                  value: context.read<TaskBloc>(),
+                  child: AddEditTask(task: task),
+                ),
+              );
+            },
+          ),
           _noTransitionRoute('/logout', const LoginPage()),
         ],
       ),

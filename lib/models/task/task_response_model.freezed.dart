@@ -221,8 +221,8 @@ mixin _$TaskModel {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
-  String get lastUpdatedAt => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get lastUpdatedAt => throw _privateConstructorUsedError;
   DateTime? get deletedAt => throw _privateConstructorUsedError;
 
   /// Serializes this TaskModel to a JSON map.
@@ -244,8 +244,8 @@ abstract class $TaskModelCopyWith<$Res> {
       {int id,
       String name,
       String description,
-      String createdAt,
-      String lastUpdatedAt,
+      DateTime createdAt,
+      DateTime lastUpdatedAt,
       DateTime? deletedAt});
 }
 
@@ -287,11 +287,11 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       lastUpdatedAt: null == lastUpdatedAt
           ? _value.lastUpdatedAt
           : lastUpdatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       deletedAt: freezed == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
@@ -312,8 +312,8 @@ abstract class _$$TaskModelImplCopyWith<$Res>
       {int id,
       String name,
       String description,
-      String createdAt,
-      String lastUpdatedAt,
+      DateTime createdAt,
+      DateTime lastUpdatedAt,
       DateTime? deletedAt});
 }
 
@@ -353,11 +353,11 @@ class __$$TaskModelImplCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       lastUpdatedAt: null == lastUpdatedAt
           ? _value.lastUpdatedAt
           : lastUpdatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       deletedAt: freezed == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
@@ -387,9 +387,9 @@ class _$TaskModelImpl implements _TaskModel {
   @override
   final String description;
   @override
-  final String createdAt;
+  final DateTime createdAt;
   @override
-  final String lastUpdatedAt;
+  final DateTime lastUpdatedAt;
   @override
   final DateTime? deletedAt;
 
@@ -441,8 +441,8 @@ abstract class _TaskModel implements TaskModel {
       {required final int id,
       required final String name,
       required final String description,
-      required final String createdAt,
-      required final String lastUpdatedAt,
+      required final DateTime createdAt,
+      required final DateTime lastUpdatedAt,
       final DateTime? deletedAt}) = _$TaskModelImpl;
 
   factory _TaskModel.fromJson(Map<String, dynamic> json) =
@@ -455,9 +455,9 @@ abstract class _TaskModel implements TaskModel {
   @override
   String get description;
   @override
-  String get createdAt;
+  DateTime get createdAt;
   @override
-  String get lastUpdatedAt;
+  DateTime get lastUpdatedAt;
   @override
   DateTime? get deletedAt;
 

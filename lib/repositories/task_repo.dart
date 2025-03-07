@@ -61,6 +61,8 @@ class TaskRepository {
     try {
       final response = await _dio.put('/tasks/$taskId', data: updatedFields);
 
+      print(response);
+
       if (response.statusCode == 200) {
         return ApiResponse(
             success: true,
