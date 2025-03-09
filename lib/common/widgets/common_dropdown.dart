@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:softmind_admin/common/text_style.dart';
 import 'package:softmind_admin/common/widgets/common_decoration.dart';
 
-class DropdownWidget extends StatelessWidget {
+class DropdownWidget<T> extends StatelessWidget {
   final String labelText;
   final String errorMsg;
-  final Map<String, String> items;
-  final String? selectedValue;
-  final ValueChanged<String?> onChanged;
+  final Map<T, String> items; // ✅ Generic Key Type
+  final T? selectedValue;
+  final ValueChanged<T?> onChanged;
 
   const DropdownWidget({
     super.key,
@@ -23,16 +23,14 @@ class DropdownWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        DropdownButtonFormField<String>(
+        DropdownButtonFormField<T>(
           decoration: CommonDecoration.textFieldDecoration(labelText: labelText)
-              .copyWith(
-            filled: false,
-          ),
+              .copyWith(filled: false),
           value: selectedValue,
           focusColor: Colors.transparent,
           dropdownColor: Colors.white,
           items: items.entries.map((entry) {
-            return DropdownMenuItem<String>(
+            return DropdownMenuItem<T>(
               value: entry.key,
               child: Text(entry.value, style: AppTextStyle.dropdownStyle),
             );
@@ -45,14 +43,15 @@ class DropdownWidget extends StatelessWidget {
   }
 }
 
-Widget buildDropdown({
+/// **✅ Generic Dropdown Builder Function**
+Widget buildDropdown<T>({
   required String labelText,
-  required Map<String, String> items,
-  required String? selectedValue,
-  required ValueChanged<String?> onChanged,
+  required Map<T, String> items,
+  required T? selectedValue,
+  required ValueChanged<T?> onChanged,
   required String errorMsg,
 }) {
-  return DropdownWidget(
+  return DropdownWidget<T>(
     labelText: labelText,
     items: items,
     selectedValue: selectedValue,

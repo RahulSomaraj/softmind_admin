@@ -25,6 +25,8 @@ mixin _$AppointmentEvent {
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
     required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function() fetchDoctors,
+    required TResult Function() fetchPatients,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,8 @@ mixin _$AppointmentEvent {
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function()? fetchDoctors,
+    TResult? Function()? fetchPatients,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +49,8 @@ mixin _$AppointmentEvent {
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function()? fetchDoctors,
+    TResult Function()? fetchPatients,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +60,8 @@ mixin _$AppointmentEvent {
     required TResult Function(DeleteAppointment value) deleteAppointment,
     required TResult Function(UpdateAppointment value) updateAppointment,
     required TResult Function(AddAppointment value) addAppointment,
+    required TResult Function(FetchDoctors value) fetchDoctors,
+    required TResult Function(FetchPatients value) fetchPatients,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +70,8 @@ mixin _$AppointmentEvent {
     TResult? Function(DeleteAppointment value)? deleteAppointment,
     TResult? Function(UpdateAppointment value)? updateAppointment,
     TResult? Function(AddAppointment value)? addAppointment,
+    TResult? Function(FetchDoctors value)? fetchDoctors,
+    TResult? Function(FetchPatients value)? fetchPatients,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +80,8 @@ mixin _$AppointmentEvent {
     TResult Function(DeleteAppointment value)? deleteAppointment,
     TResult Function(UpdateAppointment value)? updateAppointment,
     TResult Function(AddAppointment value)? addAppointment,
+    TResult Function(FetchDoctors value)? fetchDoctors,
+    TResult Function(FetchPatients value)? fetchPatients,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -190,6 +202,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
     required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function() fetchDoctors,
+    required TResult Function() fetchPatients,
   }) {
     return fetchAllAppointments(page, limit, searchQuery);
   }
@@ -203,6 +217,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function()? fetchDoctors,
+    TResult? Function()? fetchPatients,
   }) {
     return fetchAllAppointments?.call(page, limit, searchQuery);
   }
@@ -216,6 +232,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function()? fetchDoctors,
+    TResult Function()? fetchPatients,
     required TResult orElse(),
   }) {
     if (fetchAllAppointments != null) {
@@ -231,6 +249,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     required TResult Function(DeleteAppointment value) deleteAppointment,
     required TResult Function(UpdateAppointment value) updateAppointment,
     required TResult Function(AddAppointment value) addAppointment,
+    required TResult Function(FetchDoctors value) fetchDoctors,
+    required TResult Function(FetchPatients value) fetchPatients,
   }) {
     return fetchAllAppointments(this);
   }
@@ -242,6 +262,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     TResult? Function(DeleteAppointment value)? deleteAppointment,
     TResult? Function(UpdateAppointment value)? updateAppointment,
     TResult? Function(AddAppointment value)? addAppointment,
+    TResult? Function(FetchDoctors value)? fetchDoctors,
+    TResult? Function(FetchPatients value)? fetchPatients,
   }) {
     return fetchAllAppointments?.call(this);
   }
@@ -253,6 +275,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     TResult Function(DeleteAppointment value)? deleteAppointment,
     TResult Function(UpdateAppointment value)? updateAppointment,
     TResult Function(AddAppointment value)? addAppointment,
+    TResult Function(FetchDoctors value)? fetchDoctors,
+    TResult Function(FetchPatients value)? fetchPatients,
     required TResult orElse(),
   }) {
     if (fetchAllAppointments != null) {
@@ -356,6 +380,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
     required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function() fetchDoctors,
+    required TResult Function() fetchPatients,
   }) {
     return deleteAppointment(appointmentId);
   }
@@ -369,6 +395,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function()? fetchDoctors,
+    TResult? Function()? fetchPatients,
   }) {
     return deleteAppointment?.call(appointmentId);
   }
@@ -382,6 +410,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function()? fetchDoctors,
+    TResult Function()? fetchPatients,
     required TResult orElse(),
   }) {
     if (deleteAppointment != null) {
@@ -397,6 +427,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
     required TResult Function(DeleteAppointment value) deleteAppointment,
     required TResult Function(UpdateAppointment value) updateAppointment,
     required TResult Function(AddAppointment value) addAppointment,
+    required TResult Function(FetchDoctors value) fetchDoctors,
+    required TResult Function(FetchPatients value) fetchPatients,
   }) {
     return deleteAppointment(this);
   }
@@ -408,6 +440,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
     TResult? Function(DeleteAppointment value)? deleteAppointment,
     TResult? Function(UpdateAppointment value)? updateAppointment,
     TResult? Function(AddAppointment value)? addAppointment,
+    TResult? Function(FetchDoctors value)? fetchDoctors,
+    TResult? Function(FetchPatients value)? fetchPatients,
   }) {
     return deleteAppointment?.call(this);
   }
@@ -419,6 +453,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
     TResult Function(DeleteAppointment value)? deleteAppointment,
     TResult Function(UpdateAppointment value)? updateAppointment,
     TResult Function(AddAppointment value)? addAppointment,
+    TResult Function(FetchDoctors value)? fetchDoctors,
+    TResult Function(FetchPatients value)? fetchPatients,
     required TResult orElse(),
   }) {
     if (deleteAppointment != null) {
@@ -536,6 +572,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
     required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function() fetchDoctors,
+    required TResult Function() fetchPatients,
   }) {
     return updateAppointment(appointmentId, updatedFields);
   }
@@ -549,6 +587,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function()? fetchDoctors,
+    TResult? Function()? fetchPatients,
   }) {
     return updateAppointment?.call(appointmentId, updatedFields);
   }
@@ -562,6 +602,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function()? fetchDoctors,
+    TResult Function()? fetchPatients,
     required TResult orElse(),
   }) {
     if (updateAppointment != null) {
@@ -577,6 +619,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
     required TResult Function(DeleteAppointment value) deleteAppointment,
     required TResult Function(UpdateAppointment value) updateAppointment,
     required TResult Function(AddAppointment value) addAppointment,
+    required TResult Function(FetchDoctors value) fetchDoctors,
+    required TResult Function(FetchPatients value) fetchPatients,
   }) {
     return updateAppointment(this);
   }
@@ -588,6 +632,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
     TResult? Function(DeleteAppointment value)? deleteAppointment,
     TResult? Function(UpdateAppointment value)? updateAppointment,
     TResult? Function(AddAppointment value)? addAppointment,
+    TResult? Function(FetchDoctors value)? fetchDoctors,
+    TResult? Function(FetchPatients value)? fetchPatients,
   }) {
     return updateAppointment?.call(this);
   }
@@ -599,6 +645,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
     TResult Function(DeleteAppointment value)? deleteAppointment,
     TResult Function(UpdateAppointment value)? updateAppointment,
     TResult Function(AddAppointment value)? addAppointment,
+    TResult Function(FetchDoctors value)? fetchDoctors,
+    TResult Function(FetchPatients value)? fetchPatients,
     required TResult orElse(),
   }) {
     if (updateAppointment != null) {
@@ -713,6 +761,8 @@ class _$AddAppointmentImpl implements AddAppointment {
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
     required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function() fetchDoctors,
+    required TResult Function() fetchPatients,
   }) {
     return addAppointment(appointmentData);
   }
@@ -726,6 +776,8 @@ class _$AddAppointmentImpl implements AddAppointment {
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function()? fetchDoctors,
+    TResult? Function()? fetchPatients,
   }) {
     return addAppointment?.call(appointmentData);
   }
@@ -739,6 +791,8 @@ class _$AddAppointmentImpl implements AddAppointment {
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
     TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function()? fetchDoctors,
+    TResult Function()? fetchPatients,
     required TResult orElse(),
   }) {
     if (addAppointment != null) {
@@ -754,6 +808,8 @@ class _$AddAppointmentImpl implements AddAppointment {
     required TResult Function(DeleteAppointment value) deleteAppointment,
     required TResult Function(UpdateAppointment value) updateAppointment,
     required TResult Function(AddAppointment value) addAppointment,
+    required TResult Function(FetchDoctors value) fetchDoctors,
+    required TResult Function(FetchPatients value) fetchPatients,
   }) {
     return addAppointment(this);
   }
@@ -765,6 +821,8 @@ class _$AddAppointmentImpl implements AddAppointment {
     TResult? Function(DeleteAppointment value)? deleteAppointment,
     TResult? Function(UpdateAppointment value)? updateAppointment,
     TResult? Function(AddAppointment value)? addAppointment,
+    TResult? Function(FetchDoctors value)? fetchDoctors,
+    TResult? Function(FetchPatients value)? fetchPatients,
   }) {
     return addAppointment?.call(this);
   }
@@ -776,6 +834,8 @@ class _$AddAppointmentImpl implements AddAppointment {
     TResult Function(DeleteAppointment value)? deleteAppointment,
     TResult Function(UpdateAppointment value)? updateAppointment,
     TResult Function(AddAppointment value)? addAppointment,
+    TResult Function(FetchDoctors value)? fetchDoctors,
+    TResult Function(FetchPatients value)? fetchPatients,
     required TResult orElse(),
   }) {
     if (addAppointment != null) {
@@ -799,6 +859,278 @@ abstract class AddAppointment implements AppointmentEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchDoctorsImplCopyWith<$Res> {
+  factory _$$FetchDoctorsImplCopyWith(
+          _$FetchDoctorsImpl value, $Res Function(_$FetchDoctorsImpl) then) =
+      __$$FetchDoctorsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchDoctorsImplCopyWithImpl<$Res>
+    extends _$AppointmentEventCopyWithImpl<$Res, _$FetchDoctorsImpl>
+    implements _$$FetchDoctorsImplCopyWith<$Res> {
+  __$$FetchDoctorsImplCopyWithImpl(
+      _$FetchDoctorsImpl _value, $Res Function(_$FetchDoctorsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$FetchDoctorsImpl implements FetchDoctors {
+  const _$FetchDoctorsImpl();
+
+  @override
+  String toString() {
+    return 'AppointmentEvent.fetchDoctors()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchDoctorsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? page, int? limit, String? searchQuery)
+        fetchAllAppointments,
+    required TResult Function(int? appointmentId) deleteAppointment,
+    required TResult Function(
+            int appointmentId, Map<String, dynamic> updatedFields)
+        updateAppointment,
+    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function() fetchDoctors,
+    required TResult Function() fetchPatients,
+  }) {
+    return fetchDoctors();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? page, int? limit, String? searchQuery)?
+        fetchAllAppointments,
+    TResult? Function(int? appointmentId)? deleteAppointment,
+    TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
+        updateAppointment,
+    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function()? fetchDoctors,
+    TResult? Function()? fetchPatients,
+  }) {
+    return fetchDoctors?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? page, int? limit, String? searchQuery)?
+        fetchAllAppointments,
+    TResult Function(int? appointmentId)? deleteAppointment,
+    TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
+        updateAppointment,
+    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function()? fetchDoctors,
+    TResult Function()? fetchPatients,
+    required TResult orElse(),
+  }) {
+    if (fetchDoctors != null) {
+      return fetchDoctors();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllAppointments value) fetchAllAppointments,
+    required TResult Function(DeleteAppointment value) deleteAppointment,
+    required TResult Function(UpdateAppointment value) updateAppointment,
+    required TResult Function(AddAppointment value) addAppointment,
+    required TResult Function(FetchDoctors value) fetchDoctors,
+    required TResult Function(FetchPatients value) fetchPatients,
+  }) {
+    return fetchDoctors(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllAppointments value)? fetchAllAppointments,
+    TResult? Function(DeleteAppointment value)? deleteAppointment,
+    TResult? Function(UpdateAppointment value)? updateAppointment,
+    TResult? Function(AddAppointment value)? addAppointment,
+    TResult? Function(FetchDoctors value)? fetchDoctors,
+    TResult? Function(FetchPatients value)? fetchPatients,
+  }) {
+    return fetchDoctors?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllAppointments value)? fetchAllAppointments,
+    TResult Function(DeleteAppointment value)? deleteAppointment,
+    TResult Function(UpdateAppointment value)? updateAppointment,
+    TResult Function(AddAppointment value)? addAppointment,
+    TResult Function(FetchDoctors value)? fetchDoctors,
+    TResult Function(FetchPatients value)? fetchPatients,
+    required TResult orElse(),
+  }) {
+    if (fetchDoctors != null) {
+      return fetchDoctors(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchDoctors implements AppointmentEvent {
+  const factory FetchDoctors() = _$FetchDoctorsImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchPatientsImplCopyWith<$Res> {
+  factory _$$FetchPatientsImplCopyWith(
+          _$FetchPatientsImpl value, $Res Function(_$FetchPatientsImpl) then) =
+      __$$FetchPatientsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchPatientsImplCopyWithImpl<$Res>
+    extends _$AppointmentEventCopyWithImpl<$Res, _$FetchPatientsImpl>
+    implements _$$FetchPatientsImplCopyWith<$Res> {
+  __$$FetchPatientsImplCopyWithImpl(
+      _$FetchPatientsImpl _value, $Res Function(_$FetchPatientsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$FetchPatientsImpl implements FetchPatients {
+  const _$FetchPatientsImpl();
+
+  @override
+  String toString() {
+    return 'AppointmentEvent.fetchPatients()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchPatientsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? page, int? limit, String? searchQuery)
+        fetchAllAppointments,
+    required TResult Function(int? appointmentId) deleteAppointment,
+    required TResult Function(
+            int appointmentId, Map<String, dynamic> updatedFields)
+        updateAppointment,
+    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function() fetchDoctors,
+    required TResult Function() fetchPatients,
+  }) {
+    return fetchPatients();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? page, int? limit, String? searchQuery)?
+        fetchAllAppointments,
+    TResult? Function(int? appointmentId)? deleteAppointment,
+    TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
+        updateAppointment,
+    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function()? fetchDoctors,
+    TResult? Function()? fetchPatients,
+  }) {
+    return fetchPatients?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? page, int? limit, String? searchQuery)?
+        fetchAllAppointments,
+    TResult Function(int? appointmentId)? deleteAppointment,
+    TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
+        updateAppointment,
+    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function()? fetchDoctors,
+    TResult Function()? fetchPatients,
+    required TResult orElse(),
+  }) {
+    if (fetchPatients != null) {
+      return fetchPatients();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllAppointments value) fetchAllAppointments,
+    required TResult Function(DeleteAppointment value) deleteAppointment,
+    required TResult Function(UpdateAppointment value) updateAppointment,
+    required TResult Function(AddAppointment value) addAppointment,
+    required TResult Function(FetchDoctors value) fetchDoctors,
+    required TResult Function(FetchPatients value) fetchPatients,
+  }) {
+    return fetchPatients(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllAppointments value)? fetchAllAppointments,
+    TResult? Function(DeleteAppointment value)? deleteAppointment,
+    TResult? Function(UpdateAppointment value)? updateAppointment,
+    TResult? Function(AddAppointment value)? addAppointment,
+    TResult? Function(FetchDoctors value)? fetchDoctors,
+    TResult? Function(FetchPatients value)? fetchPatients,
+  }) {
+    return fetchPatients?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllAppointments value)? fetchAllAppointments,
+    TResult Function(DeleteAppointment value)? deleteAppointment,
+    TResult Function(UpdateAppointment value)? updateAppointment,
+    TResult Function(AddAppointment value)? addAppointment,
+    TResult Function(FetchDoctors value)? fetchDoctors,
+    TResult Function(FetchPatients value)? fetchPatients,
+    required TResult orElse(),
+  }) {
+    if (fetchPatients != null) {
+      return fetchPatients(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchPatients implements AppointmentEvent {
+  const factory FetchPatients() = _$FetchPatientsImpl;
+}
+
+/// @nodoc
 mixin _$AppointmentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -809,6 +1141,8 @@ mixin _$AppointmentState {
     required TResult Function(String message) appointmentUpdatedSuccess,
     required TResult Function(String message) appointmentAddedSuccess,
     required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -820,6 +1154,8 @@ mixin _$AppointmentState {
     TResult? Function(String message)? appointmentUpdatedSuccess,
     TResult? Function(String message)? appointmentAddedSuccess,
     TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -831,6 +1167,8 @@ mixin _$AppointmentState {
     TResult Function(String message)? appointmentUpdatedSuccess,
     TResult Function(String message)? appointmentAddedSuccess,
     TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -846,6 +1184,8 @@ mixin _$AppointmentState {
         appointmentAddedSuccess,
     required TResult Function(AppointmentDeletedSuccess value)
         appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -859,6 +1199,8 @@ mixin _$AppointmentState {
     TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult? Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -872,6 +1214,8 @@ mixin _$AppointmentState {
     TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -946,6 +1290,8 @@ class _$AppointmentInitialImpl implements AppointmentInitial {
     required TResult Function(String message) appointmentUpdatedSuccess,
     required TResult Function(String message) appointmentAddedSuccess,
     required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
   }) {
     return initial();
   }
@@ -960,6 +1306,8 @@ class _$AppointmentInitialImpl implements AppointmentInitial {
     TResult? Function(String message)? appointmentUpdatedSuccess,
     TResult? Function(String message)? appointmentAddedSuccess,
     TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
   }) {
     return initial?.call();
   }
@@ -974,6 +1322,8 @@ class _$AppointmentInitialImpl implements AppointmentInitial {
     TResult Function(String message)? appointmentUpdatedSuccess,
     TResult Function(String message)? appointmentAddedSuccess,
     TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -995,6 +1345,8 @@ class _$AppointmentInitialImpl implements AppointmentInitial {
         appointmentAddedSuccess,
     required TResult Function(AppointmentDeletedSuccess value)
         appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
   }) {
     return initial(this);
   }
@@ -1011,6 +1363,8 @@ class _$AppointmentInitialImpl implements AppointmentInitial {
     TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult? Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
   }) {
     return initial?.call(this);
   }
@@ -1027,6 +1381,8 @@ class _$AppointmentInitialImpl implements AppointmentInitial {
     TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1088,6 +1444,8 @@ class _$AppointmentLoadingImpl implements AppointmentLoading {
     required TResult Function(String message) appointmentUpdatedSuccess,
     required TResult Function(String message) appointmentAddedSuccess,
     required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
   }) {
     return loading();
   }
@@ -1102,6 +1460,8 @@ class _$AppointmentLoadingImpl implements AppointmentLoading {
     TResult? Function(String message)? appointmentUpdatedSuccess,
     TResult? Function(String message)? appointmentAddedSuccess,
     TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
   }) {
     return loading?.call();
   }
@@ -1116,6 +1476,8 @@ class _$AppointmentLoadingImpl implements AppointmentLoading {
     TResult Function(String message)? appointmentUpdatedSuccess,
     TResult Function(String message)? appointmentAddedSuccess,
     TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1137,6 +1499,8 @@ class _$AppointmentLoadingImpl implements AppointmentLoading {
         appointmentAddedSuccess,
     required TResult Function(AppointmentDeletedSuccess value)
         appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
   }) {
     return loading(this);
   }
@@ -1153,6 +1517,8 @@ class _$AppointmentLoadingImpl implements AppointmentLoading {
     TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult? Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
   }) {
     return loading?.call(this);
   }
@@ -1169,6 +1535,8 @@ class _$AppointmentLoadingImpl implements AppointmentLoading {
     TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1258,6 +1626,8 @@ class _$AppointmentErrorImpl implements AppointmentError {
     required TResult Function(String message) appointmentUpdatedSuccess,
     required TResult Function(String message) appointmentAddedSuccess,
     required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
   }) {
     return error(message);
   }
@@ -1272,6 +1642,8 @@ class _$AppointmentErrorImpl implements AppointmentError {
     TResult? Function(String message)? appointmentUpdatedSuccess,
     TResult? Function(String message)? appointmentAddedSuccess,
     TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
   }) {
     return error?.call(message);
   }
@@ -1286,6 +1658,8 @@ class _$AppointmentErrorImpl implements AppointmentError {
     TResult Function(String message)? appointmentUpdatedSuccess,
     TResult Function(String message)? appointmentAddedSuccess,
     TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1307,6 +1681,8 @@ class _$AppointmentErrorImpl implements AppointmentError {
         appointmentAddedSuccess,
     required TResult Function(AppointmentDeletedSuccess value)
         appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
   }) {
     return error(this);
   }
@@ -1323,6 +1699,8 @@ class _$AppointmentErrorImpl implements AppointmentError {
     TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult? Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
   }) {
     return error?.call(this);
   }
@@ -1339,6 +1717,8 @@ class _$AppointmentErrorImpl implements AppointmentError {
     TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1450,6 +1830,8 @@ class _$AppointmentLoadedImpl implements AppointmentLoaded {
     required TResult Function(String message) appointmentUpdatedSuccess,
     required TResult Function(String message) appointmentAddedSuccess,
     required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
   }) {
     return loaded(appointments);
   }
@@ -1464,6 +1846,8 @@ class _$AppointmentLoadedImpl implements AppointmentLoaded {
     TResult? Function(String message)? appointmentUpdatedSuccess,
     TResult? Function(String message)? appointmentAddedSuccess,
     TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
   }) {
     return loaded?.call(appointments);
   }
@@ -1478,6 +1862,8 @@ class _$AppointmentLoadedImpl implements AppointmentLoaded {
     TResult Function(String message)? appointmentUpdatedSuccess,
     TResult Function(String message)? appointmentAddedSuccess,
     TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1499,6 +1885,8 @@ class _$AppointmentLoadedImpl implements AppointmentLoaded {
         appointmentAddedSuccess,
     required TResult Function(AppointmentDeletedSuccess value)
         appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
   }) {
     return loaded(this);
   }
@@ -1515,6 +1903,8 @@ class _$AppointmentLoadedImpl implements AppointmentLoaded {
     TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult? Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
   }) {
     return loaded?.call(this);
   }
@@ -1531,6 +1921,8 @@ class _$AppointmentLoadedImpl implements AppointmentLoaded {
     TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1633,6 +2025,8 @@ class _$AppointmentUpdatedSuccessImpl implements AppointmentUpdatedSuccess {
     required TResult Function(String message) appointmentUpdatedSuccess,
     required TResult Function(String message) appointmentAddedSuccess,
     required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
   }) {
     return appointmentUpdatedSuccess(message);
   }
@@ -1647,6 +2041,8 @@ class _$AppointmentUpdatedSuccessImpl implements AppointmentUpdatedSuccess {
     TResult? Function(String message)? appointmentUpdatedSuccess,
     TResult? Function(String message)? appointmentAddedSuccess,
     TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
   }) {
     return appointmentUpdatedSuccess?.call(message);
   }
@@ -1661,6 +2057,8 @@ class _$AppointmentUpdatedSuccessImpl implements AppointmentUpdatedSuccess {
     TResult Function(String message)? appointmentUpdatedSuccess,
     TResult Function(String message)? appointmentAddedSuccess,
     TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (appointmentUpdatedSuccess != null) {
@@ -1682,6 +2080,8 @@ class _$AppointmentUpdatedSuccessImpl implements AppointmentUpdatedSuccess {
         appointmentAddedSuccess,
     required TResult Function(AppointmentDeletedSuccess value)
         appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
   }) {
     return appointmentUpdatedSuccess(this);
   }
@@ -1698,6 +2098,8 @@ class _$AppointmentUpdatedSuccessImpl implements AppointmentUpdatedSuccess {
     TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult? Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
   }) {
     return appointmentUpdatedSuccess?.call(this);
   }
@@ -1714,6 +2116,8 @@ class _$AppointmentUpdatedSuccessImpl implements AppointmentUpdatedSuccess {
     TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (appointmentUpdatedSuccess != null) {
@@ -1814,6 +2218,8 @@ class _$AppointmentAddedSuccessImpl implements AppointmentAddedSuccess {
     required TResult Function(String message) appointmentUpdatedSuccess,
     required TResult Function(String message) appointmentAddedSuccess,
     required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
   }) {
     return appointmentAddedSuccess(message);
   }
@@ -1828,6 +2234,8 @@ class _$AppointmentAddedSuccessImpl implements AppointmentAddedSuccess {
     TResult? Function(String message)? appointmentUpdatedSuccess,
     TResult? Function(String message)? appointmentAddedSuccess,
     TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
   }) {
     return appointmentAddedSuccess?.call(message);
   }
@@ -1842,6 +2250,8 @@ class _$AppointmentAddedSuccessImpl implements AppointmentAddedSuccess {
     TResult Function(String message)? appointmentUpdatedSuccess,
     TResult Function(String message)? appointmentAddedSuccess,
     TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (appointmentAddedSuccess != null) {
@@ -1863,6 +2273,8 @@ class _$AppointmentAddedSuccessImpl implements AppointmentAddedSuccess {
         appointmentAddedSuccess,
     required TResult Function(AppointmentDeletedSuccess value)
         appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
   }) {
     return appointmentAddedSuccess(this);
   }
@@ -1879,6 +2291,8 @@ class _$AppointmentAddedSuccessImpl implements AppointmentAddedSuccess {
     TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult? Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
   }) {
     return appointmentAddedSuccess?.call(this);
   }
@@ -1895,6 +2309,8 @@ class _$AppointmentAddedSuccessImpl implements AppointmentAddedSuccess {
     TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (appointmentAddedSuccess != null) {
@@ -1996,6 +2412,8 @@ class _$AppointmentDeletedSuccessImpl implements AppointmentDeletedSuccess {
     required TResult Function(String message) appointmentUpdatedSuccess,
     required TResult Function(String message) appointmentAddedSuccess,
     required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
   }) {
     return appointmentDeletedSuccess(message);
   }
@@ -2010,6 +2428,8 @@ class _$AppointmentDeletedSuccessImpl implements AppointmentDeletedSuccess {
     TResult? Function(String message)? appointmentUpdatedSuccess,
     TResult? Function(String message)? appointmentAddedSuccess,
     TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
   }) {
     return appointmentDeletedSuccess?.call(message);
   }
@@ -2024,6 +2444,8 @@ class _$AppointmentDeletedSuccessImpl implements AppointmentDeletedSuccess {
     TResult Function(String message)? appointmentUpdatedSuccess,
     TResult Function(String message)? appointmentAddedSuccess,
     TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (appointmentDeletedSuccess != null) {
@@ -2045,6 +2467,8 @@ class _$AppointmentDeletedSuccessImpl implements AppointmentDeletedSuccess {
         appointmentAddedSuccess,
     required TResult Function(AppointmentDeletedSuccess value)
         appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
   }) {
     return appointmentDeletedSuccess(this);
   }
@@ -2061,6 +2485,8 @@ class _$AppointmentDeletedSuccessImpl implements AppointmentDeletedSuccess {
     TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult? Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
   }) {
     return appointmentDeletedSuccess?.call(this);
   }
@@ -2077,6 +2503,8 @@ class _$AppointmentDeletedSuccessImpl implements AppointmentDeletedSuccess {
     TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
     TResult Function(AppointmentDeletedSuccess value)?
         appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
     required TResult orElse(),
   }) {
     if (appointmentDeletedSuccess != null) {
@@ -2097,4 +2525,399 @@ abstract class AppointmentDeletedSuccess implements AppointmentState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppointmentDeletedSuccessImplCopyWith<_$AppointmentDeletedSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DoctorsLoadedImplCopyWith<$Res> {
+  factory _$$DoctorsLoadedImplCopyWith(
+          _$DoctorsLoadedImpl value, $Res Function(_$DoctorsLoadedImpl) then) =
+      __$$DoctorsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<DoctorModel> doctors});
+}
+
+/// @nodoc
+class __$$DoctorsLoadedImplCopyWithImpl<$Res>
+    extends _$AppointmentStateCopyWithImpl<$Res, _$DoctorsLoadedImpl>
+    implements _$$DoctorsLoadedImplCopyWith<$Res> {
+  __$$DoctorsLoadedImplCopyWithImpl(
+      _$DoctorsLoadedImpl _value, $Res Function(_$DoctorsLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? doctors = null,
+  }) {
+    return _then(_$DoctorsLoadedImpl(
+      null == doctors
+          ? _value._doctors
+          : doctors // ignore: cast_nullable_to_non_nullable
+              as List<DoctorModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DoctorsLoadedImpl implements DoctorsLoaded {
+  const _$DoctorsLoadedImpl(final List<DoctorModel> doctors)
+      : _doctors = doctors;
+
+  final List<DoctorModel> _doctors;
+  @override
+  List<DoctorModel> get doctors {
+    if (_doctors is EqualUnmodifiableListView) return _doctors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_doctors);
+  }
+
+  @override
+  String toString() {
+    return 'AppointmentState.doctorsLoaded(doctors: $doctors)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DoctorsLoadedImpl &&
+            const DeepCollectionEquality().equals(other._doctors, _doctors));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_doctors));
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DoctorsLoadedImplCopyWith<_$DoctorsLoadedImpl> get copyWith =>
+      __$$DoctorsLoadedImplCopyWithImpl<_$DoctorsLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(AppointmentResponseModel appointments) loaded,
+    required TResult Function(String message) appointmentUpdatedSuccess,
+    required TResult Function(String message) appointmentAddedSuccess,
+    required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
+  }) {
+    return doctorsLoaded(doctors);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function(AppointmentResponseModel appointments)? loaded,
+    TResult? Function(String message)? appointmentUpdatedSuccess,
+    TResult? Function(String message)? appointmentAddedSuccess,
+    TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
+  }) {
+    return doctorsLoaded?.call(doctors);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(AppointmentResponseModel appointments)? loaded,
+    TResult Function(String message)? appointmentUpdatedSuccess,
+    TResult Function(String message)? appointmentAddedSuccess,
+    TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
+    required TResult orElse(),
+  }) {
+    if (doctorsLoaded != null) {
+      return doctorsLoaded(doctors);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AppointmentInitial value) initial,
+    required TResult Function(AppointmentLoading value) loading,
+    required TResult Function(AppointmentError value) error,
+    required TResult Function(AppointmentLoaded value) loaded,
+    required TResult Function(AppointmentUpdatedSuccess value)
+        appointmentUpdatedSuccess,
+    required TResult Function(AppointmentAddedSuccess value)
+        appointmentAddedSuccess,
+    required TResult Function(AppointmentDeletedSuccess value)
+        appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
+  }) {
+    return doctorsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AppointmentInitial value)? initial,
+    TResult? Function(AppointmentLoading value)? loading,
+    TResult? Function(AppointmentError value)? error,
+    TResult? Function(AppointmentLoaded value)? loaded,
+    TResult? Function(AppointmentUpdatedSuccess value)?
+        appointmentUpdatedSuccess,
+    TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
+    TResult? Function(AppointmentDeletedSuccess value)?
+        appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
+  }) {
+    return doctorsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AppointmentInitial value)? initial,
+    TResult Function(AppointmentLoading value)? loading,
+    TResult Function(AppointmentError value)? error,
+    TResult Function(AppointmentLoaded value)? loaded,
+    TResult Function(AppointmentUpdatedSuccess value)?
+        appointmentUpdatedSuccess,
+    TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
+    TResult Function(AppointmentDeletedSuccess value)?
+        appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
+    required TResult orElse(),
+  }) {
+    if (doctorsLoaded != null) {
+      return doctorsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DoctorsLoaded implements AppointmentState {
+  const factory DoctorsLoaded(final List<DoctorModel> doctors) =
+      _$DoctorsLoadedImpl;
+
+  List<DoctorModel> get doctors;
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DoctorsLoadedImplCopyWith<_$DoctorsLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PatientsLoadedImplCopyWith<$Res> {
+  factory _$$PatientsLoadedImplCopyWith(_$PatientsLoadedImpl value,
+          $Res Function(_$PatientsLoadedImpl) then) =
+      __$$PatientsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PatientModel> patients});
+}
+
+/// @nodoc
+class __$$PatientsLoadedImplCopyWithImpl<$Res>
+    extends _$AppointmentStateCopyWithImpl<$Res, _$PatientsLoadedImpl>
+    implements _$$PatientsLoadedImplCopyWith<$Res> {
+  __$$PatientsLoadedImplCopyWithImpl(
+      _$PatientsLoadedImpl _value, $Res Function(_$PatientsLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? patients = null,
+  }) {
+    return _then(_$PatientsLoadedImpl(
+      null == patients
+          ? _value._patients
+          : patients // ignore: cast_nullable_to_non_nullable
+              as List<PatientModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PatientsLoadedImpl implements PatientsLoaded {
+  const _$PatientsLoadedImpl(final List<PatientModel> patients)
+      : _patients = patients;
+
+  final List<PatientModel> _patients;
+  @override
+  List<PatientModel> get patients {
+    if (_patients is EqualUnmodifiableListView) return _patients;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_patients);
+  }
+
+  @override
+  String toString() {
+    return 'AppointmentState.patientsLoaded(patients: $patients)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PatientsLoadedImpl &&
+            const DeepCollectionEquality().equals(other._patients, _patients));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_patients));
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PatientsLoadedImplCopyWith<_$PatientsLoadedImpl> get copyWith =>
+      __$$PatientsLoadedImplCopyWithImpl<_$PatientsLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(AppointmentResponseModel appointments) loaded,
+    required TResult Function(String message) appointmentUpdatedSuccess,
+    required TResult Function(String message) appointmentAddedSuccess,
+    required TResult Function(String message) appointmentDeletedSuccess,
+    required TResult Function(List<DoctorModel> doctors) doctorsLoaded,
+    required TResult Function(List<PatientModel> patients) patientsLoaded,
+  }) {
+    return patientsLoaded(patients);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function(AppointmentResponseModel appointments)? loaded,
+    TResult? Function(String message)? appointmentUpdatedSuccess,
+    TResult? Function(String message)? appointmentAddedSuccess,
+    TResult? Function(String message)? appointmentDeletedSuccess,
+    TResult? Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult? Function(List<PatientModel> patients)? patientsLoaded,
+  }) {
+    return patientsLoaded?.call(patients);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(AppointmentResponseModel appointments)? loaded,
+    TResult Function(String message)? appointmentUpdatedSuccess,
+    TResult Function(String message)? appointmentAddedSuccess,
+    TResult Function(String message)? appointmentDeletedSuccess,
+    TResult Function(List<DoctorModel> doctors)? doctorsLoaded,
+    TResult Function(List<PatientModel> patients)? patientsLoaded,
+    required TResult orElse(),
+  }) {
+    if (patientsLoaded != null) {
+      return patientsLoaded(patients);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AppointmentInitial value) initial,
+    required TResult Function(AppointmentLoading value) loading,
+    required TResult Function(AppointmentError value) error,
+    required TResult Function(AppointmentLoaded value) loaded,
+    required TResult Function(AppointmentUpdatedSuccess value)
+        appointmentUpdatedSuccess,
+    required TResult Function(AppointmentAddedSuccess value)
+        appointmentAddedSuccess,
+    required TResult Function(AppointmentDeletedSuccess value)
+        appointmentDeletedSuccess,
+    required TResult Function(DoctorsLoaded value) doctorsLoaded,
+    required TResult Function(PatientsLoaded value) patientsLoaded,
+  }) {
+    return patientsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AppointmentInitial value)? initial,
+    TResult? Function(AppointmentLoading value)? loading,
+    TResult? Function(AppointmentError value)? error,
+    TResult? Function(AppointmentLoaded value)? loaded,
+    TResult? Function(AppointmentUpdatedSuccess value)?
+        appointmentUpdatedSuccess,
+    TResult? Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
+    TResult? Function(AppointmentDeletedSuccess value)?
+        appointmentDeletedSuccess,
+    TResult? Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult? Function(PatientsLoaded value)? patientsLoaded,
+  }) {
+    return patientsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AppointmentInitial value)? initial,
+    TResult Function(AppointmentLoading value)? loading,
+    TResult Function(AppointmentError value)? error,
+    TResult Function(AppointmentLoaded value)? loaded,
+    TResult Function(AppointmentUpdatedSuccess value)?
+        appointmentUpdatedSuccess,
+    TResult Function(AppointmentAddedSuccess value)? appointmentAddedSuccess,
+    TResult Function(AppointmentDeletedSuccess value)?
+        appointmentDeletedSuccess,
+    TResult Function(DoctorsLoaded value)? doctorsLoaded,
+    TResult Function(PatientsLoaded value)? patientsLoaded,
+    required TResult orElse(),
+  }) {
+    if (patientsLoaded != null) {
+      return patientsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PatientsLoaded implements AppointmentState {
+  const factory PatientsLoaded(final List<PatientModel> patients) =
+      _$PatientsLoadedImpl;
+
+  List<PatientModel> get patients;
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PatientsLoadedImplCopyWith<_$PatientsLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

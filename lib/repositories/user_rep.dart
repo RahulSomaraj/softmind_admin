@@ -9,17 +9,27 @@ class UserRepository {
 
   UserRepository() : _dio = ApiService().dio;
 
-  Future<ApiResponse> fetchAllUsers(
-      {int? page, int? limit, String? searchQuery}) async {
+  Future<ApiResponse> fetchAllUsers({
+    int? page,
+    int? limit,
+    String? name,
+    String? contactEmail,
+    String? contactNumber,
+    String? countryCode,
+    String? userType,
+  }) async {
     try {
-      final response = await _dio.get(
-        '/users',
-        queryParameters: {
-          'page': page,
-          'limit': limit,
-          'search': searchQuery,
-        },
-      );
+      final queryParams = {
+        'offset': page,
+        'take': limit,
+        'name': name,
+        'contactEmail': contactEmail,
+        'contactNumber': contactNumber,
+        'countryCode': countryCode,
+        'userType': userType,
+      }..removeWhere((key, value) => value == null || value.toString().isEmpty);
+
+      final response = await _dio.get('/users', queryParameters: queryParams);
 
       if (response.statusCode == 200) {
         final users = UserResponseModel.fromJson(response.data);

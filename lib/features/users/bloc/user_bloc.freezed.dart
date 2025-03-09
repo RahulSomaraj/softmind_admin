@@ -18,7 +18,14 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(
+            int? page,
+            int? limit,
+            String? name,
+            String? contactEmail,
+            String? contactNumber,
+            String? countryCode,
+            String? userType)
         fetchAllUsers,
     required TResult Function(int? userId) deleteUser,
     required TResult Function(int userId, Map<String, dynamic> updatedFields)
@@ -30,7 +37,8 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
         fetchAllUsers,
     TResult? Function(int? userId)? deleteUser,
     TResult? Function(int userId, Map<String, dynamic> updatedFields)?
@@ -42,7 +50,9 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
+        fetchAllUsers,
     TResult Function(int? userId)? deleteUser,
     TResult Function(int userId, Map<String, dynamic> updatedFields)?
         updateUser,
@@ -111,7 +121,14 @@ abstract class _$$FetchAllUsersImplCopyWith<$Res> {
           _$FetchAllUsersImpl value, $Res Function(_$FetchAllUsersImpl) then) =
       __$$FetchAllUsersImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int? page, int? limit, String? searchQuery});
+  $Res call(
+      {int? page,
+      int? limit,
+      String? name,
+      String? contactEmail,
+      String? contactNumber,
+      String? countryCode,
+      String? userType});
 }
 
 /// @nodoc
@@ -129,7 +146,11 @@ class __$$FetchAllUsersImplCopyWithImpl<$Res>
   $Res call({
     Object? page = freezed,
     Object? limit = freezed,
-    Object? searchQuery = freezed,
+    Object? name = freezed,
+    Object? contactEmail = freezed,
+    Object? contactNumber = freezed,
+    Object? countryCode = freezed,
+    Object? userType = freezed,
   }) {
     return _then(_$FetchAllUsersImpl(
       page: freezed == page
@@ -140,9 +161,25 @@ class __$$FetchAllUsersImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int?,
-      searchQuery: freezed == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      contactEmail: freezed == contactEmail
+          ? _value.contactEmail
+          : contactEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      contactNumber: freezed == contactNumber
+          ? _value.contactNumber
+          : contactNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      countryCode: freezed == countryCode
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userType: freezed == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -151,18 +188,33 @@ class __$$FetchAllUsersImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchAllUsersImpl implements FetchAllUsers {
-  const _$FetchAllUsersImpl({this.page, this.limit, this.searchQuery});
+  const _$FetchAllUsersImpl(
+      {this.page,
+      this.limit,
+      this.name,
+      this.contactEmail,
+      this.contactNumber,
+      this.countryCode,
+      this.userType});
 
   @override
   final int? page;
   @override
   final int? limit;
   @override
-  final String? searchQuery;
+  final String? name;
+  @override
+  final String? contactEmail;
+  @override
+  final String? contactNumber;
+  @override
+  final String? countryCode;
+  @override
+  final String? userType;
 
   @override
   String toString() {
-    return 'UserEvent.fetchAllUsers(page: $page, limit: $limit, searchQuery: $searchQuery)';
+    return 'UserEvent.fetchAllUsers(page: $page, limit: $limit, name: $name, contactEmail: $contactEmail, contactNumber: $contactNumber, countryCode: $countryCode, userType: $userType)';
   }
 
   @override
@@ -172,12 +224,20 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
             other is _$FetchAllUsersImpl &&
             (identical(other.page, page) || other.page == page) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.searchQuery, searchQuery) ||
-                other.searchQuery == searchQuery));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.contactEmail, contactEmail) ||
+                other.contactEmail == contactEmail) &&
+            (identical(other.contactNumber, contactNumber) ||
+                other.contactNumber == contactNumber) &&
+            (identical(other.countryCode, countryCode) ||
+                other.countryCode == countryCode) &&
+            (identical(other.userType, userType) ||
+                other.userType == userType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, page, limit, searchQuery);
+  int get hashCode => Object.hash(runtimeType, page, limit, name, contactEmail,
+      contactNumber, countryCode, userType);
 
   /// Create a copy of UserEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -190,7 +250,14 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(
+            int? page,
+            int? limit,
+            String? name,
+            String? contactEmail,
+            String? contactNumber,
+            String? countryCode,
+            String? userType)
         fetchAllUsers,
     required TResult Function(int? userId) deleteUser,
     required TResult Function(int userId, Map<String, dynamic> updatedFields)
@@ -199,13 +266,15 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
     required TResult Function(int newPage) changePage,
     required TResult Function(int newRowsPerPage) changeRowsPerPage,
   }) {
-    return fetchAllUsers(page, limit, searchQuery);
+    return fetchAllUsers(
+        page, limit, name, contactEmail, contactNumber, countryCode, userType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
         fetchAllUsers,
     TResult? Function(int? userId)? deleteUser,
     TResult? Function(int userId, Map<String, dynamic> updatedFields)?
@@ -214,13 +283,16 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
     TResult? Function(int newPage)? changePage,
     TResult? Function(int newRowsPerPage)? changeRowsPerPage,
   }) {
-    return fetchAllUsers?.call(page, limit, searchQuery);
+    return fetchAllUsers?.call(
+        page, limit, name, contactEmail, contactNumber, countryCode, userType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
+        fetchAllUsers,
     TResult Function(int? userId)? deleteUser,
     TResult Function(int userId, Map<String, dynamic> updatedFields)?
         updateUser,
@@ -230,7 +302,8 @@ class _$FetchAllUsersImpl implements FetchAllUsers {
     required TResult orElse(),
   }) {
     if (fetchAllUsers != null) {
-      return fetchAllUsers(page, limit, searchQuery);
+      return fetchAllUsers(page, limit, name, contactEmail, contactNumber,
+          countryCode, userType);
     }
     return orElse();
   }
@@ -283,11 +356,19 @@ abstract class FetchAllUsers implements UserEvent {
   const factory FetchAllUsers(
       {final int? page,
       final int? limit,
-      final String? searchQuery}) = _$FetchAllUsersImpl;
+      final String? name,
+      final String? contactEmail,
+      final String? contactNumber,
+      final String? countryCode,
+      final String? userType}) = _$FetchAllUsersImpl;
 
   int? get page;
   int? get limit;
-  String? get searchQuery;
+  String? get name;
+  String? get contactEmail;
+  String? get contactNumber;
+  String? get countryCode;
+  String? get userType;
 
   /// Create a copy of UserEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -364,7 +445,14 @@ class _$DeleteUserImpl implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(
+            int? page,
+            int? limit,
+            String? name,
+            String? contactEmail,
+            String? contactNumber,
+            String? countryCode,
+            String? userType)
         fetchAllUsers,
     required TResult Function(int? userId) deleteUser,
     required TResult Function(int userId, Map<String, dynamic> updatedFields)
@@ -379,7 +467,8 @@ class _$DeleteUserImpl implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
         fetchAllUsers,
     TResult? Function(int? userId)? deleteUser,
     TResult? Function(int userId, Map<String, dynamic> updatedFields)?
@@ -394,7 +483,9 @@ class _$DeleteUserImpl implements DeleteUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
+        fetchAllUsers,
     TResult Function(int? userId)? deleteUser,
     TResult Function(int userId, Map<String, dynamic> updatedFields)?
         updateUser,
@@ -550,7 +641,14 @@ class _$UpdateUserImpl implements UpdateUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(
+            int? page,
+            int? limit,
+            String? name,
+            String? contactEmail,
+            String? contactNumber,
+            String? countryCode,
+            String? userType)
         fetchAllUsers,
     required TResult Function(int? userId) deleteUser,
     required TResult Function(int userId, Map<String, dynamic> updatedFields)
@@ -565,7 +663,8 @@ class _$UpdateUserImpl implements UpdateUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
         fetchAllUsers,
     TResult? Function(int? userId)? deleteUser,
     TResult? Function(int userId, Map<String, dynamic> updatedFields)?
@@ -580,7 +679,9 @@ class _$UpdateUserImpl implements UpdateUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
+        fetchAllUsers,
     TResult Function(int? userId)? deleteUser,
     TResult Function(int userId, Map<String, dynamic> updatedFields)?
         updateUser,
@@ -735,7 +836,14 @@ class _$AddUserImpl implements AddUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(
+            int? page,
+            int? limit,
+            String? name,
+            String? contactEmail,
+            String? contactNumber,
+            String? countryCode,
+            String? userType)
         fetchAllUsers,
     required TResult Function(int? userId) deleteUser,
     required TResult Function(int userId, Map<String, dynamic> updatedFields)
@@ -750,7 +858,8 @@ class _$AddUserImpl implements AddUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
         fetchAllUsers,
     TResult? Function(int? userId)? deleteUser,
     TResult? Function(int userId, Map<String, dynamic> updatedFields)?
@@ -765,7 +874,9 @@ class _$AddUserImpl implements AddUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
+        fetchAllUsers,
     TResult Function(int? userId)? deleteUser,
     TResult Function(int userId, Map<String, dynamic> updatedFields)?
         updateUser,
@@ -904,7 +1015,14 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(
+            int? page,
+            int? limit,
+            String? name,
+            String? contactEmail,
+            String? contactNumber,
+            String? countryCode,
+            String? userType)
         fetchAllUsers,
     required TResult Function(int? userId) deleteUser,
     required TResult Function(int userId, Map<String, dynamic> updatedFields)
@@ -919,7 +1037,8 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
         fetchAllUsers,
     TResult? Function(int? userId)? deleteUser,
     TResult? Function(int userId, Map<String, dynamic> updatedFields)?
@@ -934,7 +1053,9 @@ class _$ChangePageImpl implements ChangePage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
+        fetchAllUsers,
     TResult Function(int? userId)? deleteUser,
     TResult Function(int userId, Map<String, dynamic> updatedFields)?
         updateUser,
@@ -1075,7 +1196,14 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(
+            int? page,
+            int? limit,
+            String? name,
+            String? contactEmail,
+            String? contactNumber,
+            String? countryCode,
+            String? userType)
         fetchAllUsers,
     required TResult Function(int? userId) deleteUser,
     required TResult Function(int userId, Map<String, dynamic> updatedFields)
@@ -1090,7 +1218,8 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
         fetchAllUsers,
     TResult? Function(int? userId)? deleteUser,
     TResult? Function(int userId, Map<String, dynamic> updatedFields)?
@@ -1105,7 +1234,9 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllUsers,
+    TResult Function(int? page, int? limit, String? name, String? contactEmail,
+            String? contactNumber, String? countryCode, String? userType)?
+        fetchAllUsers,
     TResult Function(int? userId)? deleteUser,
     TResult Function(int userId, Map<String, dynamic> updatedFields)?
         updateUser,

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:softmind_admin/common/data_storage.dart';
 import 'package:softmind_admin/features/admin_layout/admin_layout.dart';
 import 'package:softmind_admin/features/appoinments/bloc/appointment_bloc.dart';
+import 'package:softmind_admin/features/appoinments/ui/add_edit_appoinment.dart';
 import 'package:softmind_admin/features/appoinments/ui/appoinment_list.dart';
 import 'package:softmind_admin/features/dashboard/admin_dash.dart';
 import 'package:softmind_admin/features/login/ui/login.dart';
@@ -11,6 +12,7 @@ import 'package:softmind_admin/features/tasks/ui/task_list.dart';
 import 'package:softmind_admin/features/users/bloc/user_bloc.dart';
 import 'package:softmind_admin/features/users/ui/add_edit_user.dart';
 import 'package:softmind_admin/features/users/ui/user_list.dart';
+import 'package:softmind_admin/models/appointment/appointment_response_model.dart';
 import 'package:softmind_admin/models/task/task_response_model.dart';
 import 'package:softmind_admin/models/user/user_model.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +67,7 @@ class AppRoutes {
             path: '/add-edit-user',
             pageBuilder: (context, state) {
               final user = state.extra as UserModel?;
-              return MaterialPage(
+              return NoTransitionPage(
                 child: BlocProvider.value(
                   value: context.read<UserBloc>(),
                   child: AddEditUser(user: user),
@@ -73,23 +75,23 @@ class AppRoutes {
               );
             },
           ),
-          // GoRoute(
-          //   path: '/add-edit-appointments',
-          //   pageBuilder: (context, state) {
-          //     final appointment = state.extra as AppointmentModel?;
-          //     return MaterialPage(
-          //       child: BlocProvider.value(
-          //         value: context.read<AppointmentBloc>(),
-          //         child: AddEditAppoinment(appointment: appointment),
-          //       ),
-          //     );
-          //   },
-          // ),
+          GoRoute(
+            path: '/add-edit-appointment',
+            pageBuilder: (context, state) {
+              final appointment = state.extra as AppointmentModel?;
+              return MaterialPage(
+                child: BlocProvider.value(
+                  value: context.read<AppointmentBloc>(),
+                  child: AddEditAppointment(appointment: appointment),
+                ),
+              );
+            },
+          ),
           GoRoute(
             path: '/add-edit-task',
             pageBuilder: (context, state) {
               final task = state.extra as TaskModel?;
-              return MaterialPage(
+              return NoTransitionPage(
                 child: BlocProvider.value(
                   value: context.read<TaskBloc>(),
                   child: AddEditTask(task: task),

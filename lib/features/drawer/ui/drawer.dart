@@ -28,6 +28,7 @@ class _AdminDrawerState extends State<AdminDrawer> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       width: widget.isCollapsed ? 100 : 260,
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
         border:
@@ -47,7 +48,6 @@ class _AdminDrawerState extends State<AdminDrawer> {
               child: _buildDrawerMenu(),
             ),
           ),
-          const Spacer(),
           const GetDivider(),
           _buildLogoutButton(context),
           const SizedBox(height: 20),

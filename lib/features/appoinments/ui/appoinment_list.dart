@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:softmind_admin/common/text_style.dart';
 import 'package:softmind_admin/common/widgets/common_button.dart';
 import 'package:softmind_admin/common/widgets/common_dialogs.dart';
@@ -25,7 +26,7 @@ class _AppointmentListState extends State<AppointmentList> {
   @override
   void initState() {
     super.initState();
-    // context.read<AppointmentBloc>().add(const FetchAllAppointments());
+    context.read<AppointmentBloc>().add(const FetchAllAppointments());
   }
 
   void _deleteAppointment(int? appointmentId) {
@@ -87,27 +88,40 @@ class _AppointmentListState extends State<AppointmentList> {
           }
 
           return Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: DataTable(
-                  columnSpacing: (MediaQuery.of(context).size.width - 300) / 16,
-                  dividerThickness: 0,
-                  dataRowMinHeight: 56,
-                  dataRowMaxHeight: 56,
-                  columns: [
-                    _buildColumn('ID'),
-                    _buildColumn('Date'),
-                    _buildColumn('Time'),
-                    _buildColumn('Patient Name'),
-                    _buildColumn('Doctor Name'),
-                    _buildColumn('Status'),
-                    _buildColumn('Actions'),
-                  ],
-                  rows: appointmentList.asMap().entries.map((entry) {
-                    return _buildAppointmentRow(
-                        entry.key, entry.value, currentPage);
-                  }).toList(),
+              Flexible(
+                fit: FlexFit.loose,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    double screenWidth = constraints.maxWidth;
+                    double columnSpacing = (screenWidth - 300) / 8;
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(minWidth: screenWidth),
+                        child: DataTable(
+                          columnSpacing: columnSpacing.clamp(10, 80),
+                          dividerThickness: 0,
+                          dataRowMinHeight: 56,
+                          dataRowMaxHeight: 56,
+                          columns: [
+                            _buildColumn('ID'),
+                            _buildColumn('Date'),
+                            _buildColumn('Time'),
+                            _buildColumn('Patient Name'),
+                            _buildColumn('Doctor Name'),
+                            _buildColumn('Status'),
+                            _buildColumn('Actions'),
+                          ],
+                          rows: appointmentList.asMap().entries.map((entry) {
+                            return _buildAppointmentRow(
+                                entry.key, entry.value, currentPage);
+                          }).toList(),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 30),
@@ -136,7 +150,8 @@ class _AppointmentListState extends State<AppointmentList> {
     int rowNumber = ((currentPage - 1) * rowsPerPage) + index + 1;
     return DataRow(cells: [
       DataCell(Text('$rowNumber')),
-      DataCell(Text(appointment.appointmentDate)),
+      DataCell(
+          Text(DateFormat('yyyy-MM-dd').format(appointment.appointmentDate))),
       DataCell(Text(appointment.appointmentTime)),
       DataCell(Text(appointment.patient.name)),
       DataCell(Text(appointment.referredTo.name)),

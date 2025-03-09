@@ -13,11 +13,11 @@ class AppointmentRepository {
     try {
       final response = await _dio.get(
         '/appoinments',
-        // queryParameters: {
-        //   'page': page,
-        //   'limit': limit,
-        //   'search': searchQuery,
-        // },
+        queryParameters: {
+          'offset': page,
+          'take': limit,
+          'search': searchQuery,
+        },
       );
 
       if (response.statusCode == 200) {

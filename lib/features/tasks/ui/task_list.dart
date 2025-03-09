@@ -26,7 +26,7 @@ class _TaskListState extends State<TaskList> {
   @override
   void initState() {
     super.initState();
-    // context.read<TaskBloc>().add(const FetchAllTasks());
+    context.read<TaskBloc>().add(const FetchAllTasks());
   }
 
   void _deleteTask(int? taskId) {
@@ -85,25 +85,39 @@ class _TaskListState extends State<TaskList> {
           }
 
           return Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: DataTable(
-                  columnSpacing: (MediaQuery.of(context).size.width - 300) / 20,
-                  dividerThickness: 0,
-                  dataRowMinHeight: 56,
-                  dataRowMaxHeight: 56,
-                  columns: [
-                    _buildColumn('ID'),
-                    _buildColumn('Name'),
-                    _buildColumn('Description'),
-                    _buildColumn('Created Time'),
-                    _buildColumn('Updated Time'),
-                    _buildColumn('Actions'),
-                  ],
-                  rows: taskList.asMap().entries.map((entry) {
-                    return _buildTaskRow(entry.key, entry.value, currentPage);
-                  }).toList(),
+              Flexible(
+                fit: FlexFit.loose,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    double screenWidth = constraints.maxWidth;
+                    double columnSpacing = (screenWidth - 300) / 8;
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(minWidth: screenWidth),
+                        child: DataTable(
+                          columnSpacing: columnSpacing.clamp(10, 80),
+                          dividerThickness: 0,
+                          dataRowMinHeight: 56,
+                          dataRowMaxHeight: 56,
+                          columns: [
+                            _buildColumn('ID'),
+                            _buildColumn('Name'),
+                            _buildColumn('Description'),
+                            _buildColumn('Created Time'),
+                            _buildColumn('Updated Time'),
+                            _buildColumn('Actions'),
+                          ],
+                          rows: taskList.asMap().entries.map((entry) {
+                            return _buildTaskRow(
+                                entry.key, entry.value, currentPage);
+                          }).toList(),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 30),

@@ -26,13 +26,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       final apiResponse = await userRepository.fetchAllUsers(
         page: event.page ?? 1,
         limit: event.limit ?? 10,
-        searchQuery: event.searchQuery ?? '',
+        name: event.name ?? '',
+        contactEmail: event.contactEmail ?? '',
+        contactNumber: event.contactNumber ?? '',
+        countryCode: event.countryCode ?? '',
+        userType: event.userType ?? '',
       );
 
       if (apiResponse.success && apiResponse.data != null) {
         emit(UserLoaded(users: apiResponse.data));
-      } else {
-        emit(UserError(apiResponse.message));
       }
     } catch (e) {
       emit(const UserState.error("Failed to fetch users"));

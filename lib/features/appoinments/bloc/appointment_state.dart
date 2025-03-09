@@ -15,4 +15,9 @@ class AppointmentState with _$AppointmentState {
       AppointmentAddedSuccess;
   const factory AppointmentState.appointmentDeletedSuccess(String message) =
       AppointmentDeletedSuccess;
+
+  const factory AppointmentState.doctorsLoaded(List<DoctorModel> doctors) =
+      DoctorsLoaded;
+  const factory AppointmentState.patientsLoaded(List<PatientModel> patients) =
+      PatientsLoaded;
 }

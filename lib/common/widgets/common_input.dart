@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart'; // For formatting date
 import 'package:softmind_admin/common/widgets/common_decoration.dart';
 
 class GetInput extends StatefulWidget {
@@ -9,7 +10,10 @@ class GetInput extends StatefulWidget {
   final bool isEmail;
   final bool isPhone;
   final bool isPassword;
+  final bool isDate;
   final String? initialValue;
+  final VoidCallback? onTap;
+  final bool readOnly;
 
   const GetInput({
     super.key,
@@ -19,7 +23,10 @@ class GetInput extends StatefulWidget {
     this.isEmail = false,
     this.isPhone = false,
     this.isPassword = false,
+    this.isDate = false,
     this.initialValue,
+    this.onTap,
+    this.readOnly = false,
   });
 
   @override
@@ -49,6 +56,9 @@ class _GetInputState extends State<GetInput> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: _internalController,
+      readOnly: widget.readOnly ||
+          widget.isDate, // Prevent manual typing for date inputs
+      onTap: widget.isDate ? _selectDate : widget.onTap,
       decoration: CommonDecoration.textFieldDecoration(
         labelText: widget.label,
         isPassword: widget.isPassword,
@@ -63,29 +73,61 @@ class _GetInputState extends State<GetInput> {
       ),
       keyboardType: widget.isEmail
           ? TextInputType.emailAddress
-          : (widget.isPhone ? TextInputType.phone : TextInputType.text),
-      inputFormatters: widget.isPhone
-          ? [FilteringTextInputFormatter.digitsOnly]
-          : [FilteringTextInputFormatter.allow(RegExp(r'.*'))],
+          : widget.isPhone
+              ? TextInputType.phone
+              : widget.isDate
+                  ? TextInputType.datetime
+                  : TextInputType.text,
+      inputFormatters: _getInputFormatters(),
       obscureText: widget.isPassword ? _obscureText : false,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return "${widget.label} is required";
-        }
-        if (widget.isEmail &&
-            !RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
-                .hasMatch(value)) {
-          return "Enter a valid email address";
-        }
-        if (widget.isPhone && !RegExp(r"^[0-9]{10,}$").hasMatch(value)) {
-          return "Enter a valid phone number";
-        }
-        if (widget.isPassword && value.length < 6) {
-          return "Password must be at least 6 characters long";
-        }
-        return null;
-      },
+      validator: _validateInput,
       onSaved: widget.onSaved,
     );
+  }
+
+  /// **📌 Function to Show Date Picker**
+  Future<void> _selectDate() async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        _internalController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+      });
+    }
+  }
+
+  /// **📌 Returns Proper Input Formatters Based on Type**
+  List<TextInputFormatter> _getInputFormatters() {
+    if (widget.isPhone) {
+      return [
+        FilteringTextInputFormatter.digitsOnly,
+        LengthLimitingTextInputFormatter(10)
+      ];
+    }
+    return [];
+  }
+
+  /// **📌 Validator Function for Input Validation**
+  String? _validateInput(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return "${widget.label} is required";
+    }
+    if (widget.isEmail &&
+        !RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+            .hasMatch(value)) {
+      return "Enter a valid email address";
+    }
+    if (widget.isPhone && !RegExp(r"^[0-9]{10}$").hasMatch(value)) {
+      return "Enter a valid phone number";
+    }
+    if (widget.isPassword && value.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+    return null;
   }
 }

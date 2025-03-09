@@ -20,9 +20,27 @@ class UserListPage extends StatefulWidget {
 }
 
 class _UserListPageState extends State<UserListPage> {
-  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searNamechController = TextEditingController();
+  final TextEditingController _searchcontactEmailController =
+      TextEditingController();
+
+  final TextEditingController _searchcontactNumberController =
+      TextEditingController();
+
+  final TextEditingController _searchcountryCodeController =
+      TextEditingController();
+
+  final TextEditingController _searchuserTypeController =
+      TextEditingController();
 
   int rowsPerPage = 10;
+
+  final Map<String, String> userTypeOptions = {
+    "": "All",
+    'SA': "Super Admin",
+    'PSY': "Psychologist",
+    'NU': "User",
+  };
 
   @override
   void initState() {
@@ -71,9 +89,9 @@ class _UserListPageState extends State<UserListPage> {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         if (state is UserLoading) {
-          return WidgetUtil.showLoading(); // ✅ Show loading animation
+          return WidgetUtil.showLoading();
         } else if (state is UserLoaded) {
-          final userList = state.users.users; // ✅ Extract users list
+          final userList = state.users.users;
           final currentPage = state.users.currentPage;
           final totalPages = state.users.totalPages;
 
@@ -82,26 +100,39 @@ class _UserListPageState extends State<UserListPage> {
           }
 
           return Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: DataTable(
-                  columnSpacing:
-                      (MediaQuery.of(context).size.width - 300) / 10.5,
-                  dividerThickness: 0,
-                  dataRowMinHeight: 56,
-                  dataRowMaxHeight: 56,
-                  columns: [
-                    _buildColumn('ID'),
-                    _buildColumn('Name'),
-                    _buildColumn('Email'),
-                    _buildColumn('Phone Number'),
-                    _buildColumn('User Type'),
-                    _buildColumn('Actions'),
-                  ],
-                  rows: userList.asMap().entries.map((entry) {
-                    return _buildUserRow(entry.key, entry.value, currentPage);
-                  }).toList(),
+              Flexible(
+                fit: FlexFit.loose,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    double screenWidth = constraints.maxWidth;
+                    double columnSpacing = (screenWidth - 300) / 8;
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(minWidth: screenWidth),
+                        child: DataTable(
+                          columnSpacing: columnSpacing.clamp(10, 80),
+                          dividerThickness: 0,
+                          dataRowMinHeight: 56,
+                          dataRowMaxHeight: 56,
+                          columns: [
+                            _buildColumn('ID'),
+                            _buildColumn('Name'),
+                            _buildColumn('Email'),
+                            _buildColumn('Phone Number'),
+                            _buildColumn('User Type'),
+                            _buildColumn('Actions'),
+                          ],
+                          rows: userList.asMap().entries.map((entry) {
+                            return _buildUserRow(
+                                entry.key, entry.value, currentPage);
+                          }).toList(),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 30),
@@ -180,23 +211,104 @@ class _UserListPageState extends State<UserListPage> {
             ),
           ),
           const Spacer(),
-          _buildSearchBar(),
-          const SizedBox(width: 15),
+          _buildNameSearchBar(),
+          const SizedBox(width: 8),
+          _buildEmailSearchBar(),
+          // const SizedBox(width: 8),
+          // _buildcountryCodeSearchBar(),
+          const SizedBox(width: 8),
+          _buildNumberSearchBar(),
+          const SizedBox(width: 8),
+          _builduserTypeSearchBar(),
+          const SizedBox(width: 30),
           _buildAddButton(),
         ],
       ),
     );
   }
 
-  Widget _buildSearchBar() {
+  Widget _buildNameSearchBar() {
     return GetSearchBar(
-      controller: _searchController,
+      controller: _searNamechController,
+      hintText: "Search Name",
       onChanged: (query) {
         context.read<UserBloc>().add(FetchAllUsers(
-            page: 1, limit: 10, searchQuery: query.isNotEmpty ? query : ''));
+            page: 1, limit: 10, name: query.isNotEmpty ? query : ''));
       },
     );
   }
+
+  Widget _buildEmailSearchBar() {
+    return GetSearchBar(
+      controller: _searchcontactEmailController,
+      hintText: "Search Email",
+      onChanged: (query) {
+        context
+            .read<UserBloc>()
+            .add(FetchAllUsers(contactEmail: query.isNotEmpty ? query : ''));
+      },
+    );
+  }
+
+  Widget _buildNumberSearchBar() {
+    return GetSearchBar(
+      controller: _searchcontactNumberController,
+      hintText: "Search Phone",
+      onChanged: (query) {
+        context
+            .read<UserBloc>()
+            .add(FetchAllUsers(contactNumber: query.isNotEmpty ? query : ''));
+      },
+    );
+  }
+
+  Widget _builduserTypeSearchBar() {
+    return Container(
+      width: 200,
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey),
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          focusColor: Colors.transparent,
+          dropdownColor: Colors.white,
+          value: _searchuserTypeController.text.isEmpty
+              ? null
+              : _searchuserTypeController.text,
+          hint: const Text("User Type"),
+          isExpanded: true,
+          items: userTypeOptions.entries.map((entry) {
+            return DropdownMenuItem<String>(
+              value: entry.key,
+              child: Text(entry.value),
+            );
+          }).toList(),
+          onChanged: (value) {
+            setState(() {
+              _searchuserTypeController.text = value ?? "";
+            });
+            context.read<UserBloc>().add(
+                  FetchAllUsers(userType: value ?? ""),
+                );
+          },
+        ),
+      ),
+    );
+  }
+
+  // Widget _buildcountryCodeSearchBar() {
+  //   return GetSearchBar(
+  //     controller: _searchcountryCodeController,
+  //     onChanged: (query) {
+  //       context
+  //           .read<UserBloc>()
+  //           .add(FetchAllUsers(countryCode: query.isNotEmpty ? query : ''));
+  //     },
+  //   );
+  // }
 
   Widget _buildAddButton() {
     return GetButton(

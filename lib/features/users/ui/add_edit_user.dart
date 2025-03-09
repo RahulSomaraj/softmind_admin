@@ -44,7 +44,6 @@ class _AddEditUserState extends State<AddEditUser> {
 
       if (widget.user == null) {
         final newUser = UserModel(
-          id: 0,
           name: _name,
           countryCode: "+91",
           contactEmail: _email,

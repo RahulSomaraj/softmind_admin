@@ -230,7 +230,7 @@ AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppointmentModel {
   int get id => throw _privateConstructorUsedError;
-  String get appointmentDate => throw _privateConstructorUsedError;
+  DateTime get appointmentDate => throw _privateConstructorUsedError;
   String get appointmentTime => throw _privateConstructorUsedError;
   PatientModel get patient => throw _privateConstructorUsedError;
   DoctorModel get referredTo => throw _privateConstructorUsedError;
@@ -253,7 +253,7 @@ abstract class $AppointmentModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String appointmentDate,
+      DateTime appointmentDate,
       String appointmentTime,
       PatientModel patient,
       DoctorModel referredTo});
@@ -291,7 +291,7 @@ class _$AppointmentModelCopyWithImpl<$Res, $Val extends AppointmentModel>
       appointmentDate: null == appointmentDate
           ? _value.appointmentDate
           : appointmentDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       appointmentTime: null == appointmentTime
           ? _value.appointmentTime
           : appointmentTime // ignore: cast_nullable_to_non_nullable
@@ -338,7 +338,7 @@ abstract class _$$AppointmentModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String appointmentDate,
+      DateTime appointmentDate,
       String appointmentTime,
       PatientModel patient,
       DoctorModel referredTo});
@@ -376,7 +376,7 @@ class __$$AppointmentModelImplCopyWithImpl<$Res>
       appointmentDate: null == appointmentDate
           ? _value.appointmentDate
           : appointmentDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       appointmentTime: null == appointmentTime
           ? _value.appointmentTime
           : appointmentTime // ignore: cast_nullable_to_non_nullable
@@ -409,7 +409,7 @@ class _$AppointmentModelImpl implements _AppointmentModel {
   @override
   final int id;
   @override
-  final String appointmentDate;
+  final DateTime appointmentDate;
   @override
   final String appointmentTime;
   @override
@@ -462,7 +462,7 @@ class _$AppointmentModelImpl implements _AppointmentModel {
 abstract class _AppointmentModel implements AppointmentModel {
   factory _AppointmentModel(
       {required final int id,
-      required final String appointmentDate,
+      required final DateTime appointmentDate,
       required final String appointmentTime,
       required final PatientModel patient,
       required final DoctorModel referredTo}) = _$AppointmentModelImpl;
@@ -473,7 +473,7 @@ abstract class _AppointmentModel implements AppointmentModel {
   @override
   int get id;
   @override
-  String get appointmentDate;
+  DateTime get appointmentDate;
   @override
   String get appointmentTime;
   @override

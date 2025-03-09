@@ -14,9 +14,9 @@ class TaskRepository {
       final response = await _dio.get(
         '/tasks',
         queryParameters: {
-          // 'page': page,
-          // 'limit': limit,
-          // 'search': searchQuery,
+          'offset': page,
+          'take': limit,
+          'search': searchQuery,
         },
       );
 
