@@ -12,7 +12,7 @@ class AppointmentEvent with _$AppointmentEvent {
   }) = UpdateAppointment;
 
   const factory AppointmentEvent.addAppointment(
-      {required AppointmentModel appointmentData}) = AddAppointment;
+      {required CreateAppointmentModel appointmentData}) = AddAppointment;
 
   const factory AppointmentEvent.fetchDoctors() = FetchDoctors;
   const factory AppointmentEvent.fetchPatients() = FetchPatients;

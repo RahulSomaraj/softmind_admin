@@ -24,7 +24,8 @@ mixin _$AppointmentEvent {
     required TResult Function(
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
-    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function(CreateAppointmentModel appointmentData)
+        addAppointment,
     required TResult Function() fetchDoctors,
     required TResult Function() fetchPatients,
   }) =>
@@ -36,7 +37,7 @@ mixin _$AppointmentEvent {
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult? Function()? fetchDoctors,
     TResult? Function()? fetchPatients,
   }) =>
@@ -48,7 +49,7 @@ mixin _$AppointmentEvent {
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult Function()? fetchDoctors,
     TResult Function()? fetchPatients,
     required TResult orElse(),
@@ -201,7 +202,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     required TResult Function(
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
-    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function(CreateAppointmentModel appointmentData)
+        addAppointment,
     required TResult Function() fetchDoctors,
     required TResult Function() fetchPatients,
   }) {
@@ -216,7 +218,7 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult? Function()? fetchDoctors,
     TResult? Function()? fetchPatients,
   }) {
@@ -231,7 +233,7 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult Function()? fetchDoctors,
     TResult Function()? fetchPatients,
     required TResult orElse(),
@@ -379,7 +381,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
     required TResult Function(
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
-    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function(CreateAppointmentModel appointmentData)
+        addAppointment,
     required TResult Function() fetchDoctors,
     required TResult Function() fetchPatients,
   }) {
@@ -394,7 +397,7 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult? Function()? fetchDoctors,
     TResult? Function()? fetchPatients,
   }) {
@@ -409,7 +412,7 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult Function()? fetchDoctors,
     TResult Function()? fetchPatients,
     required TResult orElse(),
@@ -571,7 +574,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
     required TResult Function(
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
-    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function(CreateAppointmentModel appointmentData)
+        addAppointment,
     required TResult Function() fetchDoctors,
     required TResult Function() fetchPatients,
   }) {
@@ -586,7 +590,7 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult? Function()? fetchDoctors,
     TResult? Function()? fetchPatients,
   }) {
@@ -601,7 +605,7 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult Function()? fetchDoctors,
     TResult Function()? fetchPatients,
     required TResult orElse(),
@@ -678,9 +682,9 @@ abstract class _$$AddAppointmentImplCopyWith<$Res> {
           $Res Function(_$AddAppointmentImpl) then) =
       __$$AddAppointmentImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AppointmentModel appointmentData});
+  $Res call({CreateAppointmentModel appointmentData});
 
-  $AppointmentModelCopyWith<$Res> get appointmentData;
+  $CreateAppointmentModelCopyWith<$Res> get appointmentData;
 }
 
 /// @nodoc
@@ -702,7 +706,7 @@ class __$$AddAppointmentImplCopyWithImpl<$Res>
       appointmentData: null == appointmentData
           ? _value.appointmentData
           : appointmentData // ignore: cast_nullable_to_non_nullable
-              as AppointmentModel,
+              as CreateAppointmentModel,
     ));
   }
 
@@ -710,8 +714,9 @@ class __$$AddAppointmentImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AppointmentModelCopyWith<$Res> get appointmentData {
-    return $AppointmentModelCopyWith<$Res>(_value.appointmentData, (value) {
+  $CreateAppointmentModelCopyWith<$Res> get appointmentData {
+    return $CreateAppointmentModelCopyWith<$Res>(_value.appointmentData,
+        (value) {
       return _then(_value.copyWith(appointmentData: value));
     });
   }
@@ -723,7 +728,7 @@ class _$AddAppointmentImpl implements AddAppointment {
   const _$AddAppointmentImpl({required this.appointmentData});
 
   @override
-  final AppointmentModel appointmentData;
+  final CreateAppointmentModel appointmentData;
 
   @override
   String toString() {
@@ -760,7 +765,8 @@ class _$AddAppointmentImpl implements AddAppointment {
     required TResult Function(
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
-    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function(CreateAppointmentModel appointmentData)
+        addAppointment,
     required TResult Function() fetchDoctors,
     required TResult Function() fetchPatients,
   }) {
@@ -775,7 +781,7 @@ class _$AddAppointmentImpl implements AddAppointment {
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult? Function()? fetchDoctors,
     TResult? Function()? fetchPatients,
   }) {
@@ -790,7 +796,7 @@ class _$AddAppointmentImpl implements AddAppointment {
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult Function()? fetchDoctors,
     TResult Function()? fetchPatients,
     required TResult orElse(),
@@ -847,9 +853,10 @@ class _$AddAppointmentImpl implements AddAppointment {
 
 abstract class AddAppointment implements AppointmentEvent {
   const factory AddAppointment(
-      {required final AppointmentModel appointmentData}) = _$AddAppointmentImpl;
+          {required final CreateAppointmentModel appointmentData}) =
+      _$AddAppointmentImpl;
 
-  AppointmentModel get appointmentData;
+  CreateAppointmentModel get appointmentData;
 
   /// Create a copy of AppointmentEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -905,7 +912,8 @@ class _$FetchDoctorsImpl implements FetchDoctors {
     required TResult Function(
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
-    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function(CreateAppointmentModel appointmentData)
+        addAppointment,
     required TResult Function() fetchDoctors,
     required TResult Function() fetchPatients,
   }) {
@@ -920,7 +928,7 @@ class _$FetchDoctorsImpl implements FetchDoctors {
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult? Function()? fetchDoctors,
     TResult? Function()? fetchPatients,
   }) {
@@ -935,7 +943,7 @@ class _$FetchDoctorsImpl implements FetchDoctors {
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult Function()? fetchDoctors,
     TResult Function()? fetchPatients,
     required TResult orElse(),
@@ -1041,7 +1049,8 @@ class _$FetchPatientsImpl implements FetchPatients {
     required TResult Function(
             int appointmentId, Map<String, dynamic> updatedFields)
         updateAppointment,
-    required TResult Function(AppointmentModel appointmentData) addAppointment,
+    required TResult Function(CreateAppointmentModel appointmentData)
+        addAppointment,
     required TResult Function() fetchDoctors,
     required TResult Function() fetchPatients,
   }) {
@@ -1056,7 +1065,7 @@ class _$FetchPatientsImpl implements FetchPatients {
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult? Function(AppointmentModel appointmentData)? addAppointment,
+    TResult? Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult? Function()? fetchDoctors,
     TResult? Function()? fetchPatients,
   }) {
@@ -1071,7 +1080,7 @@ class _$FetchPatientsImpl implements FetchPatients {
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
         updateAppointment,
-    TResult Function(AppointmentModel appointmentData)? addAppointment,
+    TResult Function(CreateAppointmentModel appointmentData)? addAppointment,
     TResult Function()? fetchDoctors,
     TResult Function()? fetchPatients,
     required TResult orElse(),

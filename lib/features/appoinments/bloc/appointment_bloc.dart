@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:softmind_admin/models/appointment/appointment_create_model.dart';
 import 'package:softmind_admin/models/appointment/appointment_response_model.dart';
 import 'package:softmind_admin/repositories/appointment_rep.dart';
 
@@ -16,8 +17,6 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
     on<DeleteAppointment>(_onDeleteAppointment);
     on<UpdateAppointment>(_onUpdateAppointment);
     on<AddAppointment>(_onAddAppointment);
-    // on<FetchDoctors>(_onFetchDoctors);
-    // on<FetchPatients>(_onFetchPatients);
   }
 
   Future<void> _onFetchAllAppointments(
@@ -98,58 +97,4 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
       emit(const AppointmentError("Failed to add appointment"));
     }
   }
-
-  Future<void> _onFetchDoctors(
-      AddAppointment event, Emitter<AppointmentState> emit) async {
-    emit(const AppointmentState.loading());
-    try {
-      final apiResponse =
-          await appointmentRepository.createAppointment(event.appointmentData);
-
-      if (apiResponse.success) {
-        emit(AppointmentAddedSuccess(apiResponse.message));
-      } else {
-        emit(AppointmentError(apiResponse.message));
-      }
-
-      add(const FetchAllAppointments());
-    } catch (e) {
-      emit(const AppointmentError("Failed to add appointment"));
-    }
-  }
-
-  Future<void> _onFetchPatients(
-      AddAppointment event, Emitter<AppointmentState> emit) async {
-    emit(const AppointmentState.loading());
-    try {
-      final apiResponse =
-          await appointmentRepository.createAppointment(event.appointmentData);
-
-      if (apiResponse.success) {
-        emit(AppointmentAddedSuccess(apiResponse.message));
-      } else {
-        emit(AppointmentError(apiResponse.message));
-      }
-
-      add(const FetchAllAppointments());
-    } catch (e) {
-      emit(const AppointmentError("Failed to add appointment"));
-    }
-  }
-
-//   on<FetchDoctors>((event, emit) async {
-//   emit(AppointmentLoading());
-//   final response = await _appointmentRepository.fetchDoctors();
-//   response.success
-//       ? emit(DoctorsLoaded(response.data))
-//       : emit(AppointmentError(response.message));
-// });
-
-// on<FetchPatients>((event, emit) async {
-//   emit(AppointmentLoading());
-//   final response = await _appointmentRepository.fetchPatients();
-//   response.success
-//       ? emit(PatientsLoaded(response.data))
-//       : emit(AppointmentError(response.message));
-// });
 }

@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:softmind_admin/common/widgets/common_button.dart';
+import 'package:softmind_admin/common/widgets/common_decoration.dart';
 import 'package:softmind_admin/common/widgets/common_dialogs.dart';
 import 'package:softmind_admin/common/widgets/common_header.dart';
 import 'package:softmind_admin/common/widgets/common_input.dart';
 import 'package:go_router/go_router.dart';
 import 'package:softmind_admin/features/appoinments/bloc/appointment_bloc.dart';
+import 'package:softmind_admin/features/users/bloc/user_bloc.dart';
+import 'package:softmind_admin/models/appointment/appointment_create_model.dart';
 import 'package:softmind_admin/models/appointment/appointment_response_model.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:softmind_admin/models/user/user_model.dart';
 
 class AddEditAppointment extends StatefulWidget {
   final AppointmentModel? appointment;
@@ -21,10 +26,16 @@ class AddEditAppointment extends StatefulWidget {
 class _AddEditAppointmentState extends State<AddEditAppointment> {
   final GlobalKey<FormState> _appointmentFormKey = GlobalKey<FormState>();
 
+  late TextEditingController _dateController;
+  late TextEditingController _timeController;
+  final TextEditingController _patientSearchController =
+      TextEditingController();
+  final TextEditingController _doctorSearchController = TextEditingController();
+
   late DateTime _appointmentDate;
   late String _appointmentTime;
-  late PatientModel _selectedPatient;
-  late DoctorModel _selectedDoctor;
+  int? _selectedPatientId;
+  int? _selectedDoctorId;
 
   @override
   void initState() {
@@ -33,23 +44,30 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
     _appointmentDate = widget.appointment?.appointmentDate ?? DateTime.now();
     _appointmentTime = widget.appointment?.appointmentTime ?? "08:00 AM";
 
-    _selectedPatient = widget.appointment?.patient ??
-        PatientModel(id: 0, name: "Select Patient");
-    _selectedDoctor = widget.appointment?.referredTo ??
-        DoctorModel(id: 0, name: "Select Doctor");
+    _dateController = TextEditingController(
+        text: DateFormat('yyyy-MM-dd').format(_appointmentDate));
+    _timeController = TextEditingController(text: _appointmentTime);
+
+    _selectedPatientId = widget.appointment?.patient.id;
+    _selectedDoctorId = widget.appointment?.referredTo.id;
   }
 
   void _submitForm() {
     if (_appointmentFormKey.currentState!.validate()) {
       _appointmentFormKey.currentState!.save();
 
+      if (_selectedPatientId == null || _selectedDoctorId == null) {
+        DialogUtil.showErrorDialog(
+            context, "Please select a patient and doctor");
+        return;
+      }
+
       if (widget.appointment == null) {
-        final newAppointment = AppointmentModel(
-          id: 0, // Set to 0 for new appointments
-          appointmentDate: _appointmentDate,
+        final newAppointment = CreateAppointmentModel(
+          appointmentDate: DateFormat('yyyy-MM-dd').format(_appointmentDate),
           appointmentTime: _appointmentTime,
-          patient: _selectedPatient,
-          referredTo: _selectedDoctor,
+          patient: _selectedPatientId!,
+          referredTo: _selectedDoctorId!,
         );
 
         context.read<AppointmentBloc>().add(
@@ -61,15 +79,14 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
           updatedFields["appointmentDate"] =
               DateFormat('yyyy-MM-dd').format(_appointmentDate);
         }
-
         if (_appointmentTime != widget.appointment!.appointmentTime) {
           updatedFields["appointmentTime"] = _appointmentTime;
         }
-        if (_selectedPatient.id != widget.appointment!.patient.id) {
-          updatedFields["patientId"] = _selectedPatient.id;
+        if (_selectedPatientId != widget.appointment!.patient.id) {
+          updatedFields["patientId"] = _selectedPatientId;
         }
-        if (_selectedDoctor.id != widget.appointment!.referredTo.id) {
-          updatedFields["referredToId"] = _selectedDoctor.id;
+        if (_selectedDoctorId != widget.appointment!.referredTo.id) {
+          updatedFields["doctorId"] = _selectedDoctorId;
         }
 
         if (updatedFields.isNotEmpty) {
@@ -80,6 +97,24 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
       }
     }
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Column(
+  //     children: [
+  //       GetHeader(
+  //         title: widget.appointment == null
+  //             ? "Add Appointment"
+  //             : "Edit Appointment",
+  //         path:
+  //             "Appointment Management > ${widget.appointment == null ? "Add Appointment" : "Edit Appointment"}",
+  //         onBackPressed: () => context.pop(),
+  //       ),
+  //       const SizedBox(height: 20),
+  //       _buildAppointmentForm(),
+  //     ],
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -141,25 +176,13 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Text(
-                      widget.appointment == null
-                          ? 'Add Appointment'
-                          : 'Edit Appointment',
-                      style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
                   _buildDatePicker(),
                   const SizedBox(height: 15),
                   _buildTimePicker(),
                   const SizedBox(height: 15),
-                  // _buildPatientDropdown(),
+                  _buildPatientSearchField(),
                   const SizedBox(height: 15),
-                  // _buildDoctorDropdown(),
+                  _buildDoctorSearchField(),
                   const SizedBox(height: 20),
                   GetButton(
                     text: widget.appointment == null
@@ -168,7 +191,7 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
                     width: 200,
                     height: 45,
                     onPressed: _submitForm,
-                    isLoading: state is AppointmentLoading,
+                    isLoading: state is UserLoading,
                   ),
                 ],
               ),
@@ -179,12 +202,10 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
     );
   }
 
-  /// **📌 Date Picker**
   Widget _buildDatePicker() {
     return GetInput(
       label: "Appointment Date",
-      controller: TextEditingController(
-          text: DateFormat('yyyy-MM-dd').format(_appointmentDate)),
+      controller: _dateController,
       readOnly: true,
       onTap: () async {
         DateTime? pickedDate = await showDatePicker(
@@ -194,55 +215,151 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
           lastDate: DateTime(2101),
         );
         if (pickedDate != null) {
-          setState(() {
-            _appointmentDate = pickedDate;
-          });
+          _appointmentDate = pickedDate;
+          _dateController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
         }
       },
     );
   }
 
-  /// **📌 Time Picker**
   Widget _buildTimePicker() {
     return GetInput(
       label: "Appointment Time",
-      controller: TextEditingController(text: _appointmentTime),
+      controller: _timeController,
       readOnly: true,
       onTap: () async {
         TimeOfDay? pickedTime = await showTimePicker(
           context: context,
           initialTime: TimeOfDay(
-            hour: int.parse(_appointmentTime.split(":")[0]),
-            minute: int.parse(_appointmentTime.split(":")[1].split(" ")[0]),
+            hour: int.tryParse(_appointmentTime.split(":")[0]) ?? 8,
+            minute: int.tryParse(_appointmentTime.split(":")[1]) ?? 0,
           ),
+          builder: (BuildContext context, Widget? child) {
+            return MediaQuery(
+              data:
+                  MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+              child: child!,
+            );
+          },
         );
         if (pickedTime != null) {
           setState(() {
             _appointmentTime =
                 "${pickedTime.hour.toString().padLeft(2, '0')}:${pickedTime.minute.toString().padLeft(2, '0')}";
+            _timeController.text = _appointmentTime;
           });
         }
       },
     );
   }
 
-  // Widget _buildPatientDropdown() {
-  //   return buildDropdown<PatientModel>(
-  //     labelText: "Select Patient",
-  //     items: {for (var p in patientList) p: p.name}, // Converts List to Map
-  //     selectedValue: _selectedPatient,
-  //     onChanged: (value) => setState(() => _selectedPatient = value!),
-  //     errorMsg: "Select a patient",
-  //   );
-  // }
+  Widget _buildPatientSearchField() {
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        return TypeAheadField<UserModel>(
+          suggestionsCallback: (search) {
+            if (state is UserLoaded) {
+              return state.users.users
+                  .where((u) =>
+                      u.userType == "NU" &&
+                      u.name.toLowerCase().contains(search.toLowerCase()))
+                  .toList();
+            }
+            return [];
+          },
+          builder: (context, controller, focusNode) {
+            controller.text = _patientSearchController.text;
+            return TextField(
+              controller: _patientSearchController,
+              focusNode: focusNode,
+              decoration: CommonDecoration.textFieldDecoration(
+                  labelText: 'Enter Patient'),
+              onChanged: (value) {
+                if (mounted) {
+                  setState(() {});
+                }
+              },
+              onTap: () {
+                if (state is! UserLoaded) {
+                  context.read<UserBloc>().add(const FetchAllUsers());
+                }
+              },
+            );
+          },
+          itemBuilder: (context, UserModel suggestion) {
+            return ListTile(
+              title: Text(suggestion.name),
+              tileColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            );
+          },
+          onSelected: (UserModel suggestion) {
+            if (mounted) {
+              setState(() {
+                _selectedPatientId = suggestion.id;
+                _patientSearchController.text = suggestion.name;
+              });
+            }
+          },
+        );
+      },
+    );
+  }
 
-  // Widget _buildDoctorDropdown() {
-  //   return buildDropdown<DoctorModel>(
-  //     labelText: "Referred To",
-  //     items: {for (var d in doctorList) d: d.name},
-  //     selectedValue: _selectedDoctor,
-  //     onChanged: (value) => setState(() => _selectedDoctor = value!),
-  //     errorMsg: "Select a doctor",
-  //   );
-  // }
+  Widget _buildDoctorSearchField() {
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        return TypeAheadField<UserModel>(
+          suggestionsCallback: (search) {
+            if (state is UserLoaded) {
+              return state.users.users
+                  .where((u) =>
+                      u.userType == "PSY" &&
+                      u.name.toLowerCase().contains(search.toLowerCase()))
+                  .toList();
+            }
+            return [];
+          },
+          builder: (context, controller, focusNode) {
+            controller.text = _doctorSearchController.text;
+            return TextField(
+              controller: _doctorSearchController,
+              focusNode: focusNode,
+              decoration: CommonDecoration.textFieldDecoration(
+                  labelText: 'Enter Psychologist'),
+              onChanged: (value) {
+                if (mounted) {
+                  setState(() {});
+                }
+              },
+              onTap: () {
+                if (state is! UserLoaded) {
+                  context.read<UserBloc>().add(const FetchAllUsers());
+                }
+              },
+            );
+          },
+          itemBuilder: (context, UserModel suggestion) {
+            return ListTile(
+              title: Text(suggestion.name),
+              tileColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            );
+          },
+          onSelected: (UserModel suggestion) {
+            if (mounted) {
+              setState(() {
+                _selectedDoctorId = suggestion.id;
+                _doctorSearchController.text = suggestion.name;
+              });
+            }
+          },
+        );
+      },
+    );
+  }
 }

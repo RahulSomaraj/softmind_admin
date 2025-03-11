@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:softmind_admin/models/api_response_model.dart';
+import 'package:softmind_admin/models/appointment/appointment_create_model.dart';
 import 'package:softmind_admin/models/appointment/appointment_response_model.dart';
 import 'package:softmind_admin/repositories/api_service.dart';
 
@@ -85,10 +86,10 @@ class AppointmentRepository {
   }
 
   Future<ApiResponse> createAppointment(
-      AppointmentModel appointmentData) async {
+      CreateAppointmentModel appointmentData) async {
     try {
       final response =
-          await _dio.post("/appointments", data: appointmentData.toJson());
+          await _dio.post("/appoinments", data: appointmentData.toJson());
 
       if (response.statusCode == 201) {
         return ApiResponse(
