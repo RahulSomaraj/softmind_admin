@@ -20,6 +20,7 @@ class TaskModel with _$TaskModel {
   factory TaskModel({
     required int id,
     required String name,
+    required String? image,
     required String description,
     required DateTime createdAt,
     required DateTime lastUpdatedAt,

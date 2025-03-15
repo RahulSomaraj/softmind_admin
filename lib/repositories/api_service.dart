@@ -60,7 +60,7 @@ class ApiService {
         return null;
       }
 
-      final response = await _dio.post('/auth/refresh', data: {
+      final response = await _dio.post('/refresh-token', data: {
         'refreshToken': refreshToken,
       });
 

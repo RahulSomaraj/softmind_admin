@@ -168,6 +168,11 @@ class _AddEditUserState extends State<AddEditUser> {
                     items: DataListUtils.userTypeMap,
                     selectedValue: _userType,
                     onChanged: (value) => setState(() => _userType = value!),
+                    // onChanged: (value) {
+                    //   setState(() {
+                    //     _userType = DataListUtils.getShortForm(value!);
+                    //   });
+                    // },
                     errorMsg: "Select a user type",
                   ),
                   const SizedBox(height: 15),

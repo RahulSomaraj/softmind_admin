@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:softmind_admin/models/task/task_response_model.dart';
@@ -59,8 +62,11 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   Future<void> _onUpdateTask(UpdateTask event, Emitter<TaskState> emit) async {
     emit(const TaskLoading());
     try {
-      final apiResponse =
-          await taskRepository.updateTask(event.taskId, event.updatedFields);
+      final apiResponse = await taskRepository.updateTask(
+        event.taskId,
+        event.updatedFields,
+        imageFile: event.imageFile ?? event.webImage,
+      );
 
       if (apiResponse.success) {
         emit(TaskUpdatedSuccess(apiResponse.message));
@@ -77,7 +83,10 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   Future<void> _onAddTask(AddTask event, Emitter<TaskState> emit) async {
     emit(const TaskState.loading());
     try {
-      final apiResponse = await taskRepository.createTask(event.taskData);
+      final apiResponse = await taskRepository.createTask(
+        event.taskData,
+        event.webImage,
+      );
 
       if (apiResponse.success) {
         emit(TaskAddedSuccess(apiResponse.message));

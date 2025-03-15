@@ -21,9 +21,12 @@ mixin _$TaskEvent {
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
-    required TResult Function(int taskId, Map<String, dynamic> updatedFields)
+    required TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)
         updateTask,
-    required TResult Function(TaskModel taskData) addTask,
+    required TResult Function(
+            TaskModel taskData, File? imageFile, Uint8List? webImage)
+        addTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,18 +34,22 @@ mixin _$TaskEvent {
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
-    TResult? Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult? Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult? Function(TaskModel taskData)? addTask,
+    TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
-    TResult Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult Function(TaskModel taskData)? addTask,
+    TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -181,9 +188,12 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
-    required TResult Function(int taskId, Map<String, dynamic> updatedFields)
+    required TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)
         updateTask,
-    required TResult Function(TaskModel taskData) addTask,
+    required TResult Function(
+            TaskModel taskData, File? imageFile, Uint8List? webImage)
+        addTask,
   }) {
     return fetchAllTasks(page, limit, searchQuery);
   }
@@ -194,9 +204,11 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
-    TResult? Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult? Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult? Function(TaskModel taskData)? addTask,
+    TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
   }) {
     return fetchAllTasks?.call(page, limit, searchQuery);
   }
@@ -206,9 +218,11 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
-    TResult Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult Function(TaskModel taskData)? addTask,
+    TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
     required TResult orElse(),
   }) {
     if (fetchAllTasks != null) {
@@ -343,9 +357,12 @@ class _$DeleteTaskImpl implements DeleteTask {
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
-    required TResult Function(int taskId, Map<String, dynamic> updatedFields)
+    required TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)
         updateTask,
-    required TResult Function(TaskModel taskData) addTask,
+    required TResult Function(
+            TaskModel taskData, File? imageFile, Uint8List? webImage)
+        addTask,
   }) {
     return deleteTask(taskId);
   }
@@ -356,9 +373,11 @@ class _$DeleteTaskImpl implements DeleteTask {
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
-    TResult? Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult? Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult? Function(TaskModel taskData)? addTask,
+    TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
   }) {
     return deleteTask?.call(taskId);
   }
@@ -368,9 +387,11 @@ class _$DeleteTaskImpl implements DeleteTask {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
-    TResult Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult Function(TaskModel taskData)? addTask,
+    TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
     required TResult orElse(),
   }) {
     if (deleteTask != null) {
@@ -435,7 +456,12 @@ abstract class _$$UpdateTaskImplCopyWith<$Res> {
           _$UpdateTaskImpl value, $Res Function(_$UpdateTaskImpl) then) =
       __$$UpdateTaskImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int taskId, Map<String, dynamic> updatedFields});
+  $Res call(
+      {int taskId,
+      Map<String, dynamic> updatedFields,
+      File? imageFile,
+      Uint8List? webImage,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -453,6 +479,9 @@ class __$$UpdateTaskImplCopyWithImpl<$Res>
   $Res call({
     Object? taskId = null,
     Object? updatedFields = null,
+    Object? imageFile = freezed,
+    Object? webImage = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_$UpdateTaskImpl(
       taskId: null == taskId
@@ -463,6 +492,18 @@ class __$$UpdateTaskImplCopyWithImpl<$Res>
           ? _value._updatedFields
           : updatedFields // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      imageFile: freezed == imageFile
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
+              as File?,
+      webImage: freezed == webImage
+          ? _value.webImage
+          : webImage // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -471,7 +512,11 @@ class __$$UpdateTaskImplCopyWithImpl<$Res>
 
 class _$UpdateTaskImpl implements UpdateTask {
   const _$UpdateTaskImpl(
-      {required this.taskId, required final Map<String, dynamic> updatedFields})
+      {required this.taskId,
+      required final Map<String, dynamic> updatedFields,
+      this.imageFile,
+      this.webImage,
+      this.imageUrl})
       : _updatedFields = updatedFields;
 
   @override
@@ -485,8 +530,15 @@ class _$UpdateTaskImpl implements UpdateTask {
   }
 
   @override
+  final File? imageFile;
+  @override
+  final Uint8List? webImage;
+  @override
+  final String? imageUrl;
+
+  @override
   String toString() {
-    return 'TaskEvent.updateTask(taskId: $taskId, updatedFields: $updatedFields)';
+    return 'TaskEvent.updateTask(taskId: $taskId, updatedFields: $updatedFields, imageFile: $imageFile, webImage: $webImage, imageUrl: $imageUrl)';
   }
 
   @override
@@ -496,12 +548,22 @@ class _$UpdateTaskImpl implements UpdateTask {
             other is _$UpdateTaskImpl &&
             (identical(other.taskId, taskId) || other.taskId == taskId) &&
             const DeepCollectionEquality()
-                .equals(other._updatedFields, _updatedFields));
+                .equals(other._updatedFields, _updatedFields) &&
+            (identical(other.imageFile, imageFile) ||
+                other.imageFile == imageFile) &&
+            const DeepCollectionEquality().equals(other.webImage, webImage) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, taskId, const DeepCollectionEquality().hash(_updatedFields));
+      runtimeType,
+      taskId,
+      const DeepCollectionEquality().hash(_updatedFields),
+      imageFile,
+      const DeepCollectionEquality().hash(webImage),
+      imageUrl);
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -517,11 +579,14 @@ class _$UpdateTaskImpl implements UpdateTask {
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
-    required TResult Function(int taskId, Map<String, dynamic> updatedFields)
+    required TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)
         updateTask,
-    required TResult Function(TaskModel taskData) addTask,
+    required TResult Function(
+            TaskModel taskData, File? imageFile, Uint8List? webImage)
+        addTask,
   }) {
-    return updateTask(taskId, updatedFields);
+    return updateTask(taskId, updatedFields, imageFile, webImage, imageUrl);
   }
 
   @override
@@ -530,11 +595,14 @@ class _$UpdateTaskImpl implements UpdateTask {
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
-    TResult? Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult? Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult? Function(TaskModel taskData)? addTask,
+    TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
   }) {
-    return updateTask?.call(taskId, updatedFields);
+    return updateTask?.call(
+        taskId, updatedFields, imageFile, webImage, imageUrl);
   }
 
   @override
@@ -542,13 +610,15 @@ class _$UpdateTaskImpl implements UpdateTask {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
-    TResult Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult Function(TaskModel taskData)? addTask,
+    TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
     required TResult orElse(),
   }) {
     if (updateTask != null) {
-      return updateTask(taskId, updatedFields);
+      return updateTask(taskId, updatedFields, imageFile, webImage, imageUrl);
     }
     return orElse();
   }
@@ -594,10 +664,16 @@ class _$UpdateTaskImpl implements UpdateTask {
 abstract class UpdateTask implements TaskEvent {
   const factory UpdateTask(
       {required final int taskId,
-      required final Map<String, dynamic> updatedFields}) = _$UpdateTaskImpl;
+      required final Map<String, dynamic> updatedFields,
+      final File? imageFile,
+      final Uint8List? webImage,
+      final String? imageUrl}) = _$UpdateTaskImpl;
 
   int get taskId;
   Map<String, dynamic> get updatedFields;
+  File? get imageFile;
+  Uint8List? get webImage;
+  String? get imageUrl;
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -612,7 +688,7 @@ abstract class _$$AddTaskImplCopyWith<$Res> {
           _$AddTaskImpl value, $Res Function(_$AddTaskImpl) then) =
       __$$AddTaskImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TaskModel taskData});
+  $Res call({TaskModel taskData, File? imageFile, Uint8List? webImage});
 
   $TaskModelCopyWith<$Res> get taskData;
 }
@@ -631,12 +707,22 @@ class __$$AddTaskImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? taskData = null,
+    Object? imageFile = freezed,
+    Object? webImage = freezed,
   }) {
     return _then(_$AddTaskImpl(
       taskData: null == taskData
           ? _value.taskData
           : taskData // ignore: cast_nullable_to_non_nullable
               as TaskModel,
+      imageFile: freezed == imageFile
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
+              as File?,
+      webImage: freezed == webImage
+          ? _value.webImage
+          : webImage // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
     ));
   }
 
@@ -654,14 +740,18 @@ class __$$AddTaskImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddTaskImpl implements AddTask {
-  const _$AddTaskImpl({required this.taskData});
+  const _$AddTaskImpl({required this.taskData, this.imageFile, this.webImage});
 
   @override
   final TaskModel taskData;
+  @override
+  final File? imageFile;
+  @override
+  final Uint8List? webImage;
 
   @override
   String toString() {
-    return 'TaskEvent.addTask(taskData: $taskData)';
+    return 'TaskEvent.addTask(taskData: $taskData, imageFile: $imageFile, webImage: $webImage)';
   }
 
   @override
@@ -670,11 +760,15 @@ class _$AddTaskImpl implements AddTask {
         (other.runtimeType == runtimeType &&
             other is _$AddTaskImpl &&
             (identical(other.taskData, taskData) ||
-                other.taskData == taskData));
+                other.taskData == taskData) &&
+            (identical(other.imageFile, imageFile) ||
+                other.imageFile == imageFile) &&
+            const DeepCollectionEquality().equals(other.webImage, webImage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, taskData);
+  int get hashCode => Object.hash(runtimeType, taskData, imageFile,
+      const DeepCollectionEquality().hash(webImage));
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -690,11 +784,14 @@ class _$AddTaskImpl implements AddTask {
     required TResult Function(int? page, int? limit, String? searchQuery)
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
-    required TResult Function(int taskId, Map<String, dynamic> updatedFields)
+    required TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)
         updateTask,
-    required TResult Function(TaskModel taskData) addTask,
+    required TResult Function(
+            TaskModel taskData, File? imageFile, Uint8List? webImage)
+        addTask,
   }) {
-    return addTask(taskData);
+    return addTask(taskData, imageFile, webImage);
   }
 
   @override
@@ -703,11 +800,13 @@ class _$AddTaskImpl implements AddTask {
     TResult? Function(int? page, int? limit, String? searchQuery)?
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
-    TResult? Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult? Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult? Function(TaskModel taskData)? addTask,
+    TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
   }) {
-    return addTask?.call(taskData);
+    return addTask?.call(taskData, imageFile, webImage);
   }
 
   @override
@@ -715,13 +814,15 @@ class _$AddTaskImpl implements AddTask {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
-    TResult Function(int taskId, Map<String, dynamic> updatedFields)?
+    TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage, String? imageUrl)?
         updateTask,
-    TResult Function(TaskModel taskData)? addTask,
+    TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
     required TResult orElse(),
   }) {
     if (addTask != null) {
-      return addTask(taskData);
+      return addTask(taskData, imageFile, webImage);
     }
     return orElse();
   }
@@ -765,9 +866,14 @@ class _$AddTaskImpl implements AddTask {
 }
 
 abstract class AddTask implements TaskEvent {
-  const factory AddTask({required final TaskModel taskData}) = _$AddTaskImpl;
+  const factory AddTask(
+      {required final TaskModel taskData,
+      final File? imageFile,
+      final Uint8List? webImage}) = _$AddTaskImpl;
 
   TaskModel get taskData;
+  File? get imageFile;
+  Uint8List? get webImage;
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.

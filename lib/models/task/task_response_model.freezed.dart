@@ -220,6 +220,7 @@ TaskModel _$TaskModelFromJson(Map<String, dynamic> json) {
 mixin _$TaskModel {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get lastUpdatedAt => throw _privateConstructorUsedError;
@@ -243,6 +244,7 @@ abstract class $TaskModelCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
+      String? image,
       String description,
       DateTime createdAt,
       DateTime lastUpdatedAt,
@@ -266,6 +268,7 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? image = freezed,
     Object? description = null,
     Object? createdAt = null,
     Object? lastUpdatedAt = null,
@@ -280,6 +283,10 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -311,6 +318,7 @@ abstract class _$$TaskModelImplCopyWith<$Res>
   $Res call(
       {int id,
       String name,
+      String? image,
       String description,
       DateTime createdAt,
       DateTime lastUpdatedAt,
@@ -332,6 +340,7 @@ class __$$TaskModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? image = freezed,
     Object? description = null,
     Object? createdAt = null,
     Object? lastUpdatedAt = null,
@@ -346,6 +355,10 @@ class __$$TaskModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -372,6 +385,7 @@ class _$TaskModelImpl implements _TaskModel {
   _$TaskModelImpl(
       {required this.id,
       required this.name,
+      required this.image,
       required this.description,
       required this.createdAt,
       required this.lastUpdatedAt,
@@ -385,6 +399,8 @@ class _$TaskModelImpl implements _TaskModel {
   @override
   final String name;
   @override
+  final String? image;
+  @override
   final String description;
   @override
   final DateTime createdAt;
@@ -395,7 +411,7 @@ class _$TaskModelImpl implements _TaskModel {
 
   @override
   String toString() {
-    return 'TaskModel(id: $id, name: $name, description: $description, createdAt: $createdAt, lastUpdatedAt: $lastUpdatedAt, deletedAt: $deletedAt)';
+    return 'TaskModel(id: $id, name: $name, image: $image, description: $description, createdAt: $createdAt, lastUpdatedAt: $lastUpdatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -405,6 +421,7 @@ class _$TaskModelImpl implements _TaskModel {
             other is _$TaskModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.createdAt, createdAt) ||
@@ -417,8 +434,8 @@ class _$TaskModelImpl implements _TaskModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, description, createdAt, lastUpdatedAt, deletedAt);
+  int get hashCode => Object.hash(runtimeType, id, name, image, description,
+      createdAt, lastUpdatedAt, deletedAt);
 
   /// Create a copy of TaskModel
   /// with the given fields replaced by the non-null parameter values.
@@ -440,6 +457,7 @@ abstract class _TaskModel implements TaskModel {
   factory _TaskModel(
       {required final int id,
       required final String name,
+      required final String? image,
       required final String description,
       required final DateTime createdAt,
       required final DateTime lastUpdatedAt,
@@ -452,6 +470,8 @@ abstract class _TaskModel implements TaskModel {
   int get id;
   @override
   String get name;
+  @override
+  String? get image;
   @override
   String get description;
   @override

@@ -4,6 +4,7 @@ import 'package:softmind_admin/features/admin_layout/admin_layout.dart';
 import 'package:softmind_admin/features/appoinments/bloc/appointment_bloc.dart';
 import 'package:softmind_admin/features/appoinments/ui/add_edit_appoinment.dart';
 import 'package:softmind_admin/features/appoinments/ui/appoinment_list.dart';
+import 'package:softmind_admin/features/classes/ui/claas_list.dart';
 import 'package:softmind_admin/features/dashboard/admin_dash.dart';
 import 'package:softmind_admin/features/login/ui/login.dart';
 import 'package:softmind_admin/features/tasks/bloc/task_bloc.dart';
@@ -57,8 +58,11 @@ class AppRoutes {
           _noTransitionRoute('/tasks', const TaskList()),
           _noTransitionRoute(
               '/tasks', const Center(child: Text("Task content"))),
-          _noTransitionRoute(
-              '/classes', const Center(child: Text("Classes content"))),
+
+          _noTransitionRoute('/classes',  VideoStreamScreen()),
+
+          // _noTransitionRoute(
+          //     '/classes', const Center(child: Text("Classes content"))),
           _noTransitionRoute(
               '/reports', const Center(child: Text("Reports content"))),
           _noTransitionRoute(
