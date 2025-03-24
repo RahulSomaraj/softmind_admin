@@ -19,7 +19,7 @@ class AppointmentResponseModel with _$AppointmentResponseModel {
 class AppointmentModel with _$AppointmentModel {
   factory AppointmentModel({
     required int id,
-    required DateTime appointmentDate,
+    required String appointmentDate,
     required String appointmentTime,
     required PatientModel patient,
     required DoctorModel referredTo,

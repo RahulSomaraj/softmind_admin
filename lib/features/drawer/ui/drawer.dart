@@ -99,6 +99,7 @@ class _AdminDrawerState extends State<AdminDrawer> {
           _buildDrawerItem('/dashboard', Icons.dashboard, "Dashboard"),
           _buildDrawerItem(
               '/appointments', Icons.calendar_today, "Appointments"),
+          _buildDrawerItem('/classes', Icons.class_, "Classes"),
         ],
       );
     } else {

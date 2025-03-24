@@ -28,7 +28,7 @@ _$AppointmentModelImpl _$$AppointmentModelImplFromJson(
         Map<String, dynamic> json) =>
     _$AppointmentModelImpl(
       id: (json['id'] as num).toInt(),
-      appointmentDate: DateTime.parse(json['appointmentDate'] as String),
+      appointmentDate: json['appointmentDate'] as String,
       appointmentTime: json['appointmentTime'] as String,
       patient: PatientModel.fromJson(json['patient'] as Map<String, dynamic>),
       referredTo:
@@ -39,7 +39,7 @@ Map<String, dynamic> _$$AppointmentModelImplToJson(
         _$AppointmentModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'appointmentDate': instance.appointmentDate.toIso8601String(),
+      'appointmentDate': instance.appointmentDate,
       'appointmentTime': instance.appointmentTime,
       'patient': instance.patient,
       'referredTo': instance.referredTo,

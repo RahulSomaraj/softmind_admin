@@ -1,5 +1,5 @@
-import 'package:intl/intl.dart';
 import 'package:softmind_admin/common/text_style.dart';
+import 'package:softmind_admin/common/user_session_helper.dart';
 import 'package:softmind_admin/common/widgets/common_button.dart';
 import 'package:softmind_admin/common/widgets/common_dialogs.dart';
 import 'package:softmind_admin/common/widgets/common_divider.dart';
@@ -20,13 +20,37 @@ class AppointmentList extends StatefulWidget {
 }
 
 class _AppointmentListState extends State<AppointmentList> {
-  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchPatientController =
+      TextEditingController();
+
+  final TextEditingController _searchDoctorController = TextEditingController();
+
   int rowsPerPage = 10;
+
+  late UserSessionHelper userSession;
 
   @override
   void initState() {
     super.initState();
-    context.read<AppointmentBloc>().add(const FetchAllAppointments());
+    userSession = UserSessionHelper(context);
+    _loadAppointments();
+  }
+
+  @override
+  void dispose() {
+    _searchPatientController.dispose();
+    _searchDoctorController.dispose();
+    super.dispose();
+  }
+
+  void _loadAppointments() {
+    if (userSession.isPsychologist()) {
+      context
+          .read<AppointmentBloc>()
+          .add(FetchAllAppointments(referredTo: userSession.userId));
+    } else {
+      context.read<AppointmentBloc>().add(const FetchAllAppointments());
+    }
   }
 
   void _deleteAppointment(int? appointmentId) {
@@ -110,7 +134,8 @@ class _AppointmentListState extends State<AppointmentList> {
                             _buildColumn('Date'),
                             _buildColumn('Time'),
                             _buildColumn('Patient Name'),
-                            _buildColumn('Doctor Name'),
+                            if (userSession.isSuperAdmin())
+                              _buildColumn('Doctor Name'),
                             _buildColumn('Status'),
                             _buildColumn('Actions'),
                           ],
@@ -150,37 +175,53 @@ class _AppointmentListState extends State<AppointmentList> {
     int rowNumber = ((currentPage - 1) * rowsPerPage) + index + 1;
     return DataRow(cells: [
       DataCell(Text('$rowNumber')),
-      DataCell(
-          Text(DateFormat('yyyy-MM-dd').format(appointment.appointmentDate))),
+      DataCell(Text(appointment.appointmentDate)),
       DataCell(Text(appointment.appointmentTime)),
       DataCell(Text(appointment.patient.name)),
-      DataCell(Text(appointment.referredTo.name)),
+      if (userSession.isSuperAdmin())
+        DataCell(Text(appointment.referredTo.name)),
       const DataCell(Text("Pending")),
       DataCell(
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            IconButton(
-              icon: const Icon(Icons.edit,
-                  color: Color.fromARGB(255, 59, 59, 59)),
-              onPressed: () {
-                context.push('/add-edit-appointment', extra: appointment);
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.delete,
-                  color: Color.fromARGB(255, 20, 20, 20)),
-              onPressed: () {
-                DialogUtil.showConfirmationDialog(
-                  context: context,
-                  title: "Confirm Delete",
-                  content: "Are you sure you want to delete this appointment?",
-                  onConfirm: () {
-                    _deleteAppointment(appointment.id);
-                  },
-                );
-              },
-            ),
+            if (userSession.isPsychologist()) ...[
+              IconButton(
+                icon: const Icon(Icons.edit, color: Colors.black),
+                onPressed: () {
+                  context.push('/create-diagnosis', extra: appointment);
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.visibility, color: Colors.black),
+                onPressed: () {
+                  context.push('/view-diagnosis-history', extra: appointment);
+                },
+              ),
+            ] else ...[
+              IconButton(
+                icon: const Icon(Icons.edit,
+                    color: Color.fromARGB(255, 59, 59, 59)),
+                onPressed: () {
+                  context.push('/add-edit-appointment', extra: appointment);
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.delete,
+                    color: Color.fromARGB(255, 20, 20, 20)),
+                onPressed: () {
+                  DialogUtil.showConfirmationDialog(
+                    context: context,
+                    title: "Confirm Delete",
+                    content:
+                        "Are you sure you want to delete this appointment?",
+                    onConfirm: () {
+                      _deleteAppointment(appointment.id);
+                    },
+                  );
+                },
+              ),
+            ],
           ],
         ),
       ),
@@ -203,22 +244,47 @@ class _AppointmentListState extends State<AppointmentList> {
             ),
           ),
           const Spacer(),
-          _buildSearchBar(),
-          const SizedBox(width: 15),
-          _buildAddButton(),
+          // _buildPatientSearchBar(),
+          // const SizedBox(width: 8),
+          // if (userSession.isSuperAdmin()) _buildDoctorSearchBar(),
+          // const SizedBox(width: 15),
+          if (userSession.isSuperAdmin()) _buildAddButton(),
         ],
       ),
     );
   }
 
-  Widget _buildSearchBar() {
+  Widget _buildPatientSearchBar() {
     return GetSearchBar(
-      controller: _searchController,
+      controller: _searchPatientController,
+      hintText: "Search Patient",
+      onChanged: (query) {
+        if (userSession.isPsychologist()) {
+          context.read<AppointmentBloc>().add(FetchAllAppointments(
+                page: 1,
+                limit: rowsPerPage,
+                patient: query.isNotEmpty ? query : '',
+                referredTo: userSession.userId,
+              ));
+        } else {
+          context.read<AppointmentBloc>().add(FetchAllAppointments(
+              page: 1,
+              limit: rowsPerPage,
+              patient: query.isNotEmpty ? query : ''));
+        }
+      },
+    );
+  }
+
+  Widget _buildDoctorSearchBar() {
+    return GetSearchBar(
+      controller: _searchDoctorController,
+      hintText: "Search Doctor",
       onChanged: (query) {
         context.read<AppointmentBloc>().add(FetchAllAppointments(
             page: 1,
             limit: rowsPerPage,
-            searchQuery: query.isNotEmpty ? query : ''));
+            referredTo: query.isNotEmpty ? query : ''));
       },
     );
   }
@@ -243,17 +309,30 @@ class _AppointmentListState extends State<AppointmentList> {
       totalPages: totalPages,
       rowsPerPage: rowsPerPage,
       onPageChanged: (newPage) {
-        context
-            .read<AppointmentBloc>()
-            .add(FetchAllAppointments(page: newPage, limit: rowsPerPage));
+        if (userSession.isPsychologist()) {
+          context.read<AppointmentBloc>().add(FetchAllAppointments(
+              page: newPage,
+              limit: rowsPerPage,
+              referredTo: userSession.userId));
+        } else {
+          context
+              .read<AppointmentBloc>()
+              .add(FetchAllAppointments(page: newPage, limit: rowsPerPage));
+        }
       },
       onRowsPerPageChanged: (newRowsPerPage) {
         setState(() {
           rowsPerPage = newRowsPerPage;
         });
-        context
-            .read<AppointmentBloc>()
-            .add(FetchAllAppointments(page: 1, limit: rowsPerPage));
+
+        if (userSession.isPsychologist()) {
+          context.read<AppointmentBloc>().add(FetchAllAppointments(
+              page: 1, limit: rowsPerPage, referredTo: userSession.userId));
+        } else {
+          context
+              .read<AppointmentBloc>()
+              .add(FetchAllAppointments(page: 1, limit: rowsPerPage));
+        }
       },
     );
   }

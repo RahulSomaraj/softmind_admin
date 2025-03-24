@@ -98,7 +98,8 @@ class _LoginPageState extends State<LoginPage> {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         state.maybeWhen(
-          success: (username, userType) => context.go('/dashboard'),
+          success: (username, userType, userId) =>
+              context.replace('/dashboard'),
           failure: (message) => DialogUtil.showErrorDialog(context, message),
           orElse: () {},
         );

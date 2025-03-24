@@ -48,6 +48,16 @@ class _UserListPageState extends State<UserListPage> {
     context.read<UserBloc>().add(const FetchAllUsers());
   }
 
+  @override
+  void dispose() {
+    _searNamechController.dispose();
+    _searchcontactEmailController.dispose();
+    _searchcontactNumberController.dispose();
+    _searchcountryCodeController.dispose();
+    _searchuserTypeController.dispose();
+    super.dispose();
+  }
+
   void _deleteUser(int? userId) {
     context.read<UserBloc>().add(DeleteUser(userId: userId));
   }

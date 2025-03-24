@@ -64,7 +64,9 @@ class ApiService {
         'refreshToken': refreshToken,
       });
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         final newAccessToken = response.data['token'];
         await SharedPrefs().setString('token', newAccessToken);
 
@@ -115,39 +117,39 @@ class DioErrorHandler {
   static String handleError(DioException e) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
-        return "❌ Connection timeout. Please check your internet.";
+        return "Connection timeout. Please check your internet.";
       case DioExceptionType.receiveTimeout:
-        return "❌ Receive timeout. Server is too slow.";
+        return "Receive timeout. Server is too slow.";
       case DioExceptionType.sendTimeout:
-        return "❌ Send timeout. Please try again.";
+        return "Send timeout. Please try again.";
       case DioExceptionType.badResponse:
         return _handleBadResponse(e.response);
       case DioExceptionType.cancel:
-        return "❌ Request was cancelled.";
+        return "Request was cancelled.";
       case DioExceptionType.connectionError:
-        return "❌ No internet connection. Check your network.";
+        return "No internet connection. Check your network.";
       case DioExceptionType.unknown:
       default:
-        return "❌ Unexpected error: ${e.message}";
+        return "Unexpected error: ${e.message}";
     }
   }
 
   static String _handleBadResponse(Response? response) {
-    if (response == null) return "❌ No response from server.";
+    if (response == null) return "No response from server.";
 
     switch (response.statusCode) {
       case 400:
-        return "❌ Bad request. Please try again.";
+        return "Bad request. Please try again.";
       case 401:
-        return "❌ Unauthorized. Please log in again.";
+        return "Unauthorized. Please log in again.";
       case 403:
-        return "❌ Forbidden. You don't have permission.";
+        return "Forbidden. You don't have permission.";
       case 404:
-        return "❌ Not found. The requested resource doesn't exist.";
+        return "Not found. The requested resource doesn't exist.";
       case 500:
-        return "❌ Internal server error. Try again later.";
+        return "Internal server error. Try again later.";
       default:
-        return "❌ Error ${response.statusCode}: ${response.statusMessage}";
+        return "Error ${response.statusCode}: ${response.statusMessage}";
     }
   }
 }

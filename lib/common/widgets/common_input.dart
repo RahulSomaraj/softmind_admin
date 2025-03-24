@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart'; 
+import 'package:intl/intl.dart';
 import 'package:softmind_admin/common/widgets/common_decoration.dart';
 
 class GetInput extends StatefulWidget {
@@ -14,6 +14,7 @@ class GetInput extends StatefulWidget {
   final String? initialValue;
   final VoidCallback? onTap;
   final bool readOnly;
+  final int maxLines;
 
   const GetInput({
     super.key,
@@ -27,6 +28,7 @@ class GetInput extends StatefulWidget {
     this.initialValue,
     this.onTap,
     this.readOnly = false,
+    this.maxLines = 1,
   });
 
   @override
@@ -56,8 +58,7 @@ class _GetInputState extends State<GetInput> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: _internalController,
-      readOnly: widget.readOnly ||
-          widget.isDate, // Prevent manual typing for date inputs
+      readOnly: widget.readOnly || widget.isDate,
       onTap: widget.isDate ? _selectDate : widget.onTap,
       decoration: CommonDecoration.textFieldDecoration(
         labelText: widget.label,
@@ -77,11 +78,14 @@ class _GetInputState extends State<GetInput> {
               ? TextInputType.phone
               : widget.isDate
                   ? TextInputType.datetime
-                  : TextInputType.text,
+                  : widget.maxLines > 1
+                      ? TextInputType.multiline
+                      : TextInputType.text,
       inputFormatters: _getInputFormatters(),
       obscureText: widget.isPassword ? _obscureText : false,
       validator: _validateInput,
       onSaved: widget.onSaved,
+      maxLines: widget.maxLines,
     );
   }
 
@@ -96,7 +100,7 @@ class _GetInputState extends State<GetInput> {
 
     if (pickedDate != null) {
       setState(() {
-        _internalController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+        _internalController.text = DateFormat('dd-MM-yyyy').format(pickedDate);
       });
     }
   }

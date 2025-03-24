@@ -15,7 +15,6 @@ class TaskEvent with _$TaskEvent {
     required Map<String, dynamic> updatedFields,
     File? imageFile,
     Uint8List? webImage,
-    String? imageUrl,
   }) = UpdateTask;
 
   const factory TaskEvent.addTask({

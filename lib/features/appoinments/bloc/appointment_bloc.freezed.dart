@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppointmentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)
         fetchAllAppointments,
     required TResult Function(int? appointmentId) deleteAppointment,
     required TResult Function(
@@ -32,7 +33,8 @@ mixin _$AppointmentEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)?
         fetchAllAppointments,
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -44,7 +46,8 @@ mixin _$AppointmentEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)?
+    TResult Function(int? page, int? limit, String? patient, String? referredTo,
+            String? appointmentDate)?
         fetchAllAppointments,
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -115,7 +118,12 @@ abstract class _$$FetchAllAppointmentsImplCopyWith<$Res> {
           $Res Function(_$FetchAllAppointmentsImpl) then) =
       __$$FetchAllAppointmentsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int? page, int? limit, String? searchQuery});
+  $Res call(
+      {int? page,
+      int? limit,
+      String? patient,
+      String? referredTo,
+      String? appointmentDate});
 }
 
 /// @nodoc
@@ -133,7 +141,9 @@ class __$$FetchAllAppointmentsImplCopyWithImpl<$Res>
   $Res call({
     Object? page = freezed,
     Object? limit = freezed,
-    Object? searchQuery = freezed,
+    Object? patient = freezed,
+    Object? referredTo = freezed,
+    Object? appointmentDate = freezed,
   }) {
     return _then(_$FetchAllAppointmentsImpl(
       page: freezed == page
@@ -144,9 +154,17 @@ class __$$FetchAllAppointmentsImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int?,
-      searchQuery: freezed == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
+      patient: freezed == patient
+          ? _value.patient
+          : patient // ignore: cast_nullable_to_non_nullable
+              as String?,
+      referredTo: freezed == referredTo
+          ? _value.referredTo
+          : referredTo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      appointmentDate: freezed == appointmentDate
+          ? _value.appointmentDate
+          : appointmentDate // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -155,18 +173,27 @@ class __$$FetchAllAppointmentsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
-  const _$FetchAllAppointmentsImpl({this.page, this.limit, this.searchQuery});
+  const _$FetchAllAppointmentsImpl(
+      {this.page,
+      this.limit,
+      this.patient,
+      this.referredTo,
+      this.appointmentDate});
 
   @override
   final int? page;
   @override
   final int? limit;
   @override
-  final String? searchQuery;
+  final String? patient;
+  @override
+  final String? referredTo;
+  @override
+  final String? appointmentDate;
 
   @override
   String toString() {
-    return 'AppointmentEvent.fetchAllAppointments(page: $page, limit: $limit, searchQuery: $searchQuery)';
+    return 'AppointmentEvent.fetchAllAppointments(page: $page, limit: $limit, patient: $patient, referredTo: $referredTo, appointmentDate: $appointmentDate)';
   }
 
   @override
@@ -176,12 +203,16 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
             other is _$FetchAllAppointmentsImpl &&
             (identical(other.page, page) || other.page == page) &&
             (identical(other.limit, limit) || other.limit == limit) &&
-            (identical(other.searchQuery, searchQuery) ||
-                other.searchQuery == searchQuery));
+            (identical(other.patient, patient) || other.patient == patient) &&
+            (identical(other.referredTo, referredTo) ||
+                other.referredTo == referredTo) &&
+            (identical(other.appointmentDate, appointmentDate) ||
+                other.appointmentDate == appointmentDate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, page, limit, searchQuery);
+  int get hashCode => Object.hash(
+      runtimeType, page, limit, patient, referredTo, appointmentDate);
 
   /// Create a copy of AppointmentEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -196,7 +227,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)
         fetchAllAppointments,
     required TResult Function(int? appointmentId) deleteAppointment,
     required TResult Function(
@@ -207,13 +239,15 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     required TResult Function() fetchDoctors,
     required TResult Function() fetchPatients,
   }) {
-    return fetchAllAppointments(page, limit, searchQuery);
+    return fetchAllAppointments(
+        page, limit, patient, referredTo, appointmentDate);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)?
         fetchAllAppointments,
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -222,13 +256,15 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     TResult? Function()? fetchDoctors,
     TResult? Function()? fetchPatients,
   }) {
-    return fetchAllAppointments?.call(page, limit, searchQuery);
+    return fetchAllAppointments?.call(
+        page, limit, patient, referredTo, appointmentDate);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)?
+    TResult Function(int? page, int? limit, String? patient, String? referredTo,
+            String? appointmentDate)?
         fetchAllAppointments,
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -239,7 +275,8 @@ class _$FetchAllAppointmentsImpl implements FetchAllAppointments {
     required TResult orElse(),
   }) {
     if (fetchAllAppointments != null) {
-      return fetchAllAppointments(page, limit, searchQuery);
+      return fetchAllAppointments(
+          page, limit, patient, referredTo, appointmentDate);
     }
     return orElse();
   }
@@ -292,11 +329,15 @@ abstract class FetchAllAppointments implements AppointmentEvent {
   const factory FetchAllAppointments(
       {final int? page,
       final int? limit,
-      final String? searchQuery}) = _$FetchAllAppointmentsImpl;
+      final String? patient,
+      final String? referredTo,
+      final String? appointmentDate}) = _$FetchAllAppointmentsImpl;
 
   int? get page;
   int? get limit;
-  String? get searchQuery;
+  String? get patient;
+  String? get referredTo;
+  String? get appointmentDate;
 
   /// Create a copy of AppointmentEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -375,7 +416,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)
         fetchAllAppointments,
     required TResult Function(int? appointmentId) deleteAppointment,
     required TResult Function(
@@ -392,7 +434,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)?
         fetchAllAppointments,
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -407,7 +450,8 @@ class _$DeleteAppointmentImpl implements DeleteAppointment {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)?
+    TResult Function(int? page, int? limit, String? patient, String? referredTo,
+            String? appointmentDate)?
         fetchAllAppointments,
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -568,7 +612,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)
         fetchAllAppointments,
     required TResult Function(int? appointmentId) deleteAppointment,
     required TResult Function(
@@ -585,7 +630,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)?
         fetchAllAppointments,
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -600,7 +646,8 @@ class _$UpdateAppointmentImpl implements UpdateAppointment {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)?
+    TResult Function(int? page, int? limit, String? patient, String? referredTo,
+            String? appointmentDate)?
         fetchAllAppointments,
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -759,7 +806,8 @@ class _$AddAppointmentImpl implements AddAppointment {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)
         fetchAllAppointments,
     required TResult Function(int? appointmentId) deleteAppointment,
     required TResult Function(
@@ -776,7 +824,8 @@ class _$AddAppointmentImpl implements AddAppointment {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)?
         fetchAllAppointments,
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -791,7 +840,8 @@ class _$AddAppointmentImpl implements AddAppointment {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)?
+    TResult Function(int? page, int? limit, String? patient, String? referredTo,
+            String? appointmentDate)?
         fetchAllAppointments,
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -906,7 +956,8 @@ class _$FetchDoctorsImpl implements FetchDoctors {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)
         fetchAllAppointments,
     required TResult Function(int? appointmentId) deleteAppointment,
     required TResult Function(
@@ -923,7 +974,8 @@ class _$FetchDoctorsImpl implements FetchDoctors {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)?
         fetchAllAppointments,
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -938,7 +990,8 @@ class _$FetchDoctorsImpl implements FetchDoctors {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)?
+    TResult Function(int? page, int? limit, String? patient, String? referredTo,
+            String? appointmentDate)?
         fetchAllAppointments,
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -1043,7 +1096,8 @@ class _$FetchPatientsImpl implements FetchPatients {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? page, int? limit, String? searchQuery)
+    required TResult Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)
         fetchAllAppointments,
     required TResult Function(int? appointmentId) deleteAppointment,
     required TResult Function(
@@ -1060,7 +1114,8 @@ class _$FetchPatientsImpl implements FetchPatients {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? searchQuery)?
+    TResult? Function(int? page, int? limit, String? patient,
+            String? referredTo, String? appointmentDate)?
         fetchAllAppointments,
     TResult? Function(int? appointmentId)? deleteAppointment,
     TResult? Function(int appointmentId, Map<String, dynamic> updatedFields)?
@@ -1075,7 +1130,8 @@ class _$FetchPatientsImpl implements FetchPatients {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? searchQuery)?
+    TResult Function(int? page, int? limit, String? patient, String? referredTo,
+            String? appointmentDate)?
         fetchAllAppointments,
     TResult Function(int? appointmentId)? deleteAppointment,
     TResult Function(int appointmentId, Map<String, dynamic> updatedFields)?

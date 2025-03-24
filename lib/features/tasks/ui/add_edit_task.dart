@@ -1,6 +1,7 @@
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:softmind_admin/common/widgets/common_button.dart';
@@ -8,7 +9,6 @@ import 'package:softmind_admin/common/widgets/common_dialogs.dart';
 import 'package:softmind_admin/common/widgets/common_header.dart';
 import 'package:softmind_admin/common/widgets/common_input.dart';
 import 'package:softmind_admin/features/tasks/bloc/task_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:softmind_admin/models/task/task_response_model.dart';
 
 class AddEditTask extends StatefulWidget {
@@ -33,6 +33,7 @@ class _AddEditTaskState extends State<AddEditTask> {
   @override
   void initState() {
     super.initState();
+
     _name = widget.task?.name ?? '';
     _description = widget.task?.description ?? '';
     _uploadedImageUrl = widget.task?.image;
@@ -47,6 +48,7 @@ class _AddEditTaskState extends State<AddEditTask> {
 
       setState(() {
         _imageError = false;
+        _uploadedImageUrl = null;
       });
 
       if (kIsWeb) {
@@ -80,9 +82,9 @@ class _AddEditTaskState extends State<AddEditTask> {
       if (widget.task == null) {
         final newTask = TaskModel(
           id: 0,
-          name: _name!,
-          image: _uploadedImageUrl ?? '',
-          description: _description!,
+          name: _name,
+          image: '',
+          description: _description,
           createdAt: DateTime.now(),
           lastUpdatedAt: DateTime.now(),
         );
@@ -101,10 +103,10 @@ class _AddEditTaskState extends State<AddEditTask> {
         if (_description != widget.task!.description) {
           updatedFields["description"] = _description;
         }
-        if (_uploadedImageUrl != widget.task!.image) {
-          updatedFields["image"] = _uploadedImageUrl;
+
+        if (_uploadedImageUrl == null && _webImage != null) {
+          updatedFields["image"] = '';
         }
-        updatedFields["lastUpdatedAt"] = DateTime.now();
 
         if (updatedFields.isNotEmpty) {
           context.read<TaskBloc>().add(
@@ -202,8 +204,8 @@ class _AddEditTaskState extends State<AddEditTask> {
                   GestureDetector(
                     onTap: _pickImage,
                     child: Container(
-                      width: double.infinity,
-                      height: 500,
+                      width: 600,
+                      height: 400,
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
                         border: Border.all(
@@ -214,20 +216,20 @@ class _AddEditTaskState extends State<AddEditTask> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: _uploadedImageUrl != null
-                            ? Image.network(_uploadedImageUrl!,
+                            ? Image.network(
+                                _uploadedImageUrl!,
                                 fit: BoxFit.fill,
-                                width: double.infinity,
-                                height: 500)
+                              )
                             : _webImage != null
-                                ? Image.memory(_webImage!,
+                                ? Image.memory(
+                                    _webImage!,
                                     fit: BoxFit.fill,
-                                    width: double.infinity,
-                                    height: 500)
+                                  )
                                 : _imageFile != null
-                                    ? Image.file(_imageFile!,
+                                    ? Image.file(
+                                        _imageFile!,
                                         fit: BoxFit.fill,
-                                        width: double.infinity,
-                                        height: 500)
+                                      )
                                     : const Center(
                                         child: Text(
                                           "Upload Image",

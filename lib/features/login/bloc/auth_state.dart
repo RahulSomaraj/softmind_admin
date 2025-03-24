@@ -7,6 +7,7 @@ class AuthState with _$AuthState {
   const factory AuthState.success({
     required String username,
     required String userType,
+    required String userId,
   }) = Success;
   const factory AuthState.failure(String message) = Failure;
 }

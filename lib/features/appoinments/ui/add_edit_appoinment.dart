@@ -28,9 +28,8 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
 
   late TextEditingController _dateController;
   late TextEditingController _timeController;
-  final TextEditingController _patientSearchController =
-      TextEditingController();
-  final TextEditingController _doctorSearchController = TextEditingController();
+  TextEditingController _patientSearchController = TextEditingController();
+  TextEditingController _doctorSearchController = TextEditingController();
 
   late DateTime _appointmentDate;
   late String _appointmentTime;
@@ -41,7 +40,10 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
   void initState() {
     super.initState();
 
-    _appointmentDate = widget.appointment?.appointmentDate ?? DateTime.now();
+    _appointmentDate = widget.appointment?.appointmentDate != null
+        ? DateTime.parse(widget.appointment!.appointmentDate)
+        : DateTime.now();
+
     _appointmentTime = widget.appointment?.appointmentTime ?? "08:00 AM";
 
     _dateController = TextEditingController(
@@ -50,6 +52,20 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
 
     _selectedPatientId = widget.appointment?.patient.id;
     _selectedDoctorId = widget.appointment?.referredTo.id;
+
+    _patientSearchController =
+        TextEditingController(text: widget.appointment?.patient.name ?? '');
+    _doctorSearchController =
+        TextEditingController(text: widget.appointment?.referredTo.name ?? '');
+  }
+
+  @override
+  void dispose() {
+    _dateController.dispose();
+    _timeController.dispose();
+    _patientSearchController.dispose();
+    _doctorSearchController.dispose();
+    super.dispose();
   }
 
   void _submitForm() {
@@ -75,18 +91,20 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
       } else {
         Map<String, dynamic> updatedFields = {};
 
-        if (_appointmentDate != widget.appointment!.appointmentDate) {
+        if (DateFormat('yyyy-MM-dd').format(_appointmentDate) !=
+            widget.appointment!.appointmentDate) {
           updatedFields["appointmentDate"] =
               DateFormat('yyyy-MM-dd').format(_appointmentDate);
         }
+
         if (_appointmentTime != widget.appointment!.appointmentTime) {
           updatedFields["appointmentTime"] = _appointmentTime;
         }
         if (_selectedPatientId != widget.appointment!.patient.id) {
-          updatedFields["patientId"] = _selectedPatientId;
+          updatedFields["patient"] = _selectedPatientId;
         }
         if (_selectedDoctorId != widget.appointment!.referredTo.id) {
-          updatedFields["doctorId"] = _selectedDoctorId;
+          updatedFields["referredTo"] = _selectedDoctorId;
         }
 
         if (updatedFields.isNotEmpty) {
@@ -97,24 +115,6 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
       }
     }
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Column(
-  //     children: [
-  //       GetHeader(
-  //         title: widget.appointment == null
-  //             ? "Add Appointment"
-  //             : "Edit Appointment",
-  //         path:
-  //             "Appointment Management > ${widget.appointment == null ? "Add Appointment" : "Edit Appointment"}",
-  //         onBackPressed: () => context.pop(),
-  //       ),
-  //       const SizedBox(height: 20),
-  //       _buildAppointmentForm(),
-  //     ],
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -210,9 +210,11 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
       onTap: () async {
         DateTime? pickedDate = await showDatePicker(
           context: context,
-          initialDate: _appointmentDate,
+          initialDate: _appointmentDate.isBefore(DateTime.now())
+              ? DateTime.now()
+              : _appointmentDate,
           firstDate: DateTime.now(),
-          lastDate: DateTime(2101),
+          lastDate: DateTime(2030, 12, 31),
         );
         if (pickedDate != null) {
           _appointmentDate = pickedDate;

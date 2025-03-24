@@ -29,6 +29,13 @@ class _TaskListState extends State<TaskList> {
     context.read<TaskBloc>().add(const FetchAllTasks());
   }
 
+  @override
+  void dispose() {
+    _searchController.dispose();
+
+    super.dispose();
+  }
+
   void _deleteTask(int? taskId) {
     context.read<TaskBloc>().add(DeleteTask(taskId: taskId));
   }
@@ -147,9 +154,9 @@ class _TaskListState extends State<TaskList> {
       DataCell(Text('$rowNumber')),
       DataCell(Text(task.name)),
       DataCell(Text(task.description)),
-      DataCell(Text(DateFormat('yyyy-MM-dd HH:mm:ss').format(task.createdAt))),
+      DataCell(Text(DateFormat('dd-MM-yyyy HH:mm:ss').format(task.createdAt))),
       DataCell(
-          Text(DateFormat('yyyy-MM-dd HH:mm:ss').format(task.lastUpdatedAt))),
+          Text(DateFormat('dd-MM-yyyy HH:mm:ss').format(task.lastUpdatedAt))),
       DataCell(
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -208,6 +215,7 @@ class _TaskListState extends State<TaskList> {
   Widget _buildSearchBar() {
     return GetSearchBar(
       controller: _searchController,
+      hintText: "Search Name",
       onChanged: (query) {
         context.read<TaskBloc>().add(FetchAllTasks(
             page: 1,

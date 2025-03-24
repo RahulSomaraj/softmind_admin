@@ -24,7 +24,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           await authRepository.login(event.username, event.password);
 
       emit(AuthState.success(
-          username: response.name, userType: response.userType));
+          username: response.name,
+          userType: response.userType,
+          userId: response.id.toString()));
     } catch (e) {
       emit(const AuthState.failure('Invalid Username or Password'));
     }
@@ -40,9 +42,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       CheckLoginStatus event, Emitter<AuthState> emit) async {
     final String? username = await getUserName();
     final String? userType = await getUserType();
+    final String userId = await getUserId() ?? "0";
 
     if (username != null && userType != null) {
-      emit(AuthState.success(username: username, userType: userType));
+      emit(AuthState.success(
+          username: username, userType: userType, userId: userId));
     } else {
       emit(const AuthState.initial());
     }

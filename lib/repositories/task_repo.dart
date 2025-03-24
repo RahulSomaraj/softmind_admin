@@ -18,11 +18,13 @@ class TaskRepository {
         queryParameters: {
           'offset': page,
           'take': limit,
-          'search': searchQuery,
+          'name': searchQuery,
         },
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         final tasks = TaskResponseModel.fromJson(response.data);
         return ApiResponse(
             success: true, message: "Tasks fetched successfully", data: tasks);
@@ -32,7 +34,7 @@ class TaskRepository {
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
     } catch (e) {
-      return ApiResponse(success: false, message: "Unexpected error: $e");
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 
@@ -44,43 +46,52 @@ class TaskRepository {
     try {
       final response = await _dio.delete('/tasks/$taskId');
 
-      if (response.statusCode == 200) {
-        return ApiResponse(
-            success: true,
-            message: response.data['message'] ?? "Task deleted successfully");
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
+        return ApiResponse(success: true, message: "Task deleted successfully");
       } else {
         return ApiResponse(success: false, message: "Failed to delete task");
       }
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
     } catch (e) {
-      return ApiResponse(success: false, message: "Unexpected error: $e");
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 
-  Future<ApiResponse> updateTask(int taskId, Map<String, dynamic> updatedFields,
-      {dynamic imageFile}) async {
+  Future<ApiResponse> updateTask(
+    int taskId,
+    Map<String, dynamic> updatedFields,
+    Uint8List? imageFile,
+  ) async {
     try {
-      String? uploadedImageUrl;
+      final uploadData = Map<String, dynamic>.from(updatedFields);
 
       if (imageFile != null) {
-        uploadedImageUrl = await _uploadImage(imageFile);
-        updatedFields["image"] = uploadedImageUrl;
+        final uploadedImageUrl = await _uploadImage(imageFile);
+        if (uploadedImageUrl == null) {
+          throw Exception("Image upload failed");
+        }
+        uploadData["image"] = uploadedImageUrl;
       }
 
-      final response = await _dio.put('/tasks/$taskId', data: updatedFields);
+      final response = await _dio.put('/tasks/$taskId', data: uploadData);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         return ApiResponse(
-            success: true,
-            message: response.data['message'] ?? "Task updated successfully");
+          success: true,
+          message: response.data['message'] ?? "Task updated successfully",
+        );
       } else {
         return ApiResponse(success: false, message: "Failed to update task");
       }
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
-    } catch (e) {
-      return ApiResponse(success: false, message: "Unexpected error: $e");
+    } catch (e, st) {
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 
@@ -114,30 +125,28 @@ class TaskRepository {
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
     } catch (e) {
-      return ApiResponse(success: false, message: "Unexpected error: $e");
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 
   Future<String?> _uploadImage(Uint8List imageFile) async {
     try {
-      // ✅ Detect MIME type with a valid filename
-      final String? mimeType ="image/jpeg";
-      //     lookupMimeType("dummy.jpg", headerBytes: imageFile);
-      // if (mimeType == null || !mimeType.startsWith("image/")) {
-      //   throw Exception("Invalid image format");
-      // }
+      final String? mimeType =
+          lookupMimeType('dummy.jpg', headerBytes: imageFile);
 
-      // ✅ Extract correct file extension
-      // // final String fileExtension = mimeType.split('/').last;
-      // final String fileName =
-      //     "web_image_${DateTime.now().millisecondsSinceEpoch}.$fileExtension";
+      if (mimeType == null || !mimeType.startsWith("image/")) {
+        throw Exception("Invalid image format");
+      }
 
-      // ✅ Ensure correct file type is passed in request
+      final String fileExtension = mimeType.split('/').last;
+      final String fileName =
+          "web_image_${DateTime.now().millisecondsSinceEpoch}.$fileExtension";
+
       final Response signedUrlResponse = await _dio.get(
         "/upload/presigned-url",
         queryParameters: {
-          "fileName": "fileName",
-          "fileType": mimeType, // Ensure consistency
+          "fileName": fileName,
+          "fileType": mimeType,
         },
       );
 
@@ -148,39 +157,27 @@ class TaskRepository {
       }
 
       final String signedUrl = signedUrlResponse.data['url'];
-      if (signedUrl.isEmpty) {
-        throw Exception("Signed URL is null or empty");
-      }
 
-      print("✅ Signed URL received: $signedUrl");
-
-      // ✅ Remove query parameters before sending PUT request
-      final String uploadUrl = signedUrl.split('?').first;
-
-      print("✅ Signed URL received: $signedUrl");
-
-
-      // ✅ Ensure MIME type matches signed URL expectations
-      final Response response = await _dio.put(
+      final response = await Dio().put(
         signedUrl,
-        data: imageFile,
+        data: Stream.fromIterable([imageFile]),
         options: Options(
           headers: {
-            "Content-Type":
-                mimeType, // Ensure this matches signed URL expectations
+            "Content-Type": mimeType,
+            "Content-Length": imageFile.length.toString(),
           },
         ),
       );
 
-      if (response.statusCode == 200) {
-        print("✅ Image uploaded successfully to S3");
-        return uploadUrl; // ✅ Return the final S3 URL
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
+        return signedUrl.split('?').first;
       } else {
         throw Exception(
             "Image upload failed with status code ${response.statusCode}");
       }
     } catch (e) {
-      print("❌ Image Upload Error: $e");
       return null;
     }
   }

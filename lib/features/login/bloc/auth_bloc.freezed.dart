@@ -469,7 +469,8 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, String userType) success,
+    required TResult Function(String username, String userType, String userId)
+        success,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -477,7 +478,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, String userType)? success,
+    TResult? Function(String username, String userType, String userId)? success,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -485,7 +486,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, String userType)? success,
+    TResult Function(String username, String userType, String userId)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -580,7 +581,8 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, String userType) success,
+    required TResult Function(String username, String userType, String userId)
+        success,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -591,7 +593,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, String userType)? success,
+    TResult? Function(String username, String userType, String userId)? success,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -602,7 +604,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, String userType)? success,
+    TResult Function(String username, String userType, String userId)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -697,7 +699,8 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, String userType) success,
+    required TResult Function(String username, String userType, String userId)
+        success,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -708,7 +711,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, String userType)? success,
+    TResult? Function(String username, String userType, String userId)? success,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -719,7 +722,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, String userType)? success,
+    TResult Function(String username, String userType, String userId)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -777,7 +780,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String username, String userType});
+  $Res call({String username, String userType, String userId});
 }
 
 /// @nodoc
@@ -795,6 +798,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? username = null,
     Object? userType = null,
+    Object? userId = null,
   }) {
     return _then(_$SuccessImpl(
       username: null == username
@@ -805,6 +809,10 @@ class __$$SuccessImplCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -812,16 +820,19 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements Success {
-  const _$SuccessImpl({required this.username, required this.userType});
+  const _$SuccessImpl(
+      {required this.username, required this.userType, required this.userId});
 
   @override
   final String username;
   @override
   final String userType;
+  @override
+  final String userId;
 
   @override
   String toString() {
-    return 'AuthState.success(username: $username, userType: $userType)';
+    return 'AuthState.success(username: $username, userType: $userType, userId: $userId)';
   }
 
   @override
@@ -832,11 +843,12 @@ class _$SuccessImpl implements Success {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.userType, userType) ||
-                other.userType == userType));
+                other.userType == userType) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, userType);
+  int get hashCode => Object.hash(runtimeType, username, userType, userId);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -851,10 +863,11 @@ class _$SuccessImpl implements Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, String userType) success,
+    required TResult Function(String username, String userType, String userId)
+        success,
     required TResult Function(String message) failure,
   }) {
-    return success(username, userType);
+    return success(username, userType, userId);
   }
 
   @override
@@ -862,10 +875,10 @@ class _$SuccessImpl implements Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, String userType)? success,
+    TResult? Function(String username, String userType, String userId)? success,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(username, userType);
+    return success?.call(username, userType, userId);
   }
 
   @override
@@ -873,12 +886,12 @@ class _$SuccessImpl implements Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, String userType)? success,
+    TResult Function(String username, String userType, String userId)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(username, userType);
+      return success(username, userType, userId);
     }
     return orElse();
   }
@@ -924,10 +937,12 @@ class _$SuccessImpl implements Success {
 abstract class Success implements AuthState {
   const factory Success(
       {required final String username,
-      required final String userType}) = _$SuccessImpl;
+      required final String userType,
+      required final String userId}) = _$SuccessImpl;
 
   String get username;
   String get userType;
+  String get userId;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -1006,7 +1021,8 @@ class _$FailureImpl implements Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String username, String userType) success,
+    required TResult Function(String username, String userType, String userId)
+        success,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -1017,7 +1033,7 @@ class _$FailureImpl implements Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String username, String userType)? success,
+    TResult? Function(String username, String userType, String userId)? success,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -1028,7 +1044,7 @@ class _$FailureImpl implements Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String username, String userType)? success,
+    TResult Function(String username, String userType, String userId)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {

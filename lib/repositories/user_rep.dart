@@ -31,7 +31,9 @@ class UserRepository {
 
       final response = await _dio.get('/users', queryParameters: queryParams);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         final users = UserResponseModel.fromJson(response.data);
         return ApiResponse(
             success: true, message: "Users fetched successfully", data: users);
@@ -53,7 +55,9 @@ class UserRepository {
     try {
       final response = await _dio.delete('/users/$userId');
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         return ApiResponse(
             success: true,
             message: response.data['message'] ?? "User deleted successfully");
@@ -72,7 +76,9 @@ class UserRepository {
     try {
       final response = await _dio.put('/users/$userId', data: updatedFields);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         return ApiResponse(
             success: true,
             message: response.data['message'] ?? "User updated successfully");

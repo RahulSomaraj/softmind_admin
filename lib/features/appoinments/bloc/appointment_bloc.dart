@@ -27,7 +27,9 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
       final apiResponse = await appointmentRepository.fetchAllAppointments(
         page: event.page ?? 1,
         limit: event.limit ?? 10,
-        searchQuery: event.searchQuery ?? '',
+        patientId: event.patient ?? '',
+        referredTo: event.referredTo ?? '',
+        appointmentDate: event.appointmentDate ?? '',
       );
 
       if (apiResponse.success && apiResponse.data != null) {

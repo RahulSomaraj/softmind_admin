@@ -9,19 +9,28 @@ class AppointmentRepository {
 
   AppointmentRepository() : _dio = ApiService().dio;
 
-  Future<ApiResponse> fetchAllAppointments(
-      {int? page, int? limit, String? searchQuery}) async {
+  Future<ApiResponse> fetchAllAppointments({
+    int? page,
+    int? limit,
+    String? patientId,
+    String? referredTo,
+    String? appointmentDate,
+  }) async {
     try {
       final response = await _dio.get(
         '/appoinments',
         queryParameters: {
           'offset': page,
           'take': limit,
-          'search': searchQuery,
+          'patient': patientId,
+          'referredTo': referredTo,
+          // 'appointmentDate': appointmentDate,
         },
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         final appointments = AppointmentResponseModel.fromJson(response.data);
 
         return ApiResponse(
@@ -35,7 +44,7 @@ class AppointmentRepository {
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
     } catch (e) {
-      return ApiResponse(success: false, message: "Unexpected error: $e");
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 
@@ -47,7 +56,9 @@ class AppointmentRepository {
     try {
       final response = await _dio.delete('/appointments/$appointmentId');
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         return ApiResponse(
             success: true,
             message:
@@ -59,7 +70,7 @@ class AppointmentRepository {
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
     } catch (e) {
-      return ApiResponse(success: false, message: "Unexpected error: $e");
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 
@@ -67,9 +78,11 @@ class AppointmentRepository {
       int appointmentId, Map<String, dynamic> updatedFields) async {
     try {
       final response =
-          await _dio.put('/appointments/$appointmentId', data: updatedFields);
+          await _dio.put('/appoinments/$appointmentId', data: updatedFields);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         return ApiResponse(
             success: true,
             message:
@@ -81,7 +94,7 @@ class AppointmentRepository {
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
     } catch (e) {
-      return ApiResponse(success: false, message: "Unexpected error: $e");
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 
@@ -103,7 +116,7 @@ class AppointmentRepository {
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
     } catch (e) {
-      return ApiResponse(success: false, message: "Unexpected error: $e");
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 }

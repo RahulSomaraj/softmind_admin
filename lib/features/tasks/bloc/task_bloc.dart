@@ -65,7 +65,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       final apiResponse = await taskRepository.updateTask(
         event.taskId,
         event.updatedFields,
-        imageFile: event.imageFile ?? event.webImage,
+        event.webImage,
       );
 
       if (apiResponse.success) {
@@ -82,6 +82,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   Future<void> _onAddTask(AddTask event, Emitter<TaskState> emit) async {
     emit(const TaskState.loading());
+
     try {
       final apiResponse = await taskRepository.createTask(
         event.taskData,
