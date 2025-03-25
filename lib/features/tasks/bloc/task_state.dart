@@ -11,8 +11,14 @@ class TaskState with _$TaskState {
   }) = TaskLoaded;
   const factory TaskState.taskUpdatedSuccess(String message) =
       TaskUpdatedSuccess;
-  const factory TaskState.taskAddedSuccess(String message) =
-      TaskAddedSuccess;
+  const factory TaskState.taskAddedSuccess(String message) = TaskAddedSuccess;
   const factory TaskState.taskDeletedSuccess(String message) =
       TaskDeletedSuccess;
+
+  const factory TaskState.assignedTaskLoaded({
+    required List<AssignedTaskModel> tasks,
+  }) = AssignedTaskLoaded;
+
+
+  
 }

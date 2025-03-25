@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:softmind_admin/models/api_response_model.dart';
 import 'package:softmind_admin/models/task/task_response_model.dart';
+import 'package:softmind_admin/models/task_assigned/assigned_task_model.dart';
 import 'package:softmind_admin/repositories/api_service.dart';
 import 'package:mime/mime.dart';
 
@@ -10,8 +11,11 @@ class TaskRepository {
 
   TaskRepository() : _dio = ApiService().dio;
 
-  Future<ApiResponse> fetchAllTasks(
-      {int? page, int? limit, String? searchQuery}) async {
+  Future<ApiResponse> fetchAllTasks({
+    int? page,
+    int? limit,
+    String? searchQuery,
+  }) async {
     try {
       final response = await _dio.get(
         '/tasks',
@@ -90,7 +94,7 @@ class TaskRepository {
       }
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
-    } catch (e, st) {
+    } catch (e) {
       return ApiResponse(success: false, message: "Unexpected error");
     }
   }
@@ -179,6 +183,85 @@ class TaskRepository {
       }
     } catch (e) {
       return null;
+    }
+  }
+
+  Future<ApiResponse> assignTask(int assignedTo, int taskId) async {
+    try {
+      final response = await _dio.post(
+        "/user-tasks",
+        data: {
+          "taskId": taskId,
+          "assignedTo": assignedTo,
+        },
+      );
+
+      if (response.statusCode == 201) {
+        return ApiResponse(
+          success: true,
+          message: response.data['message'] ?? "Task Assigned",
+        );
+      } else {
+        return ApiResponse(success: false, message: "Failed to assign task");
+      }
+    } on DioException catch (e) {
+      return ApiErrorHandler.handleError(e);
+    } catch (e) {
+      return ApiResponse(success: false, message: "Unexpected error");
+    }
+  }
+
+  Future<ApiResponse> unAssignTask(int? assignedTaskId) async {
+    try {
+      final response = await _dio.delete('/user-tasks/$assignedTaskId');
+
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
+        return ApiResponse(
+            success: true, message: "Task unassigned successfully");
+      } else {
+        return ApiResponse(success: false, message: "Failed to unassign task");
+      }
+    } on DioException catch (e) {
+      return ApiErrorHandler.handleError(e);
+    } catch (e) {
+      return ApiResponse(success: false, message: "Unexpected error");
+    }
+  }
+
+  Future<ApiResponse> fetchAssignedTask({required int userId}) async {
+    try {
+      final response = await _dio.get(
+        "/user-tasks",
+        queryParameters: {
+          'userId': userId,
+          'offset': 1,
+          'take': 50,
+        },
+      );
+
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
+        final data = response.data;
+
+        final tasks = (data as List)
+            .map((json) => AssignedTaskModel.fromJson(json))
+            .toList();
+
+        return ApiResponse(
+          success: true,
+          message: "Tasks fetched successfully",
+          data: tasks,
+        );
+      } else {
+        return ApiResponse(success: false, message: "Failed to load tasks");
+      }
+    } on DioException catch (e) {
+      return ApiErrorHandler.handleError(e);
+    } catch (e) {
+      return ApiResponse(success: false, message: "Unexpected error");
     }
   }
 }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 class UserProfileBar extends StatelessWidget {
-  const UserProfileBar({super.key});
+  final String patientName;
+
+  const UserProfileBar({super.key, required this.patientName});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
+      height: 220,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -15,59 +18,40 @@ class UserProfileBar extends StatelessWidget {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // ✅ Patient Image & Info
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 40,
-                backgroundColor: Colors.grey.shade300,
-                backgroundImage:
-                    const NetworkImage("https://via.placeholder.com/150"),
-                child: Image.network(
-                  "https://via.placeholder.com/150",
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.person,
-                        size: 40, color: Colors.grey);
-                  },
-                ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              radius: 35,
+              backgroundColor: Colors.grey.shade300,
+              backgroundImage:
+                  const NetworkImage("https://via.placeholder.com/150"),
+              child: Image.network(
+                "https://via.placeholder.com/150",
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.person, size: 40, color: Colors.grey);
+                },
               ),
-              const SizedBox(width: 16),
-
-              // ✅ Patient Details
-              const Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Jessica Alexander",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 4),
-                    // Text(
-                    //   "29 Yrs, Female",
-                    //   style: TextStyle(color: Colors.black54),
-                    // ),
-                  ],
-                ),
-              ),
-
-              // ✅ Action Buttons (Call, Video Call, Chat)
-              _buildActionButtons(),
-            ],
+            ),
           ),
+          Text(
+            patientName,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+          _buildActionButtons(),
         ],
       ),
     );
   }
 
-  /// **📌 Call & Chat Buttons**
   Widget _buildActionButtons() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildIconButton(Icons.video_call, Colors.blue),
         const SizedBox(width: 10),
@@ -78,7 +62,6 @@ class UserProfileBar extends StatelessWidget {
     );
   }
 
-  /// **📌 Reusable Icon Button**
   Widget _buildIconButton(IconData icon, Color color) {
     return Container(
       decoration: BoxDecoration(

@@ -22,11 +22,14 @@ mixin _$TaskEvent {
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
     required TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)
+            File? imageFile, Uint8List? webImage)
         updateTask,
     required TResult Function(
             TaskModel taskData, File? imageFile, Uint8List? webImage)
         addTask,
+    required TResult Function(int assignedTo, int taskId) assignTask,
+    required TResult Function(int userId) fetchAssignedTask,
+    required TResult Function(int? taskId, int assignedTo) unAssignTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,10 +38,13 @@ mixin _$TaskEvent {
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
     TResult? Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult? Function(int assignedTo, int taskId)? assignTask,
+    TResult? Function(int userId)? fetchAssignedTask,
+    TResult? Function(int? taskId, int assignedTo)? unAssignTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,10 +52,13 @@ mixin _$TaskEvent {
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
     TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult Function(int assignedTo, int taskId)? assignTask,
+    TResult Function(int userId)? fetchAssignedTask,
+    TResult Function(int? taskId, int assignedTo)? unAssignTask,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +68,9 @@ mixin _$TaskEvent {
     required TResult Function(DeleteTask value) deleteTask,
     required TResult Function(UpdateTask value) updateTask,
     required TResult Function(AddTask value) addTask,
+    required TResult Function(AssignTask value) assignTask,
+    required TResult Function(FetchAssignedTask value) fetchAssignedTask,
+    required TResult Function(UnAssignTask value) unAssignTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +79,9 @@ mixin _$TaskEvent {
     TResult? Function(DeleteTask value)? deleteTask,
     TResult? Function(UpdateTask value)? updateTask,
     TResult? Function(AddTask value)? addTask,
+    TResult? Function(AssignTask value)? assignTask,
+    TResult? Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult? Function(UnAssignTask value)? unAssignTask,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +90,9 @@ mixin _$TaskEvent {
     TResult Function(DeleteTask value)? deleteTask,
     TResult Function(UpdateTask value)? updateTask,
     TResult Function(AddTask value)? addTask,
+    TResult Function(AssignTask value)? assignTask,
+    TResult Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult Function(UnAssignTask value)? unAssignTask,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -189,11 +207,14 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
     required TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)
+            File? imageFile, Uint8List? webImage)
         updateTask,
     required TResult Function(
             TaskModel taskData, File? imageFile, Uint8List? webImage)
         addTask,
+    required TResult Function(int assignedTo, int taskId) assignTask,
+    required TResult Function(int userId) fetchAssignedTask,
+    required TResult Function(int? taskId, int assignedTo) unAssignTask,
   }) {
     return fetchAllTasks(page, limit, searchQuery);
   }
@@ -205,10 +226,13 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
     TResult? Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult? Function(int assignedTo, int taskId)? assignTask,
+    TResult? Function(int userId)? fetchAssignedTask,
+    TResult? Function(int? taskId, int assignedTo)? unAssignTask,
   }) {
     return fetchAllTasks?.call(page, limit, searchQuery);
   }
@@ -219,10 +243,13 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
     TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult Function(int assignedTo, int taskId)? assignTask,
+    TResult Function(int userId)? fetchAssignedTask,
+    TResult Function(int? taskId, int assignedTo)? unAssignTask,
     required TResult orElse(),
   }) {
     if (fetchAllTasks != null) {
@@ -238,6 +265,9 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
     required TResult Function(DeleteTask value) deleteTask,
     required TResult Function(UpdateTask value) updateTask,
     required TResult Function(AddTask value) addTask,
+    required TResult Function(AssignTask value) assignTask,
+    required TResult Function(FetchAssignedTask value) fetchAssignedTask,
+    required TResult Function(UnAssignTask value) unAssignTask,
   }) {
     return fetchAllTasks(this);
   }
@@ -249,6 +279,9 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
     TResult? Function(DeleteTask value)? deleteTask,
     TResult? Function(UpdateTask value)? updateTask,
     TResult? Function(AddTask value)? addTask,
+    TResult? Function(AssignTask value)? assignTask,
+    TResult? Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult? Function(UnAssignTask value)? unAssignTask,
   }) {
     return fetchAllTasks?.call(this);
   }
@@ -260,6 +293,9 @@ class _$FetchAllTasksImpl implements FetchAllTasks {
     TResult Function(DeleteTask value)? deleteTask,
     TResult Function(UpdateTask value)? updateTask,
     TResult Function(AddTask value)? addTask,
+    TResult Function(AssignTask value)? assignTask,
+    TResult Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult Function(UnAssignTask value)? unAssignTask,
     required TResult orElse(),
   }) {
     if (fetchAllTasks != null) {
@@ -358,11 +394,14 @@ class _$DeleteTaskImpl implements DeleteTask {
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
     required TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)
+            File? imageFile, Uint8List? webImage)
         updateTask,
     required TResult Function(
             TaskModel taskData, File? imageFile, Uint8List? webImage)
         addTask,
+    required TResult Function(int assignedTo, int taskId) assignTask,
+    required TResult Function(int userId) fetchAssignedTask,
+    required TResult Function(int? taskId, int assignedTo) unAssignTask,
   }) {
     return deleteTask(taskId);
   }
@@ -374,10 +413,13 @@ class _$DeleteTaskImpl implements DeleteTask {
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
     TResult? Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult? Function(int assignedTo, int taskId)? assignTask,
+    TResult? Function(int userId)? fetchAssignedTask,
+    TResult? Function(int? taskId, int assignedTo)? unAssignTask,
   }) {
     return deleteTask?.call(taskId);
   }
@@ -388,10 +430,13 @@ class _$DeleteTaskImpl implements DeleteTask {
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
     TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult Function(int assignedTo, int taskId)? assignTask,
+    TResult Function(int userId)? fetchAssignedTask,
+    TResult Function(int? taskId, int assignedTo)? unAssignTask,
     required TResult orElse(),
   }) {
     if (deleteTask != null) {
@@ -407,6 +452,9 @@ class _$DeleteTaskImpl implements DeleteTask {
     required TResult Function(DeleteTask value) deleteTask,
     required TResult Function(UpdateTask value) updateTask,
     required TResult Function(AddTask value) addTask,
+    required TResult Function(AssignTask value) assignTask,
+    required TResult Function(FetchAssignedTask value) fetchAssignedTask,
+    required TResult Function(UnAssignTask value) unAssignTask,
   }) {
     return deleteTask(this);
   }
@@ -418,6 +466,9 @@ class _$DeleteTaskImpl implements DeleteTask {
     TResult? Function(DeleteTask value)? deleteTask,
     TResult? Function(UpdateTask value)? updateTask,
     TResult? Function(AddTask value)? addTask,
+    TResult? Function(AssignTask value)? assignTask,
+    TResult? Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult? Function(UnAssignTask value)? unAssignTask,
   }) {
     return deleteTask?.call(this);
   }
@@ -429,6 +480,9 @@ class _$DeleteTaskImpl implements DeleteTask {
     TResult Function(DeleteTask value)? deleteTask,
     TResult Function(UpdateTask value)? updateTask,
     TResult Function(AddTask value)? addTask,
+    TResult Function(AssignTask value)? assignTask,
+    TResult Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult Function(UnAssignTask value)? unAssignTask,
     required TResult orElse(),
   }) {
     if (deleteTask != null) {
@@ -460,8 +514,7 @@ abstract class _$$UpdateTaskImplCopyWith<$Res> {
       {int taskId,
       Map<String, dynamic> updatedFields,
       File? imageFile,
-      Uint8List? webImage,
-      String? imageUrl});
+      Uint8List? webImage});
 }
 
 /// @nodoc
@@ -481,7 +534,6 @@ class __$$UpdateTaskImplCopyWithImpl<$Res>
     Object? updatedFields = null,
     Object? imageFile = freezed,
     Object? webImage = freezed,
-    Object? imageUrl = freezed,
   }) {
     return _then(_$UpdateTaskImpl(
       taskId: null == taskId
@@ -500,10 +552,6 @@ class __$$UpdateTaskImplCopyWithImpl<$Res>
           ? _value.webImage
           : webImage // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -515,8 +563,7 @@ class _$UpdateTaskImpl implements UpdateTask {
       {required this.taskId,
       required final Map<String, dynamic> updatedFields,
       this.imageFile,
-      this.webImage,
-      this.imageUrl})
+      this.webImage})
       : _updatedFields = updatedFields;
 
   @override
@@ -533,12 +580,10 @@ class _$UpdateTaskImpl implements UpdateTask {
   final File? imageFile;
   @override
   final Uint8List? webImage;
-  @override
-  final String? imageUrl;
 
   @override
   String toString() {
-    return 'TaskEvent.updateTask(taskId: $taskId, updatedFields: $updatedFields, imageFile: $imageFile, webImage: $webImage, imageUrl: $imageUrl)';
+    return 'TaskEvent.updateTask(taskId: $taskId, updatedFields: $updatedFields, imageFile: $imageFile, webImage: $webImage)';
   }
 
   @override
@@ -551,9 +596,7 @@ class _$UpdateTaskImpl implements UpdateTask {
                 .equals(other._updatedFields, _updatedFields) &&
             (identical(other.imageFile, imageFile) ||
                 other.imageFile == imageFile) &&
-            const DeepCollectionEquality().equals(other.webImage, webImage) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+            const DeepCollectionEquality().equals(other.webImage, webImage));
   }
 
   @override
@@ -562,8 +605,7 @@ class _$UpdateTaskImpl implements UpdateTask {
       taskId,
       const DeepCollectionEquality().hash(_updatedFields),
       imageFile,
-      const DeepCollectionEquality().hash(webImage),
-      imageUrl);
+      const DeepCollectionEquality().hash(webImage));
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -580,13 +622,16 @@ class _$UpdateTaskImpl implements UpdateTask {
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
     required TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)
+            File? imageFile, Uint8List? webImage)
         updateTask,
     required TResult Function(
             TaskModel taskData, File? imageFile, Uint8List? webImage)
         addTask,
+    required TResult Function(int assignedTo, int taskId) assignTask,
+    required TResult Function(int userId) fetchAssignedTask,
+    required TResult Function(int? taskId, int assignedTo) unAssignTask,
   }) {
-    return updateTask(taskId, updatedFields, imageFile, webImage, imageUrl);
+    return updateTask(taskId, updatedFields, imageFile, webImage);
   }
 
   @override
@@ -596,13 +641,15 @@ class _$UpdateTaskImpl implements UpdateTask {
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
     TResult? Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult? Function(int assignedTo, int taskId)? assignTask,
+    TResult? Function(int userId)? fetchAssignedTask,
+    TResult? Function(int? taskId, int assignedTo)? unAssignTask,
   }) {
-    return updateTask?.call(
-        taskId, updatedFields, imageFile, webImage, imageUrl);
+    return updateTask?.call(taskId, updatedFields, imageFile, webImage);
   }
 
   @override
@@ -611,14 +658,17 @@ class _$UpdateTaskImpl implements UpdateTask {
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
     TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult Function(int assignedTo, int taskId)? assignTask,
+    TResult Function(int userId)? fetchAssignedTask,
+    TResult Function(int? taskId, int assignedTo)? unAssignTask,
     required TResult orElse(),
   }) {
     if (updateTask != null) {
-      return updateTask(taskId, updatedFields, imageFile, webImage, imageUrl);
+      return updateTask(taskId, updatedFields, imageFile, webImage);
     }
     return orElse();
   }
@@ -630,6 +680,9 @@ class _$UpdateTaskImpl implements UpdateTask {
     required TResult Function(DeleteTask value) deleteTask,
     required TResult Function(UpdateTask value) updateTask,
     required TResult Function(AddTask value) addTask,
+    required TResult Function(AssignTask value) assignTask,
+    required TResult Function(FetchAssignedTask value) fetchAssignedTask,
+    required TResult Function(UnAssignTask value) unAssignTask,
   }) {
     return updateTask(this);
   }
@@ -641,6 +694,9 @@ class _$UpdateTaskImpl implements UpdateTask {
     TResult? Function(DeleteTask value)? deleteTask,
     TResult? Function(UpdateTask value)? updateTask,
     TResult? Function(AddTask value)? addTask,
+    TResult? Function(AssignTask value)? assignTask,
+    TResult? Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult? Function(UnAssignTask value)? unAssignTask,
   }) {
     return updateTask?.call(this);
   }
@@ -652,6 +708,9 @@ class _$UpdateTaskImpl implements UpdateTask {
     TResult Function(DeleteTask value)? deleteTask,
     TResult Function(UpdateTask value)? updateTask,
     TResult Function(AddTask value)? addTask,
+    TResult Function(AssignTask value)? assignTask,
+    TResult Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult Function(UnAssignTask value)? unAssignTask,
     required TResult orElse(),
   }) {
     if (updateTask != null) {
@@ -666,14 +725,12 @@ abstract class UpdateTask implements TaskEvent {
       {required final int taskId,
       required final Map<String, dynamic> updatedFields,
       final File? imageFile,
-      final Uint8List? webImage,
-      final String? imageUrl}) = _$UpdateTaskImpl;
+      final Uint8List? webImage}) = _$UpdateTaskImpl;
 
   int get taskId;
   Map<String, dynamic> get updatedFields;
   File? get imageFile;
   Uint8List? get webImage;
-  String? get imageUrl;
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -785,11 +842,14 @@ class _$AddTaskImpl implements AddTask {
         fetchAllTasks,
     required TResult Function(int? taskId) deleteTask,
     required TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)
+            File? imageFile, Uint8List? webImage)
         updateTask,
     required TResult Function(
             TaskModel taskData, File? imageFile, Uint8List? webImage)
         addTask,
+    required TResult Function(int assignedTo, int taskId) assignTask,
+    required TResult Function(int userId) fetchAssignedTask,
+    required TResult Function(int? taskId, int assignedTo) unAssignTask,
   }) {
     return addTask(taskData, imageFile, webImage);
   }
@@ -801,10 +861,13 @@ class _$AddTaskImpl implements AddTask {
         fetchAllTasks,
     TResult? Function(int? taskId)? deleteTask,
     TResult? Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult? Function(int assignedTo, int taskId)? assignTask,
+    TResult? Function(int userId)? fetchAssignedTask,
+    TResult? Function(int? taskId, int assignedTo)? unAssignTask,
   }) {
     return addTask?.call(taskData, imageFile, webImage);
   }
@@ -815,10 +878,13 @@ class _$AddTaskImpl implements AddTask {
     TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
     TResult Function(int? taskId)? deleteTask,
     TResult Function(int taskId, Map<String, dynamic> updatedFields,
-            File? imageFile, Uint8List? webImage, String? imageUrl)?
+            File? imageFile, Uint8List? webImage)?
         updateTask,
     TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
         addTask,
+    TResult Function(int assignedTo, int taskId)? assignTask,
+    TResult Function(int userId)? fetchAssignedTask,
+    TResult Function(int? taskId, int assignedTo)? unAssignTask,
     required TResult orElse(),
   }) {
     if (addTask != null) {
@@ -834,6 +900,9 @@ class _$AddTaskImpl implements AddTask {
     required TResult Function(DeleteTask value) deleteTask,
     required TResult Function(UpdateTask value) updateTask,
     required TResult Function(AddTask value) addTask,
+    required TResult Function(AssignTask value) assignTask,
+    required TResult Function(FetchAssignedTask value) fetchAssignedTask,
+    required TResult Function(UnAssignTask value) unAssignTask,
   }) {
     return addTask(this);
   }
@@ -845,6 +914,9 @@ class _$AddTaskImpl implements AddTask {
     TResult? Function(DeleteTask value)? deleteTask,
     TResult? Function(UpdateTask value)? updateTask,
     TResult? Function(AddTask value)? addTask,
+    TResult? Function(AssignTask value)? assignTask,
+    TResult? Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult? Function(UnAssignTask value)? unAssignTask,
   }) {
     return addTask?.call(this);
   }
@@ -856,6 +928,9 @@ class _$AddTaskImpl implements AddTask {
     TResult Function(DeleteTask value)? deleteTask,
     TResult Function(UpdateTask value)? updateTask,
     TResult Function(AddTask value)? addTask,
+    TResult Function(AssignTask value)? assignTask,
+    TResult Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult Function(UnAssignTask value)? unAssignTask,
     required TResult orElse(),
   }) {
     if (addTask != null) {
@@ -883,6 +958,578 @@ abstract class AddTask implements TaskEvent {
 }
 
 /// @nodoc
+abstract class _$$AssignTaskImplCopyWith<$Res> {
+  factory _$$AssignTaskImplCopyWith(
+          _$AssignTaskImpl value, $Res Function(_$AssignTaskImpl) then) =
+      __$$AssignTaskImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int assignedTo, int taskId});
+}
+
+/// @nodoc
+class __$$AssignTaskImplCopyWithImpl<$Res>
+    extends _$TaskEventCopyWithImpl<$Res, _$AssignTaskImpl>
+    implements _$$AssignTaskImplCopyWith<$Res> {
+  __$$AssignTaskImplCopyWithImpl(
+      _$AssignTaskImpl _value, $Res Function(_$AssignTaskImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? assignedTo = null,
+    Object? taskId = null,
+  }) {
+    return _then(_$AssignTaskImpl(
+      assignedTo: null == assignedTo
+          ? _value.assignedTo
+          : assignedTo // ignore: cast_nullable_to_non_nullable
+              as int,
+      taskId: null == taskId
+          ? _value.taskId
+          : taskId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AssignTaskImpl implements AssignTask {
+  const _$AssignTaskImpl({required this.assignedTo, required this.taskId});
+
+  @override
+  final int assignedTo;
+  @override
+  final int taskId;
+
+  @override
+  String toString() {
+    return 'TaskEvent.assignTask(assignedTo: $assignedTo, taskId: $taskId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AssignTaskImpl &&
+            (identical(other.assignedTo, assignedTo) ||
+                other.assignedTo == assignedTo) &&
+            (identical(other.taskId, taskId) || other.taskId == taskId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, assignedTo, taskId);
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AssignTaskImplCopyWith<_$AssignTaskImpl> get copyWith =>
+      __$$AssignTaskImplCopyWithImpl<_$AssignTaskImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? page, int? limit, String? searchQuery)
+        fetchAllTasks,
+    required TResult Function(int? taskId) deleteTask,
+    required TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)
+        updateTask,
+    required TResult Function(
+            TaskModel taskData, File? imageFile, Uint8List? webImage)
+        addTask,
+    required TResult Function(int assignedTo, int taskId) assignTask,
+    required TResult Function(int userId) fetchAssignedTask,
+    required TResult Function(int? taskId, int assignedTo) unAssignTask,
+  }) {
+    return assignTask(assignedTo, taskId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? page, int? limit, String? searchQuery)?
+        fetchAllTasks,
+    TResult? Function(int? taskId)? deleteTask,
+    TResult? Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)?
+        updateTask,
+    TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
+    TResult? Function(int assignedTo, int taskId)? assignTask,
+    TResult? Function(int userId)? fetchAssignedTask,
+    TResult? Function(int? taskId, int assignedTo)? unAssignTask,
+  }) {
+    return assignTask?.call(assignedTo, taskId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
+    TResult Function(int? taskId)? deleteTask,
+    TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)?
+        updateTask,
+    TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
+    TResult Function(int assignedTo, int taskId)? assignTask,
+    TResult Function(int userId)? fetchAssignedTask,
+    TResult Function(int? taskId, int assignedTo)? unAssignTask,
+    required TResult orElse(),
+  }) {
+    if (assignTask != null) {
+      return assignTask(assignedTo, taskId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllTasks value) fetchAllTasks,
+    required TResult Function(DeleteTask value) deleteTask,
+    required TResult Function(UpdateTask value) updateTask,
+    required TResult Function(AddTask value) addTask,
+    required TResult Function(AssignTask value) assignTask,
+    required TResult Function(FetchAssignedTask value) fetchAssignedTask,
+    required TResult Function(UnAssignTask value) unAssignTask,
+  }) {
+    return assignTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllTasks value)? fetchAllTasks,
+    TResult? Function(DeleteTask value)? deleteTask,
+    TResult? Function(UpdateTask value)? updateTask,
+    TResult? Function(AddTask value)? addTask,
+    TResult? Function(AssignTask value)? assignTask,
+    TResult? Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult? Function(UnAssignTask value)? unAssignTask,
+  }) {
+    return assignTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllTasks value)? fetchAllTasks,
+    TResult Function(DeleteTask value)? deleteTask,
+    TResult Function(UpdateTask value)? updateTask,
+    TResult Function(AddTask value)? addTask,
+    TResult Function(AssignTask value)? assignTask,
+    TResult Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult Function(UnAssignTask value)? unAssignTask,
+    required TResult orElse(),
+  }) {
+    if (assignTask != null) {
+      return assignTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AssignTask implements TaskEvent {
+  const factory AssignTask(
+      {required final int assignedTo,
+      required final int taskId}) = _$AssignTaskImpl;
+
+  int get assignedTo;
+  int get taskId;
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AssignTaskImplCopyWith<_$AssignTaskImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchAssignedTaskImplCopyWith<$Res> {
+  factory _$$FetchAssignedTaskImplCopyWith(_$FetchAssignedTaskImpl value,
+          $Res Function(_$FetchAssignedTaskImpl) then) =
+      __$$FetchAssignedTaskImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int userId});
+}
+
+/// @nodoc
+class __$$FetchAssignedTaskImplCopyWithImpl<$Res>
+    extends _$TaskEventCopyWithImpl<$Res, _$FetchAssignedTaskImpl>
+    implements _$$FetchAssignedTaskImplCopyWith<$Res> {
+  __$$FetchAssignedTaskImplCopyWithImpl(_$FetchAssignedTaskImpl _value,
+      $Res Function(_$FetchAssignedTaskImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+  }) {
+    return _then(_$FetchAssignedTaskImpl(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchAssignedTaskImpl implements FetchAssignedTask {
+  const _$FetchAssignedTaskImpl({required this.userId});
+
+  @override
+  final int userId;
+
+  @override
+  String toString() {
+    return 'TaskEvent.fetchAssignedTask(userId: $userId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchAssignedTaskImpl &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchAssignedTaskImplCopyWith<_$FetchAssignedTaskImpl> get copyWith =>
+      __$$FetchAssignedTaskImplCopyWithImpl<_$FetchAssignedTaskImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? page, int? limit, String? searchQuery)
+        fetchAllTasks,
+    required TResult Function(int? taskId) deleteTask,
+    required TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)
+        updateTask,
+    required TResult Function(
+            TaskModel taskData, File? imageFile, Uint8List? webImage)
+        addTask,
+    required TResult Function(int assignedTo, int taskId) assignTask,
+    required TResult Function(int userId) fetchAssignedTask,
+    required TResult Function(int? taskId, int assignedTo) unAssignTask,
+  }) {
+    return fetchAssignedTask(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? page, int? limit, String? searchQuery)?
+        fetchAllTasks,
+    TResult? Function(int? taskId)? deleteTask,
+    TResult? Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)?
+        updateTask,
+    TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
+    TResult? Function(int assignedTo, int taskId)? assignTask,
+    TResult? Function(int userId)? fetchAssignedTask,
+    TResult? Function(int? taskId, int assignedTo)? unAssignTask,
+  }) {
+    return fetchAssignedTask?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
+    TResult Function(int? taskId)? deleteTask,
+    TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)?
+        updateTask,
+    TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
+    TResult Function(int assignedTo, int taskId)? assignTask,
+    TResult Function(int userId)? fetchAssignedTask,
+    TResult Function(int? taskId, int assignedTo)? unAssignTask,
+    required TResult orElse(),
+  }) {
+    if (fetchAssignedTask != null) {
+      return fetchAssignedTask(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllTasks value) fetchAllTasks,
+    required TResult Function(DeleteTask value) deleteTask,
+    required TResult Function(UpdateTask value) updateTask,
+    required TResult Function(AddTask value) addTask,
+    required TResult Function(AssignTask value) assignTask,
+    required TResult Function(FetchAssignedTask value) fetchAssignedTask,
+    required TResult Function(UnAssignTask value) unAssignTask,
+  }) {
+    return fetchAssignedTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllTasks value)? fetchAllTasks,
+    TResult? Function(DeleteTask value)? deleteTask,
+    TResult? Function(UpdateTask value)? updateTask,
+    TResult? Function(AddTask value)? addTask,
+    TResult? Function(AssignTask value)? assignTask,
+    TResult? Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult? Function(UnAssignTask value)? unAssignTask,
+  }) {
+    return fetchAssignedTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllTasks value)? fetchAllTasks,
+    TResult Function(DeleteTask value)? deleteTask,
+    TResult Function(UpdateTask value)? updateTask,
+    TResult Function(AddTask value)? addTask,
+    TResult Function(AssignTask value)? assignTask,
+    TResult Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult Function(UnAssignTask value)? unAssignTask,
+    required TResult orElse(),
+  }) {
+    if (fetchAssignedTask != null) {
+      return fetchAssignedTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchAssignedTask implements TaskEvent {
+  const factory FetchAssignedTask({required final int userId}) =
+      _$FetchAssignedTaskImpl;
+
+  int get userId;
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FetchAssignedTaskImplCopyWith<_$FetchAssignedTaskImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UnAssignTaskImplCopyWith<$Res> {
+  factory _$$UnAssignTaskImplCopyWith(
+          _$UnAssignTaskImpl value, $Res Function(_$UnAssignTaskImpl) then) =
+      __$$UnAssignTaskImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? taskId, int assignedTo});
+}
+
+/// @nodoc
+class __$$UnAssignTaskImplCopyWithImpl<$Res>
+    extends _$TaskEventCopyWithImpl<$Res, _$UnAssignTaskImpl>
+    implements _$$UnAssignTaskImplCopyWith<$Res> {
+  __$$UnAssignTaskImplCopyWithImpl(
+      _$UnAssignTaskImpl _value, $Res Function(_$UnAssignTaskImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? taskId = freezed,
+    Object? assignedTo = null,
+  }) {
+    return _then(_$UnAssignTaskImpl(
+      taskId: freezed == taskId
+          ? _value.taskId
+          : taskId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      assignedTo: null == assignedTo
+          ? _value.assignedTo
+          : assignedTo // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnAssignTaskImpl implements UnAssignTask {
+  const _$UnAssignTaskImpl({required this.taskId, required this.assignedTo});
+
+  @override
+  final int? taskId;
+  @override
+  final int assignedTo;
+
+  @override
+  String toString() {
+    return 'TaskEvent.unAssignTask(taskId: $taskId, assignedTo: $assignedTo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnAssignTaskImpl &&
+            (identical(other.taskId, taskId) || other.taskId == taskId) &&
+            (identical(other.assignedTo, assignedTo) ||
+                other.assignedTo == assignedTo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, taskId, assignedTo);
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnAssignTaskImplCopyWith<_$UnAssignTaskImpl> get copyWith =>
+      __$$UnAssignTaskImplCopyWithImpl<_$UnAssignTaskImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? page, int? limit, String? searchQuery)
+        fetchAllTasks,
+    required TResult Function(int? taskId) deleteTask,
+    required TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)
+        updateTask,
+    required TResult Function(
+            TaskModel taskData, File? imageFile, Uint8List? webImage)
+        addTask,
+    required TResult Function(int assignedTo, int taskId) assignTask,
+    required TResult Function(int userId) fetchAssignedTask,
+    required TResult Function(int? taskId, int assignedTo) unAssignTask,
+  }) {
+    return unAssignTask(taskId, assignedTo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? page, int? limit, String? searchQuery)?
+        fetchAllTasks,
+    TResult? Function(int? taskId)? deleteTask,
+    TResult? Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)?
+        updateTask,
+    TResult? Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
+    TResult? Function(int assignedTo, int taskId)? assignTask,
+    TResult? Function(int userId)? fetchAssignedTask,
+    TResult? Function(int? taskId, int assignedTo)? unAssignTask,
+  }) {
+    return unAssignTask?.call(taskId, assignedTo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? page, int? limit, String? searchQuery)? fetchAllTasks,
+    TResult Function(int? taskId)? deleteTask,
+    TResult Function(int taskId, Map<String, dynamic> updatedFields,
+            File? imageFile, Uint8List? webImage)?
+        updateTask,
+    TResult Function(TaskModel taskData, File? imageFile, Uint8List? webImage)?
+        addTask,
+    TResult Function(int assignedTo, int taskId)? assignTask,
+    TResult Function(int userId)? fetchAssignedTask,
+    TResult Function(int? taskId, int assignedTo)? unAssignTask,
+    required TResult orElse(),
+  }) {
+    if (unAssignTask != null) {
+      return unAssignTask(taskId, assignedTo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllTasks value) fetchAllTasks,
+    required TResult Function(DeleteTask value) deleteTask,
+    required TResult Function(UpdateTask value) updateTask,
+    required TResult Function(AddTask value) addTask,
+    required TResult Function(AssignTask value) assignTask,
+    required TResult Function(FetchAssignedTask value) fetchAssignedTask,
+    required TResult Function(UnAssignTask value) unAssignTask,
+  }) {
+    return unAssignTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllTasks value)? fetchAllTasks,
+    TResult? Function(DeleteTask value)? deleteTask,
+    TResult? Function(UpdateTask value)? updateTask,
+    TResult? Function(AddTask value)? addTask,
+    TResult? Function(AssignTask value)? assignTask,
+    TResult? Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult? Function(UnAssignTask value)? unAssignTask,
+  }) {
+    return unAssignTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllTasks value)? fetchAllTasks,
+    TResult Function(DeleteTask value)? deleteTask,
+    TResult Function(UpdateTask value)? updateTask,
+    TResult Function(AddTask value)? addTask,
+    TResult Function(AssignTask value)? assignTask,
+    TResult Function(FetchAssignedTask value)? fetchAssignedTask,
+    TResult Function(UnAssignTask value)? unAssignTask,
+    required TResult orElse(),
+  }) {
+    if (unAssignTask != null) {
+      return unAssignTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnAssignTask implements TaskEvent {
+  const factory UnAssignTask(
+      {required final int? taskId,
+      required final int assignedTo}) = _$UnAssignTaskImpl;
+
+  int? get taskId;
+  int get assignedTo;
+
+  /// Create a copy of TaskEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UnAssignTaskImplCopyWith<_$UnAssignTaskImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TaskState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -893,6 +1540,7 @@ mixin _$TaskState {
     required TResult Function(String message) taskUpdatedSuccess,
     required TResult Function(String message) taskAddedSuccess,
     required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -904,6 +1552,7 @@ mixin _$TaskState {
     TResult? Function(String message)? taskUpdatedSuccess,
     TResult? Function(String message)? taskAddedSuccess,
     TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -915,6 +1564,7 @@ mixin _$TaskState {
     TResult Function(String message)? taskUpdatedSuccess,
     TResult Function(String message)? taskAddedSuccess,
     TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -927,6 +1577,7 @@ mixin _$TaskState {
     required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
     required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
     required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -938,6 +1589,7 @@ mixin _$TaskState {
     TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -949,6 +1601,7 @@ mixin _$TaskState {
     TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1022,6 +1675,7 @@ class _$TaskInitialImpl implements TaskInitial {
     required TResult Function(String message) taskUpdatedSuccess,
     required TResult Function(String message) taskAddedSuccess,
     required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
   }) {
     return initial();
   }
@@ -1036,6 +1690,7 @@ class _$TaskInitialImpl implements TaskInitial {
     TResult? Function(String message)? taskUpdatedSuccess,
     TResult? Function(String message)? taskAddedSuccess,
     TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
   }) {
     return initial?.call();
   }
@@ -1050,6 +1705,7 @@ class _$TaskInitialImpl implements TaskInitial {
     TResult Function(String message)? taskUpdatedSuccess,
     TResult Function(String message)? taskAddedSuccess,
     TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1068,6 +1724,7 @@ class _$TaskInitialImpl implements TaskInitial {
     required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
     required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
     required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
   }) {
     return initial(this);
   }
@@ -1082,6 +1739,7 @@ class _$TaskInitialImpl implements TaskInitial {
     TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
   }) {
     return initial?.call(this);
   }
@@ -1096,6 +1754,7 @@ class _$TaskInitialImpl implements TaskInitial {
     TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1157,6 +1816,7 @@ class _$TaskLoadingImpl implements TaskLoading {
     required TResult Function(String message) taskUpdatedSuccess,
     required TResult Function(String message) taskAddedSuccess,
     required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
   }) {
     return loading();
   }
@@ -1171,6 +1831,7 @@ class _$TaskLoadingImpl implements TaskLoading {
     TResult? Function(String message)? taskUpdatedSuccess,
     TResult? Function(String message)? taskAddedSuccess,
     TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
   }) {
     return loading?.call();
   }
@@ -1185,6 +1846,7 @@ class _$TaskLoadingImpl implements TaskLoading {
     TResult Function(String message)? taskUpdatedSuccess,
     TResult Function(String message)? taskAddedSuccess,
     TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1203,6 +1865,7 @@ class _$TaskLoadingImpl implements TaskLoading {
     required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
     required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
     required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
   }) {
     return loading(this);
   }
@@ -1217,6 +1880,7 @@ class _$TaskLoadingImpl implements TaskLoading {
     TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
   }) {
     return loading?.call(this);
   }
@@ -1231,6 +1895,7 @@ class _$TaskLoadingImpl implements TaskLoading {
     TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1319,6 +1984,7 @@ class _$TaskErrorImpl implements TaskError {
     required TResult Function(String message) taskUpdatedSuccess,
     required TResult Function(String message) taskAddedSuccess,
     required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
   }) {
     return error(message);
   }
@@ -1333,6 +1999,7 @@ class _$TaskErrorImpl implements TaskError {
     TResult? Function(String message)? taskUpdatedSuccess,
     TResult? Function(String message)? taskAddedSuccess,
     TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
   }) {
     return error?.call(message);
   }
@@ -1347,6 +2014,7 @@ class _$TaskErrorImpl implements TaskError {
     TResult Function(String message)? taskUpdatedSuccess,
     TResult Function(String message)? taskAddedSuccess,
     TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1365,6 +2033,7 @@ class _$TaskErrorImpl implements TaskError {
     required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
     required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
     required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
   }) {
     return error(this);
   }
@@ -1379,6 +2048,7 @@ class _$TaskErrorImpl implements TaskError {
     TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
   }) {
     return error?.call(this);
   }
@@ -1393,6 +2063,7 @@ class _$TaskErrorImpl implements TaskError {
     TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1501,6 +2172,7 @@ class _$TaskLoadedImpl implements TaskLoaded {
     required TResult Function(String message) taskUpdatedSuccess,
     required TResult Function(String message) taskAddedSuccess,
     required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
   }) {
     return loaded(tasks);
   }
@@ -1515,6 +2187,7 @@ class _$TaskLoadedImpl implements TaskLoaded {
     TResult? Function(String message)? taskUpdatedSuccess,
     TResult? Function(String message)? taskAddedSuccess,
     TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
   }) {
     return loaded?.call(tasks);
   }
@@ -1529,6 +2202,7 @@ class _$TaskLoadedImpl implements TaskLoaded {
     TResult Function(String message)? taskUpdatedSuccess,
     TResult Function(String message)? taskAddedSuccess,
     TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1547,6 +2221,7 @@ class _$TaskLoadedImpl implements TaskLoaded {
     required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
     required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
     required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
   }) {
     return loaded(this);
   }
@@ -1561,6 +2236,7 @@ class _$TaskLoadedImpl implements TaskLoaded {
     TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
   }) {
     return loaded?.call(this);
   }
@@ -1575,6 +2251,7 @@ class _$TaskLoadedImpl implements TaskLoaded {
     TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1673,6 +2350,7 @@ class _$TaskUpdatedSuccessImpl implements TaskUpdatedSuccess {
     required TResult Function(String message) taskUpdatedSuccess,
     required TResult Function(String message) taskAddedSuccess,
     required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
   }) {
     return taskUpdatedSuccess(message);
   }
@@ -1687,6 +2365,7 @@ class _$TaskUpdatedSuccessImpl implements TaskUpdatedSuccess {
     TResult? Function(String message)? taskUpdatedSuccess,
     TResult? Function(String message)? taskAddedSuccess,
     TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
   }) {
     return taskUpdatedSuccess?.call(message);
   }
@@ -1701,6 +2380,7 @@ class _$TaskUpdatedSuccessImpl implements TaskUpdatedSuccess {
     TResult Function(String message)? taskUpdatedSuccess,
     TResult Function(String message)? taskAddedSuccess,
     TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (taskUpdatedSuccess != null) {
@@ -1719,6 +2399,7 @@ class _$TaskUpdatedSuccessImpl implements TaskUpdatedSuccess {
     required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
     required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
     required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
   }) {
     return taskUpdatedSuccess(this);
   }
@@ -1733,6 +2414,7 @@ class _$TaskUpdatedSuccessImpl implements TaskUpdatedSuccess {
     TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
   }) {
     return taskUpdatedSuccess?.call(this);
   }
@@ -1747,6 +2429,7 @@ class _$TaskUpdatedSuccessImpl implements TaskUpdatedSuccess {
     TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (taskUpdatedSuccess != null) {
@@ -1845,6 +2528,7 @@ class _$TaskAddedSuccessImpl implements TaskAddedSuccess {
     required TResult Function(String message) taskUpdatedSuccess,
     required TResult Function(String message) taskAddedSuccess,
     required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
   }) {
     return taskAddedSuccess(message);
   }
@@ -1859,6 +2543,7 @@ class _$TaskAddedSuccessImpl implements TaskAddedSuccess {
     TResult? Function(String message)? taskUpdatedSuccess,
     TResult? Function(String message)? taskAddedSuccess,
     TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
   }) {
     return taskAddedSuccess?.call(message);
   }
@@ -1873,6 +2558,7 @@ class _$TaskAddedSuccessImpl implements TaskAddedSuccess {
     TResult Function(String message)? taskUpdatedSuccess,
     TResult Function(String message)? taskAddedSuccess,
     TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (taskAddedSuccess != null) {
@@ -1891,6 +2577,7 @@ class _$TaskAddedSuccessImpl implements TaskAddedSuccess {
     required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
     required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
     required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
   }) {
     return taskAddedSuccess(this);
   }
@@ -1905,6 +2592,7 @@ class _$TaskAddedSuccessImpl implements TaskAddedSuccess {
     TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
   }) {
     return taskAddedSuccess?.call(this);
   }
@@ -1919,6 +2607,7 @@ class _$TaskAddedSuccessImpl implements TaskAddedSuccess {
     TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (taskAddedSuccess != null) {
@@ -2016,6 +2705,7 @@ class _$TaskDeletedSuccessImpl implements TaskDeletedSuccess {
     required TResult Function(String message) taskUpdatedSuccess,
     required TResult Function(String message) taskAddedSuccess,
     required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
   }) {
     return taskDeletedSuccess(message);
   }
@@ -2030,6 +2720,7 @@ class _$TaskDeletedSuccessImpl implements TaskDeletedSuccess {
     TResult? Function(String message)? taskUpdatedSuccess,
     TResult? Function(String message)? taskAddedSuccess,
     TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
   }) {
     return taskDeletedSuccess?.call(message);
   }
@@ -2044,6 +2735,7 @@ class _$TaskDeletedSuccessImpl implements TaskDeletedSuccess {
     TResult Function(String message)? taskUpdatedSuccess,
     TResult Function(String message)? taskAddedSuccess,
     TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (taskDeletedSuccess != null) {
@@ -2062,6 +2754,7 @@ class _$TaskDeletedSuccessImpl implements TaskDeletedSuccess {
     required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
     required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
     required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
   }) {
     return taskDeletedSuccess(this);
   }
@@ -2076,6 +2769,7 @@ class _$TaskDeletedSuccessImpl implements TaskDeletedSuccess {
     TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
   }) {
     return taskDeletedSuccess?.call(this);
   }
@@ -2090,6 +2784,7 @@ class _$TaskDeletedSuccessImpl implements TaskDeletedSuccess {
     TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
     TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
     TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
     required TResult orElse(),
   }) {
     if (taskDeletedSuccess != null) {
@@ -2109,5 +2804,191 @@ abstract class TaskDeletedSuccess implements TaskState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TaskDeletedSuccessImplCopyWith<_$TaskDeletedSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AssignedTaskLoadedImplCopyWith<$Res> {
+  factory _$$AssignedTaskLoadedImplCopyWith(_$AssignedTaskLoadedImpl value,
+          $Res Function(_$AssignedTaskLoadedImpl) then) =
+      __$$AssignedTaskLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<AssignedTaskModel> tasks});
+}
+
+/// @nodoc
+class __$$AssignedTaskLoadedImplCopyWithImpl<$Res>
+    extends _$TaskStateCopyWithImpl<$Res, _$AssignedTaskLoadedImpl>
+    implements _$$AssignedTaskLoadedImplCopyWith<$Res> {
+  __$$AssignedTaskLoadedImplCopyWithImpl(_$AssignedTaskLoadedImpl _value,
+      $Res Function(_$AssignedTaskLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TaskState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tasks = null,
+  }) {
+    return _then(_$AssignedTaskLoadedImpl(
+      tasks: null == tasks
+          ? _value._tasks
+          : tasks // ignore: cast_nullable_to_non_nullable
+              as List<AssignedTaskModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AssignedTaskLoadedImpl implements AssignedTaskLoaded {
+  const _$AssignedTaskLoadedImpl({required final List<AssignedTaskModel> tasks})
+      : _tasks = tasks;
+
+  final List<AssignedTaskModel> _tasks;
+  @override
+  List<AssignedTaskModel> get tasks {
+    if (_tasks is EqualUnmodifiableListView) return _tasks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tasks);
+  }
+
+  @override
+  String toString() {
+    return 'TaskState.assignedTaskLoaded(tasks: $tasks)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AssignedTaskLoadedImpl &&
+            const DeepCollectionEquality().equals(other._tasks, _tasks));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tasks));
+
+  /// Create a copy of TaskState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AssignedTaskLoadedImplCopyWith<_$AssignedTaskLoadedImpl> get copyWith =>
+      __$$AssignedTaskLoadedImplCopyWithImpl<_$AssignedTaskLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(TaskResponseModel tasks) loaded,
+    required TResult Function(String message) taskUpdatedSuccess,
+    required TResult Function(String message) taskAddedSuccess,
+    required TResult Function(String message) taskDeletedSuccess,
+    required TResult Function(List<AssignedTaskModel> tasks) assignedTaskLoaded,
+  }) {
+    return assignedTaskLoaded(tasks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function(TaskResponseModel tasks)? loaded,
+    TResult? Function(String message)? taskUpdatedSuccess,
+    TResult? Function(String message)? taskAddedSuccess,
+    TResult? Function(String message)? taskDeletedSuccess,
+    TResult? Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
+  }) {
+    return assignedTaskLoaded?.call(tasks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(TaskResponseModel tasks)? loaded,
+    TResult Function(String message)? taskUpdatedSuccess,
+    TResult Function(String message)? taskAddedSuccess,
+    TResult Function(String message)? taskDeletedSuccess,
+    TResult Function(List<AssignedTaskModel> tasks)? assignedTaskLoaded,
+    required TResult orElse(),
+  }) {
+    if (assignedTaskLoaded != null) {
+      return assignedTaskLoaded(tasks);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(TaskInitial value) initial,
+    required TResult Function(TaskLoading value) loading,
+    required TResult Function(TaskError value) error,
+    required TResult Function(TaskLoaded value) loaded,
+    required TResult Function(TaskUpdatedSuccess value) taskUpdatedSuccess,
+    required TResult Function(TaskAddedSuccess value) taskAddedSuccess,
+    required TResult Function(TaskDeletedSuccess value) taskDeletedSuccess,
+    required TResult Function(AssignedTaskLoaded value) assignedTaskLoaded,
+  }) {
+    return assignedTaskLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(TaskInitial value)? initial,
+    TResult? Function(TaskLoading value)? loading,
+    TResult? Function(TaskError value)? error,
+    TResult? Function(TaskLoaded value)? loaded,
+    TResult? Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
+    TResult? Function(TaskAddedSuccess value)? taskAddedSuccess,
+    TResult? Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult? Function(AssignedTaskLoaded value)? assignedTaskLoaded,
+  }) {
+    return assignedTaskLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(TaskInitial value)? initial,
+    TResult Function(TaskLoading value)? loading,
+    TResult Function(TaskError value)? error,
+    TResult Function(TaskLoaded value)? loaded,
+    TResult Function(TaskUpdatedSuccess value)? taskUpdatedSuccess,
+    TResult Function(TaskAddedSuccess value)? taskAddedSuccess,
+    TResult Function(TaskDeletedSuccess value)? taskDeletedSuccess,
+    TResult Function(AssignedTaskLoaded value)? assignedTaskLoaded,
+    required TResult orElse(),
+  }) {
+    if (assignedTaskLoaded != null) {
+      return assignedTaskLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AssignedTaskLoaded implements TaskState {
+  const factory AssignedTaskLoaded(
+          {required final List<AssignedTaskModel> tasks}) =
+      _$AssignedTaskLoadedImpl;
+
+  List<AssignedTaskModel> get tasks;
+
+  /// Create a copy of TaskState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AssignedTaskLoadedImplCopyWith<_$AssignedTaskLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

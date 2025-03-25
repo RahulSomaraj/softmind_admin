@@ -63,13 +63,7 @@ class _CreateUserDiagnosisState extends State<CreateUserDiagnosis> {
       value: context.read<DiagnosisBloc>(),
       child: BlocListener<DiagnosisBloc, DiagnosisState>(
         listener: (context, state) {
-          if (state is DiagnosisAddedSuccess) {
-            DialogUtil.showSuccessDialog(
-              context,
-              state.message,
-              onOkPressed: () => context.pop(),
-            );
-          } else if (state is DiagnosisUpdatedSuccess) {
+          if (state is DiagnosisSuccess) {
             DialogUtil.showSuccessDialog(
               context,
               state.message,

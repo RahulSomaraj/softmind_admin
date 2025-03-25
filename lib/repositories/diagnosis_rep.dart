@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:softmind_admin/common/data_storage.dart';
 import 'package:softmind_admin/models/api_response_model.dart';
 import 'package:softmind_admin/models/diagnosis/diagnosis_create_model.dart';
+import 'package:softmind_admin/models/patient_summary/patient_summary_model.dart';
 import 'package:softmind_admin/repositories/api_service.dart';
 
 class DiagnosisRepository {
@@ -36,9 +38,10 @@ class DiagnosisRepository {
           response.statusCode! < 300) {
         final diagnosiss = DiagnosisModel.fromJson(response.data);
         return ApiResponse(
-            success: true,
-            message: "Diagnosiss fetched successfully",
-            data: diagnosiss);
+          success: true,
+          message: "Diagnosiss fetched successfully",
+          data: diagnosiss,
+        );
       } else {
         return ApiResponse(
             success: false, message: "Failed to load diagnosiss");
@@ -105,6 +108,8 @@ class DiagnosisRepository {
       final response =
           await _dio.post("/diagnosis", data: diagnosisData.toJson());
 
+   
+
       if (response.statusCode == 201) {
         return ApiResponse(
             success: true,
@@ -123,19 +128,53 @@ class DiagnosisRepository {
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  Future<ApiResponse> getPatientSummary(DiagnosisModel diagnosisData) async {
+  Future<ApiResponse> getPatientSummary(int patientId) async {
     try {
-      final response =
-          await _dio.post("/diagnosis", data: diagnosisData.toJson());
+      final response = await _dio.get("/diagnosis-summaries/$patientId");
 
-      if (response.statusCode == 201) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
+        final summary = PatientSummaryModel.fromJson(response.data);
         return ApiResponse(
-            success: true,
-            message:
-                response.data['message'] ?? "Diagnosis created successfully");
+          success: true,
+          message: "Summary fetched successfully",
+          data: summary,
+        );
       } else {
+        return ApiResponse(success: false, message: "Failed to fetch Summary");
+      }
+    } on DioException catch (e) {
+      return ApiErrorHandler.handleError(e);
+    } catch (e) {
+      return ApiResponse(success: false, message: "Unexpected error: $e");
+    }
+  }
+
+  Future<ApiResponse> savePatientSummary(int patientId, String summary) async {
+    try {
+      final String? assignedDoctorId = await getUserId();
+      final String currentDate =
+          DateTime.now().toIso8601String().split('T').first;
+
+      final Map<String, dynamic> data = {
+        "userId": patientId,
+        "firstAppointmentDate": currentDate,
+        "assignedDoctorId": int.parse(assignedDoctorId!),
+        "description": summary,
+      };
+
+      final response = await _dio.post("/diagnosis-summaries", data: data);
+
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
         return ApiResponse(
-            success: false, message: "Failed to create diagnosis");
+          success: true,
+          message: response.data['message'] ?? "Summary Saved successfully",
+        );
+      } else {
+        return ApiResponse(success: false, message: "Failed to save Summary");
       }
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);

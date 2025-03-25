@@ -283,7 +283,9 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
               },
               onTap: () {
                 if (state is! UserLoaded) {
-                  context.read<UserBloc>().add(const FetchAllUsers());
+                  context
+                      .read<UserBloc>()
+                      .add(const FetchAllUsers(userType: "NU", limit: 100));
                 }
               },
             );
@@ -316,9 +318,11 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
         return TypeAheadField<UserModel>(
           suggestionsCallback: (search) {
             if (state is UserLoaded) {
-              return state.users.users
+              final filtered =
+                  state.users.users.where((u) => u.userType == "PSY");
+              if (search.trim().isEmpty) return filtered.toList();
+              return filtered
                   .where((u) =>
-                      u.userType == "PSY" &&
                       u.name.toLowerCase().contains(search.toLowerCase()))
                   .toList();
             }
@@ -331,15 +335,11 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
               focusNode: focusNode,
               decoration: CommonDecoration.textFieldDecoration(
                   labelText: 'Enter Psychologist'),
-              onChanged: (value) {
-                if (mounted) {
-                  setState(() {});
-                }
-              },
+              onChanged: (_) => setState(() {}),
               onTap: () {
-                if (state is! UserLoaded) {
-                  context.read<UserBloc>().add(const FetchAllUsers());
-                }
+                context
+                    .read<UserBloc>()
+                    .add(const FetchAllUsers(userType: "PSY", limit: 100));
               },
             );
           },
@@ -353,12 +353,10 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
             );
           },
           onSelected: (UserModel suggestion) {
-            if (mounted) {
-              setState(() {
-                _selectedDoctorId = suggestion.id;
-                _doctorSearchController.text = suggestion.name;
-              });
-            }
+            setState(() {
+              _selectedDoctorId = suggestion.id;
+              _doctorSearchController.text = suggestion.name;
+            });
           },
         );
       },

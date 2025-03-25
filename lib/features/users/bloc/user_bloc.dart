@@ -25,13 +25,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     try {
       final apiResponse = await userRepository.fetchAllUsers(
         page: event.page ?? 1,
-        limit: event.limit ?? 10,
+        limit: event.limit ?? 50,
         name: event.name ?? '',
         contactEmail: event.contactEmail ?? '',
         contactNumber: event.contactNumber ?? '',
         countryCode: event.countryCode ?? '',
         userType: event.userType ?? '',
       );
+
+    
 
       if (apiResponse.success && apiResponse.data != null) {
         emit(UserLoaded(users: apiResponse.data));

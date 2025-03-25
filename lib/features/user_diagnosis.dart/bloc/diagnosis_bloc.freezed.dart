@@ -27,13 +27,12 @@ mixin _$DiagnosisEvent {
             String? countryCode,
             String? diagnosisType)
         fetchAllDiagnosiss,
-    required TResult Function(int? diagnosisId) deleteDiagnosis,
     required TResult Function(
             int diagnosisId, Map<String, dynamic> updatedFields)
         updateDiagnosis,
     required TResult Function(DiagnosisModel diagnosisData) addDiagnosis,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+    required TResult Function(int patientId) fetchSummary,
+    required TResult Function(int patientId, String summary) saveSummary,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,12 +40,11 @@ mixin _$DiagnosisEvent {
     TResult? Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult? Function(int? diagnosisId)? deleteDiagnosis,
     TResult? Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult? Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult? Function(int patientId)? fetchSummary,
+    TResult? Function(int patientId, String summary)? saveSummary,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,43 +52,39 @@ mixin _$DiagnosisEvent {
     TResult Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult Function(int? diagnosisId)? deleteDiagnosis,
     TResult Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult Function(int patientId)? fetchSummary,
+    TResult Function(int patientId, String summary)? saveSummary,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAllDiagnosiss value) fetchAllDiagnosiss,
-    required TResult Function(DeleteDiagnosis value) deleteDiagnosis,
     required TResult Function(UpdateDiagnosis value) updateDiagnosis,
     required TResult Function(AddDiagnosis value) addDiagnosis,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+    required TResult Function(FetchSummary value) fetchSummary,
+    required TResult Function(SaveSummary value) saveSummary,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult? Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult? Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult? Function(AddDiagnosis value)? addDiagnosis,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult? Function(FetchSummary value)? fetchSummary,
+    TResult? Function(SaveSummary value)? saveSummary,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult Function(AddDiagnosis value)? addDiagnosis,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult Function(FetchSummary value)? fetchSummary,
+    TResult Function(SaveSummary value)? saveSummary,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -262,13 +256,12 @@ class _$FetchAllDiagnosissImpl implements FetchAllDiagnosiss {
             String? countryCode,
             String? diagnosisType)
         fetchAllDiagnosiss,
-    required TResult Function(int? diagnosisId) deleteDiagnosis,
     required TResult Function(
             int diagnosisId, Map<String, dynamic> updatedFields)
         updateDiagnosis,
     required TResult Function(DiagnosisModel diagnosisData) addDiagnosis,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+    required TResult Function(int patientId) fetchSummary,
+    required TResult Function(int patientId, String summary) saveSummary,
   }) {
     return fetchAllDiagnosiss(page, limit, name, contactEmail, contactNumber,
         countryCode, diagnosisType);
@@ -280,12 +273,11 @@ class _$FetchAllDiagnosissImpl implements FetchAllDiagnosiss {
     TResult? Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult? Function(int? diagnosisId)? deleteDiagnosis,
     TResult? Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult? Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult? Function(int patientId)? fetchSummary,
+    TResult? Function(int patientId, String summary)? saveSummary,
   }) {
     return fetchAllDiagnosiss?.call(page, limit, name, contactEmail,
         contactNumber, countryCode, diagnosisType);
@@ -297,12 +289,11 @@ class _$FetchAllDiagnosissImpl implements FetchAllDiagnosiss {
     TResult Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult Function(int? diagnosisId)? deleteDiagnosis,
     TResult Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult Function(int patientId)? fetchSummary,
+    TResult Function(int patientId, String summary)? saveSummary,
     required TResult orElse(),
   }) {
     if (fetchAllDiagnosiss != null) {
@@ -316,11 +307,10 @@ class _$FetchAllDiagnosissImpl implements FetchAllDiagnosiss {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAllDiagnosiss value) fetchAllDiagnosiss,
-    required TResult Function(DeleteDiagnosis value) deleteDiagnosis,
     required TResult Function(UpdateDiagnosis value) updateDiagnosis,
     required TResult Function(AddDiagnosis value) addDiagnosis,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+    required TResult Function(FetchSummary value) fetchSummary,
+    required TResult Function(SaveSummary value) saveSummary,
   }) {
     return fetchAllDiagnosiss(this);
   }
@@ -329,11 +319,10 @@ class _$FetchAllDiagnosissImpl implements FetchAllDiagnosiss {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult? Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult? Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult? Function(AddDiagnosis value)? addDiagnosis,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult? Function(FetchSummary value)? fetchSummary,
+    TResult? Function(SaveSummary value)? saveSummary,
   }) {
     return fetchAllDiagnosiss?.call(this);
   }
@@ -342,11 +331,10 @@ class _$FetchAllDiagnosissImpl implements FetchAllDiagnosiss {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult Function(AddDiagnosis value)? addDiagnosis,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult Function(FetchSummary value)? fetchSummary,
+    TResult Function(SaveSummary value)? saveSummary,
     required TResult orElse(),
   }) {
     if (fetchAllDiagnosiss != null) {
@@ -378,189 +366,6 @@ abstract class FetchAllDiagnosiss implements DiagnosisEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchAllDiagnosissImplCopyWith<_$FetchAllDiagnosissImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DeleteDiagnosisImplCopyWith<$Res> {
-  factory _$$DeleteDiagnosisImplCopyWith(_$DeleteDiagnosisImpl value,
-          $Res Function(_$DeleteDiagnosisImpl) then) =
-      __$$DeleteDiagnosisImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int? diagnosisId});
-}
-
-/// @nodoc
-class __$$DeleteDiagnosisImplCopyWithImpl<$Res>
-    extends _$DiagnosisEventCopyWithImpl<$Res, _$DeleteDiagnosisImpl>
-    implements _$$DeleteDiagnosisImplCopyWith<$Res> {
-  __$$DeleteDiagnosisImplCopyWithImpl(
-      _$DeleteDiagnosisImpl _value, $Res Function(_$DeleteDiagnosisImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DiagnosisEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? diagnosisId = freezed,
-  }) {
-    return _then(_$DeleteDiagnosisImpl(
-      diagnosisId: freezed == diagnosisId
-          ? _value.diagnosisId
-          : diagnosisId // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DeleteDiagnosisImpl implements DeleteDiagnosis {
-  const _$DeleteDiagnosisImpl({required this.diagnosisId});
-
-  @override
-  final int? diagnosisId;
-
-  @override
-  String toString() {
-    return 'DiagnosisEvent.deleteDiagnosis(diagnosisId: $diagnosisId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteDiagnosisImpl &&
-            (identical(other.diagnosisId, diagnosisId) ||
-                other.diagnosisId == diagnosisId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, diagnosisId);
-
-  /// Create a copy of DiagnosisEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeleteDiagnosisImplCopyWith<_$DeleteDiagnosisImpl> get copyWith =>
-      __$$DeleteDiagnosisImplCopyWithImpl<_$DeleteDiagnosisImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int? page,
-            int? limit,
-            String? name,
-            String? contactEmail,
-            String? contactNumber,
-            String? countryCode,
-            String? diagnosisType)
-        fetchAllDiagnosiss,
-    required TResult Function(int? diagnosisId) deleteDiagnosis,
-    required TResult Function(
-            int diagnosisId, Map<String, dynamic> updatedFields)
-        updateDiagnosis,
-    required TResult Function(DiagnosisModel diagnosisData) addDiagnosis,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
-  }) {
-    return deleteDiagnosis(diagnosisId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? page, int? limit, String? name, String? contactEmail,
-            String? contactNumber, String? countryCode, String? diagnosisType)?
-        fetchAllDiagnosiss,
-    TResult? Function(int? diagnosisId)? deleteDiagnosis,
-    TResult? Function(int diagnosisId, Map<String, dynamic> updatedFields)?
-        updateDiagnosis,
-    TResult? Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
-  }) {
-    return deleteDiagnosis?.call(diagnosisId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? page, int? limit, String? name, String? contactEmail,
-            String? contactNumber, String? countryCode, String? diagnosisType)?
-        fetchAllDiagnosiss,
-    TResult Function(int? diagnosisId)? deleteDiagnosis,
-    TResult Function(int diagnosisId, Map<String, dynamic> updatedFields)?
-        updateDiagnosis,
-    TResult Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
-    required TResult orElse(),
-  }) {
-    if (deleteDiagnosis != null) {
-      return deleteDiagnosis(diagnosisId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(FetchAllDiagnosiss value) fetchAllDiagnosiss,
-    required TResult Function(DeleteDiagnosis value) deleteDiagnosis,
-    required TResult Function(UpdateDiagnosis value) updateDiagnosis,
-    required TResult Function(AddDiagnosis value) addDiagnosis,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
-  }) {
-    return deleteDiagnosis(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult? Function(DeleteDiagnosis value)? deleteDiagnosis,
-    TResult? Function(UpdateDiagnosis value)? updateDiagnosis,
-    TResult? Function(AddDiagnosis value)? addDiagnosis,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
-  }) {
-    return deleteDiagnosis?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult Function(DeleteDiagnosis value)? deleteDiagnosis,
-    TResult Function(UpdateDiagnosis value)? updateDiagnosis,
-    TResult Function(AddDiagnosis value)? addDiagnosis,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
-    required TResult orElse(),
-  }) {
-    if (deleteDiagnosis != null) {
-      return deleteDiagnosis(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DeleteDiagnosis implements DiagnosisEvent {
-  const factory DeleteDiagnosis({required final int? diagnosisId}) =
-      _$DeleteDiagnosisImpl;
-
-  int? get diagnosisId;
-
-  /// Create a copy of DiagnosisEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteDiagnosisImplCopyWith<_$DeleteDiagnosisImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -661,13 +466,12 @@ class _$UpdateDiagnosisImpl implements UpdateDiagnosis {
             String? countryCode,
             String? diagnosisType)
         fetchAllDiagnosiss,
-    required TResult Function(int? diagnosisId) deleteDiagnosis,
     required TResult Function(
             int diagnosisId, Map<String, dynamic> updatedFields)
         updateDiagnosis,
     required TResult Function(DiagnosisModel diagnosisData) addDiagnosis,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+    required TResult Function(int patientId) fetchSummary,
+    required TResult Function(int patientId, String summary) saveSummary,
   }) {
     return updateDiagnosis(diagnosisId, updatedFields);
   }
@@ -678,12 +482,11 @@ class _$UpdateDiagnosisImpl implements UpdateDiagnosis {
     TResult? Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult? Function(int? diagnosisId)? deleteDiagnosis,
     TResult? Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult? Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult? Function(int patientId)? fetchSummary,
+    TResult? Function(int patientId, String summary)? saveSummary,
   }) {
     return updateDiagnosis?.call(diagnosisId, updatedFields);
   }
@@ -694,12 +497,11 @@ class _$UpdateDiagnosisImpl implements UpdateDiagnosis {
     TResult Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult Function(int? diagnosisId)? deleteDiagnosis,
     TResult Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult Function(int patientId)? fetchSummary,
+    TResult Function(int patientId, String summary)? saveSummary,
     required TResult orElse(),
   }) {
     if (updateDiagnosis != null) {
@@ -712,11 +514,10 @@ class _$UpdateDiagnosisImpl implements UpdateDiagnosis {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAllDiagnosiss value) fetchAllDiagnosiss,
-    required TResult Function(DeleteDiagnosis value) deleteDiagnosis,
     required TResult Function(UpdateDiagnosis value) updateDiagnosis,
     required TResult Function(AddDiagnosis value) addDiagnosis,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+    required TResult Function(FetchSummary value) fetchSummary,
+    required TResult Function(SaveSummary value) saveSummary,
   }) {
     return updateDiagnosis(this);
   }
@@ -725,11 +526,10 @@ class _$UpdateDiagnosisImpl implements UpdateDiagnosis {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult? Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult? Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult? Function(AddDiagnosis value)? addDiagnosis,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult? Function(FetchSummary value)? fetchSummary,
+    TResult? Function(SaveSummary value)? saveSummary,
   }) {
     return updateDiagnosis?.call(this);
   }
@@ -738,11 +538,10 @@ class _$UpdateDiagnosisImpl implements UpdateDiagnosis {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult Function(AddDiagnosis value)? addDiagnosis,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult Function(FetchSummary value)? fetchSummary,
+    TResult Function(SaveSummary value)? saveSummary,
     required TResult orElse(),
   }) {
     if (updateDiagnosis != null) {
@@ -858,13 +657,12 @@ class _$AddDiagnosisImpl implements AddDiagnosis {
             String? countryCode,
             String? diagnosisType)
         fetchAllDiagnosiss,
-    required TResult Function(int? diagnosisId) deleteDiagnosis,
     required TResult Function(
             int diagnosisId, Map<String, dynamic> updatedFields)
         updateDiagnosis,
     required TResult Function(DiagnosisModel diagnosisData) addDiagnosis,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+    required TResult Function(int patientId) fetchSummary,
+    required TResult Function(int patientId, String summary) saveSummary,
   }) {
     return addDiagnosis(diagnosisData);
   }
@@ -875,12 +673,11 @@ class _$AddDiagnosisImpl implements AddDiagnosis {
     TResult? Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult? Function(int? diagnosisId)? deleteDiagnosis,
     TResult? Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult? Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult? Function(int patientId)? fetchSummary,
+    TResult? Function(int patientId, String summary)? saveSummary,
   }) {
     return addDiagnosis?.call(diagnosisData);
   }
@@ -891,12 +688,11 @@ class _$AddDiagnosisImpl implements AddDiagnosis {
     TResult Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult Function(int? diagnosisId)? deleteDiagnosis,
     TResult Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult Function(int patientId)? fetchSummary,
+    TResult Function(int patientId, String summary)? saveSummary,
     required TResult orElse(),
   }) {
     if (addDiagnosis != null) {
@@ -909,11 +705,10 @@ class _$AddDiagnosisImpl implements AddDiagnosis {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAllDiagnosiss value) fetchAllDiagnosiss,
-    required TResult Function(DeleteDiagnosis value) deleteDiagnosis,
     required TResult Function(UpdateDiagnosis value) updateDiagnosis,
     required TResult Function(AddDiagnosis value) addDiagnosis,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+    required TResult Function(FetchSummary value) fetchSummary,
+    required TResult Function(SaveSummary value) saveSummary,
   }) {
     return addDiagnosis(this);
   }
@@ -922,11 +717,10 @@ class _$AddDiagnosisImpl implements AddDiagnosis {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult? Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult? Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult? Function(AddDiagnosis value)? addDiagnosis,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult? Function(FetchSummary value)? fetchSummary,
+    TResult? Function(SaveSummary value)? saveSummary,
   }) {
     return addDiagnosis?.call(this);
   }
@@ -935,11 +729,10 @@ class _$AddDiagnosisImpl implements AddDiagnosis {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult Function(AddDiagnosis value)? addDiagnosis,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult Function(FetchSummary value)? fetchSummary,
+    TResult Function(SaveSummary value)? saveSummary,
     required TResult orElse(),
   }) {
     if (addDiagnosis != null) {
@@ -963,20 +756,20 @@ abstract class AddDiagnosis implements DiagnosisEvent {
 }
 
 /// @nodoc
-abstract class _$$ChangePageImplCopyWith<$Res> {
-  factory _$$ChangePageImplCopyWith(
-          _$ChangePageImpl value, $Res Function(_$ChangePageImpl) then) =
-      __$$ChangePageImplCopyWithImpl<$Res>;
+abstract class _$$FetchSummaryImplCopyWith<$Res> {
+  factory _$$FetchSummaryImplCopyWith(
+          _$FetchSummaryImpl value, $Res Function(_$FetchSummaryImpl) then) =
+      __$$FetchSummaryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int newPage});
+  $Res call({int patientId});
 }
 
 /// @nodoc
-class __$$ChangePageImplCopyWithImpl<$Res>
-    extends _$DiagnosisEventCopyWithImpl<$Res, _$ChangePageImpl>
-    implements _$$ChangePageImplCopyWith<$Res> {
-  __$$ChangePageImplCopyWithImpl(
-      _$ChangePageImpl _value, $Res Function(_$ChangePageImpl) _then)
+class __$$FetchSummaryImplCopyWithImpl<$Res>
+    extends _$DiagnosisEventCopyWithImpl<$Res, _$FetchSummaryImpl>
+    implements _$$FetchSummaryImplCopyWith<$Res> {
+  __$$FetchSummaryImplCopyWithImpl(
+      _$FetchSummaryImpl _value, $Res Function(_$FetchSummaryImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DiagnosisEvent
@@ -984,12 +777,12 @@ class __$$ChangePageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newPage = null,
+    Object? patientId = null,
   }) {
-    return _then(_$ChangePageImpl(
-      newPage: null == newPage
-          ? _value.newPage
-          : newPage // ignore: cast_nullable_to_non_nullable
+    return _then(_$FetchSummaryImpl(
+      patientId: null == patientId
+          ? _value.patientId
+          : patientId // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -997,35 +790,36 @@ class __$$ChangePageImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangePageImpl implements ChangePage {
-  const _$ChangePageImpl({required this.newPage});
+class _$FetchSummaryImpl implements FetchSummary {
+  const _$FetchSummaryImpl({required this.patientId});
 
   @override
-  final int newPage;
+  final int patientId;
 
   @override
   String toString() {
-    return 'DiagnosisEvent.changePage(newPage: $newPage)';
+    return 'DiagnosisEvent.fetchSummary(patientId: $patientId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangePageImpl &&
-            (identical(other.newPage, newPage) || other.newPage == newPage));
+            other is _$FetchSummaryImpl &&
+            (identical(other.patientId, patientId) ||
+                other.patientId == patientId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, newPage);
+  int get hashCode => Object.hash(runtimeType, patientId);
 
   /// Create a copy of DiagnosisEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangePageImplCopyWith<_$ChangePageImpl> get copyWith =>
-      __$$ChangePageImplCopyWithImpl<_$ChangePageImpl>(this, _$identity);
+  _$$FetchSummaryImplCopyWith<_$FetchSummaryImpl> get copyWith =>
+      __$$FetchSummaryImplCopyWithImpl<_$FetchSummaryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1039,15 +833,14 @@ class _$ChangePageImpl implements ChangePage {
             String? countryCode,
             String? diagnosisType)
         fetchAllDiagnosiss,
-    required TResult Function(int? diagnosisId) deleteDiagnosis,
     required TResult Function(
             int diagnosisId, Map<String, dynamic> updatedFields)
         updateDiagnosis,
     required TResult Function(DiagnosisModel diagnosisData) addDiagnosis,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+    required TResult Function(int patientId) fetchSummary,
+    required TResult Function(int patientId, String summary) saveSummary,
   }) {
-    return changePage(newPage);
+    return fetchSummary(patientId);
   }
 
   @override
@@ -1056,14 +849,13 @@ class _$ChangePageImpl implements ChangePage {
     TResult? Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult? Function(int? diagnosisId)? deleteDiagnosis,
     TResult? Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult? Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult? Function(int patientId)? fetchSummary,
+    TResult? Function(int patientId, String summary)? saveSummary,
   }) {
-    return changePage?.call(newPage);
+    return fetchSummary?.call(patientId);
   }
 
   @override
@@ -1072,16 +864,15 @@ class _$ChangePageImpl implements ChangePage {
     TResult Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult Function(int? diagnosisId)? deleteDiagnosis,
     TResult Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult Function(int patientId)? fetchSummary,
+    TResult Function(int patientId, String summary)? saveSummary,
     required TResult orElse(),
   }) {
-    if (changePage != null) {
-      return changePage(newPage);
+    if (fetchSummary != null) {
+      return fetchSummary(patientId);
     }
     return orElse();
   }
@@ -1090,73 +881,71 @@ class _$ChangePageImpl implements ChangePage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAllDiagnosiss value) fetchAllDiagnosiss,
-    required TResult Function(DeleteDiagnosis value) deleteDiagnosis,
     required TResult Function(UpdateDiagnosis value) updateDiagnosis,
     required TResult Function(AddDiagnosis value) addDiagnosis,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+    required TResult Function(FetchSummary value) fetchSummary,
+    required TResult Function(SaveSummary value) saveSummary,
   }) {
-    return changePage(this);
+    return fetchSummary(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult? Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult? Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult? Function(AddDiagnosis value)? addDiagnosis,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult? Function(FetchSummary value)? fetchSummary,
+    TResult? Function(SaveSummary value)? saveSummary,
   }) {
-    return changePage?.call(this);
+    return fetchSummary?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult Function(AddDiagnosis value)? addDiagnosis,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult Function(FetchSummary value)? fetchSummary,
+    TResult Function(SaveSummary value)? saveSummary,
     required TResult orElse(),
   }) {
-    if (changePage != null) {
-      return changePage(this);
+    if (fetchSummary != null) {
+      return fetchSummary(this);
     }
     return orElse();
   }
 }
 
-abstract class ChangePage implements DiagnosisEvent {
-  const factory ChangePage({required final int newPage}) = _$ChangePageImpl;
+abstract class FetchSummary implements DiagnosisEvent {
+  const factory FetchSummary({required final int patientId}) =
+      _$FetchSummaryImpl;
 
-  int get newPage;
+  int get patientId;
 
   /// Create a copy of DiagnosisEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ChangePageImplCopyWith<_$ChangePageImpl> get copyWith =>
+  _$$FetchSummaryImplCopyWith<_$FetchSummaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ChangeRowsPerPageImplCopyWith<$Res> {
-  factory _$$ChangeRowsPerPageImplCopyWith(_$ChangeRowsPerPageImpl value,
-          $Res Function(_$ChangeRowsPerPageImpl) then) =
-      __$$ChangeRowsPerPageImplCopyWithImpl<$Res>;
+abstract class _$$SaveSummaryImplCopyWith<$Res> {
+  factory _$$SaveSummaryImplCopyWith(
+          _$SaveSummaryImpl value, $Res Function(_$SaveSummaryImpl) then) =
+      __$$SaveSummaryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int newRowsPerPage});
+  $Res call({int patientId, String summary});
 }
 
 /// @nodoc
-class __$$ChangeRowsPerPageImplCopyWithImpl<$Res>
-    extends _$DiagnosisEventCopyWithImpl<$Res, _$ChangeRowsPerPageImpl>
-    implements _$$ChangeRowsPerPageImplCopyWith<$Res> {
-  __$$ChangeRowsPerPageImplCopyWithImpl(_$ChangeRowsPerPageImpl _value,
-      $Res Function(_$ChangeRowsPerPageImpl) _then)
+class __$$SaveSummaryImplCopyWithImpl<$Res>
+    extends _$DiagnosisEventCopyWithImpl<$Res, _$SaveSummaryImpl>
+    implements _$$SaveSummaryImplCopyWith<$Res> {
+  __$$SaveSummaryImplCopyWithImpl(
+      _$SaveSummaryImpl _value, $Res Function(_$SaveSummaryImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DiagnosisEvent
@@ -1164,50 +953,57 @@ class __$$ChangeRowsPerPageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newRowsPerPage = null,
+    Object? patientId = null,
+    Object? summary = null,
   }) {
-    return _then(_$ChangeRowsPerPageImpl(
-      newRowsPerPage: null == newRowsPerPage
-          ? _value.newRowsPerPage
-          : newRowsPerPage // ignore: cast_nullable_to_non_nullable
+    return _then(_$SaveSummaryImpl(
+      patientId: null == patientId
+          ? _value.patientId
+          : patientId // ignore: cast_nullable_to_non_nullable
               as int,
+      summary: null == summary
+          ? _value.summary
+          : summary // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
-  const _$ChangeRowsPerPageImpl({required this.newRowsPerPage});
+class _$SaveSummaryImpl implements SaveSummary {
+  const _$SaveSummaryImpl({required this.patientId, required this.summary});
 
   @override
-  final int newRowsPerPage;
+  final int patientId;
+  @override
+  final String summary;
 
   @override
   String toString() {
-    return 'DiagnosisEvent.changeRowsPerPage(newRowsPerPage: $newRowsPerPage)';
+    return 'DiagnosisEvent.saveSummary(patientId: $patientId, summary: $summary)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeRowsPerPageImpl &&
-            (identical(other.newRowsPerPage, newRowsPerPage) ||
-                other.newRowsPerPage == newRowsPerPage));
+            other is _$SaveSummaryImpl &&
+            (identical(other.patientId, patientId) ||
+                other.patientId == patientId) &&
+            (identical(other.summary, summary) || other.summary == summary));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, newRowsPerPage);
+  int get hashCode => Object.hash(runtimeType, patientId, summary);
 
   /// Create a copy of DiagnosisEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangeRowsPerPageImplCopyWith<_$ChangeRowsPerPageImpl> get copyWith =>
-      __$$ChangeRowsPerPageImplCopyWithImpl<_$ChangeRowsPerPageImpl>(
-          this, _$identity);
+  _$$SaveSummaryImplCopyWith<_$SaveSummaryImpl> get copyWith =>
+      __$$SaveSummaryImplCopyWithImpl<_$SaveSummaryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1221,15 +1017,14 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
             String? countryCode,
             String? diagnosisType)
         fetchAllDiagnosiss,
-    required TResult Function(int? diagnosisId) deleteDiagnosis,
     required TResult Function(
             int diagnosisId, Map<String, dynamic> updatedFields)
         updateDiagnosis,
     required TResult Function(DiagnosisModel diagnosisData) addDiagnosis,
-    required TResult Function(int newPage) changePage,
-    required TResult Function(int newRowsPerPage) changeRowsPerPage,
+    required TResult Function(int patientId) fetchSummary,
+    required TResult Function(int patientId, String summary) saveSummary,
   }) {
-    return changeRowsPerPage(newRowsPerPage);
+    return saveSummary(patientId, summary);
   }
 
   @override
@@ -1238,14 +1033,13 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
     TResult? Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult? Function(int? diagnosisId)? deleteDiagnosis,
     TResult? Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult? Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult? Function(int newPage)? changePage,
-    TResult? Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult? Function(int patientId)? fetchSummary,
+    TResult? Function(int patientId, String summary)? saveSummary,
   }) {
-    return changeRowsPerPage?.call(newRowsPerPage);
+    return saveSummary?.call(patientId, summary);
   }
 
   @override
@@ -1254,16 +1048,15 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
     TResult Function(int? page, int? limit, String? name, String? contactEmail,
             String? contactNumber, String? countryCode, String? diagnosisType)?
         fetchAllDiagnosiss,
-    TResult Function(int? diagnosisId)? deleteDiagnosis,
     TResult Function(int diagnosisId, Map<String, dynamic> updatedFields)?
         updateDiagnosis,
     TResult Function(DiagnosisModel diagnosisData)? addDiagnosis,
-    TResult Function(int newPage)? changePage,
-    TResult Function(int newRowsPerPage)? changeRowsPerPage,
+    TResult Function(int patientId)? fetchSummary,
+    TResult Function(int patientId, String summary)? saveSummary,
     required TResult orElse(),
   }) {
-    if (changeRowsPerPage != null) {
-      return changeRowsPerPage(newRowsPerPage);
+    if (saveSummary != null) {
+      return saveSummary(patientId, summary);
     }
     return orElse();
   }
@@ -1272,56 +1065,55 @@ class _$ChangeRowsPerPageImpl implements ChangeRowsPerPage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAllDiagnosiss value) fetchAllDiagnosiss,
-    required TResult Function(DeleteDiagnosis value) deleteDiagnosis,
     required TResult Function(UpdateDiagnosis value) updateDiagnosis,
     required TResult Function(AddDiagnosis value) addDiagnosis,
-    required TResult Function(ChangePage value) changePage,
-    required TResult Function(ChangeRowsPerPage value) changeRowsPerPage,
+    required TResult Function(FetchSummary value) fetchSummary,
+    required TResult Function(SaveSummary value) saveSummary,
   }) {
-    return changeRowsPerPage(this);
+    return saveSummary(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult? Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult? Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult? Function(AddDiagnosis value)? addDiagnosis,
-    TResult? Function(ChangePage value)? changePage,
-    TResult? Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult? Function(FetchSummary value)? fetchSummary,
+    TResult? Function(SaveSummary value)? saveSummary,
   }) {
-    return changeRowsPerPage?.call(this);
+    return saveSummary?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAllDiagnosiss value)? fetchAllDiagnosiss,
-    TResult Function(DeleteDiagnosis value)? deleteDiagnosis,
     TResult Function(UpdateDiagnosis value)? updateDiagnosis,
     TResult Function(AddDiagnosis value)? addDiagnosis,
-    TResult Function(ChangePage value)? changePage,
-    TResult Function(ChangeRowsPerPage value)? changeRowsPerPage,
+    TResult Function(FetchSummary value)? fetchSummary,
+    TResult Function(SaveSummary value)? saveSummary,
     required TResult orElse(),
   }) {
-    if (changeRowsPerPage != null) {
-      return changeRowsPerPage(this);
+    if (saveSummary != null) {
+      return saveSummary(this);
     }
     return orElse();
   }
 }
 
-abstract class ChangeRowsPerPage implements DiagnosisEvent {
-  const factory ChangeRowsPerPage({required final int newRowsPerPage}) =
-      _$ChangeRowsPerPageImpl;
+abstract class SaveSummary implements DiagnosisEvent {
+  const factory SaveSummary(
+      {required final int patientId,
+      required final String summary}) = _$SaveSummaryImpl;
 
-  int get newRowsPerPage;
+  int get patientId;
+  String get summary;
 
   /// Create a copy of DiagnosisEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ChangeRowsPerPageImplCopyWith<_$ChangeRowsPerPageImpl> get copyWith =>
+  _$$SaveSummaryImplCopyWith<_$SaveSummaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1331,36 +1123,36 @@ mixin _$DiagnosisState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
     required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
     TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
     TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1368,40 +1160,36 @@ mixin _$DiagnosisState {
   TResult map<TResult extends Object?>({
     required TResult Function(DiagnosisInitial value) initial,
     required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
     required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DiagnosisInitial value)? initial,
     TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DiagnosisInitial value)? initial,
     TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1471,12 +1259,12 @@ class _$DiagnosisInitialImpl implements DiagnosisInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
     required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
   }) {
     return initial();
   }
@@ -1486,12 +1274,12 @@ class _$DiagnosisInitialImpl implements DiagnosisInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
     TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
   }) {
     return initial?.call();
   }
@@ -1501,12 +1289,12 @@ class _$DiagnosisInitialImpl implements DiagnosisInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
     TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1520,16 +1308,12 @@ class _$DiagnosisInitialImpl implements DiagnosisInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(DiagnosisInitial value) initial,
     required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
     required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
   }) {
     return initial(this);
   }
@@ -1539,12 +1323,12 @@ class _$DiagnosisInitialImpl implements DiagnosisInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DiagnosisInitial value)? initial,
     TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
   }) {
     return initial?.call(this);
   }
@@ -1554,12 +1338,12 @@ class _$DiagnosisInitialImpl implements DiagnosisInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DiagnosisInitial value)? initial,
     TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1616,12 +1400,12 @@ class _$DiagnosisLoadingImpl implements DiagnosisLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
     required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
   }) {
     return loading();
   }
@@ -1631,12 +1415,12 @@ class _$DiagnosisLoadingImpl implements DiagnosisLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
     TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
   }) {
     return loading?.call();
   }
@@ -1646,12 +1430,12 @@ class _$DiagnosisLoadingImpl implements DiagnosisLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
     TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1665,16 +1449,12 @@ class _$DiagnosisLoadingImpl implements DiagnosisLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(DiagnosisInitial value) initial,
     required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
     required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
   }) {
     return loading(this);
   }
@@ -1684,12 +1464,12 @@ class _$DiagnosisLoadingImpl implements DiagnosisLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DiagnosisInitial value)? initial,
     TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
   }) {
     return loading?.call(this);
   }
@@ -1699,12 +1479,12 @@ class _$DiagnosisLoadingImpl implements DiagnosisLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DiagnosisInitial value)? initial,
     TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1716,752 +1496,6 @@ class _$DiagnosisLoadingImpl implements DiagnosisLoading {
 
 abstract class DiagnosisLoading implements DiagnosisState {
   const factory DiagnosisLoading() = _$DiagnosisLoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$DiagnosisLoadedImplCopyWith<$Res> {
-  factory _$$DiagnosisLoadedImplCopyWith(_$DiagnosisLoadedImpl value,
-          $Res Function(_$DiagnosisLoadedImpl) then) =
-      __$$DiagnosisLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({DiagnosisModel diagnosiss});
-
-  $DiagnosisModelCopyWith<$Res> get diagnosiss;
-}
-
-/// @nodoc
-class __$$DiagnosisLoadedImplCopyWithImpl<$Res>
-    extends _$DiagnosisStateCopyWithImpl<$Res, _$DiagnosisLoadedImpl>
-    implements _$$DiagnosisLoadedImplCopyWith<$Res> {
-  __$$DiagnosisLoadedImplCopyWithImpl(
-      _$DiagnosisLoadedImpl _value, $Res Function(_$DiagnosisLoadedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? diagnosiss = null,
-  }) {
-    return _then(_$DiagnosisLoadedImpl(
-      diagnosiss: null == diagnosiss
-          ? _value.diagnosiss
-          : diagnosiss // ignore: cast_nullable_to_non_nullable
-              as DiagnosisModel,
-    ));
-  }
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DiagnosisModelCopyWith<$Res> get diagnosiss {
-    return $DiagnosisModelCopyWith<$Res>(_value.diagnosiss, (value) {
-      return _then(_value.copyWith(diagnosiss: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$DiagnosisLoadedImpl implements DiagnosisLoaded {
-  const _$DiagnosisLoadedImpl({required this.diagnosiss});
-
-  @override
-  final DiagnosisModel diagnosiss;
-
-  @override
-  String toString() {
-    return 'DiagnosisState.loaded(diagnosiss: $diagnosiss)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DiagnosisLoadedImpl &&
-            (identical(other.diagnosiss, diagnosiss) ||
-                other.diagnosiss == diagnosiss));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, diagnosiss);
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DiagnosisLoadedImplCopyWith<_$DiagnosisLoadedImpl> get copyWith =>
-      __$$DiagnosisLoadedImplCopyWithImpl<_$DiagnosisLoadedImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
-    required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
-  }) {
-    return loaded(diagnosiss);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
-    TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
-  }) {
-    return loaded?.call(diagnosiss);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
-    TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(diagnosiss);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DiagnosisInitial value) initial,
-    required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
-    required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DiagnosisInitial value)? initial,
-    TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
-    TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DiagnosisInitial value)? initial,
-    TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
-    TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DiagnosisLoaded implements DiagnosisState {
-  const factory DiagnosisLoaded({required final DiagnosisModel diagnosiss}) =
-      _$DiagnosisLoadedImpl;
-
-  DiagnosisModel get diagnosiss;
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DiagnosisLoadedImplCopyWith<_$DiagnosisLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DiagnosisUpdatedSuccessImplCopyWith<$Res> {
-  factory _$$DiagnosisUpdatedSuccessImplCopyWith(
-          _$DiagnosisUpdatedSuccessImpl value,
-          $Res Function(_$DiagnosisUpdatedSuccessImpl) then) =
-      __$$DiagnosisUpdatedSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$DiagnosisUpdatedSuccessImplCopyWithImpl<$Res>
-    extends _$DiagnosisStateCopyWithImpl<$Res, _$DiagnosisUpdatedSuccessImpl>
-    implements _$$DiagnosisUpdatedSuccessImplCopyWith<$Res> {
-  __$$DiagnosisUpdatedSuccessImplCopyWithImpl(
-      _$DiagnosisUpdatedSuccessImpl _value,
-      $Res Function(_$DiagnosisUpdatedSuccessImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$DiagnosisUpdatedSuccessImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DiagnosisUpdatedSuccessImpl implements DiagnosisUpdatedSuccess {
-  const _$DiagnosisUpdatedSuccessImpl(this.message);
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'DiagnosisState.diagnosisUpdatedSuccess(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DiagnosisUpdatedSuccessImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DiagnosisUpdatedSuccessImplCopyWith<_$DiagnosisUpdatedSuccessImpl>
-      get copyWith => __$$DiagnosisUpdatedSuccessImplCopyWithImpl<
-          _$DiagnosisUpdatedSuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
-    required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
-  }) {
-    return diagnosisUpdatedSuccess(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
-    TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
-  }) {
-    return diagnosisUpdatedSuccess?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
-    TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
-    required TResult orElse(),
-  }) {
-    if (diagnosisUpdatedSuccess != null) {
-      return diagnosisUpdatedSuccess(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DiagnosisInitial value) initial,
-    required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
-    required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
-  }) {
-    return diagnosisUpdatedSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DiagnosisInitial value)? initial,
-    TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
-    TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
-  }) {
-    return diagnosisUpdatedSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DiagnosisInitial value)? initial,
-    TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
-    TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
-    required TResult orElse(),
-  }) {
-    if (diagnosisUpdatedSuccess != null) {
-      return diagnosisUpdatedSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DiagnosisUpdatedSuccess implements DiagnosisState {
-  const factory DiagnosisUpdatedSuccess(final String message) =
-      _$DiagnosisUpdatedSuccessImpl;
-
-  String get message;
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DiagnosisUpdatedSuccessImplCopyWith<_$DiagnosisUpdatedSuccessImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DiagnosisAddedSuccessImplCopyWith<$Res> {
-  factory _$$DiagnosisAddedSuccessImplCopyWith(
-          _$DiagnosisAddedSuccessImpl value,
-          $Res Function(_$DiagnosisAddedSuccessImpl) then) =
-      __$$DiagnosisAddedSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$DiagnosisAddedSuccessImplCopyWithImpl<$Res>
-    extends _$DiagnosisStateCopyWithImpl<$Res, _$DiagnosisAddedSuccessImpl>
-    implements _$$DiagnosisAddedSuccessImplCopyWith<$Res> {
-  __$$DiagnosisAddedSuccessImplCopyWithImpl(_$DiagnosisAddedSuccessImpl _value,
-      $Res Function(_$DiagnosisAddedSuccessImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$DiagnosisAddedSuccessImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DiagnosisAddedSuccessImpl implements DiagnosisAddedSuccess {
-  const _$DiagnosisAddedSuccessImpl(this.message);
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'DiagnosisState.diagnosisAddedSuccess(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DiagnosisAddedSuccessImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DiagnosisAddedSuccessImplCopyWith<_$DiagnosisAddedSuccessImpl>
-      get copyWith => __$$DiagnosisAddedSuccessImplCopyWithImpl<
-          _$DiagnosisAddedSuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
-    required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
-  }) {
-    return diagnosisAddedSuccess(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
-    TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
-  }) {
-    return diagnosisAddedSuccess?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
-    TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
-    required TResult orElse(),
-  }) {
-    if (diagnosisAddedSuccess != null) {
-      return diagnosisAddedSuccess(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DiagnosisInitial value) initial,
-    required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
-    required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
-  }) {
-    return diagnosisAddedSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DiagnosisInitial value)? initial,
-    TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
-    TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
-  }) {
-    return diagnosisAddedSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DiagnosisInitial value)? initial,
-    TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
-    TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
-    required TResult orElse(),
-  }) {
-    if (diagnosisAddedSuccess != null) {
-      return diagnosisAddedSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DiagnosisAddedSuccess implements DiagnosisState {
-  const factory DiagnosisAddedSuccess(final String message) =
-      _$DiagnosisAddedSuccessImpl;
-
-  String get message;
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DiagnosisAddedSuccessImplCopyWith<_$DiagnosisAddedSuccessImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DiagnosisDeletedSuccessImplCopyWith<$Res> {
-  factory _$$DiagnosisDeletedSuccessImplCopyWith(
-          _$DiagnosisDeletedSuccessImpl value,
-          $Res Function(_$DiagnosisDeletedSuccessImpl) then) =
-      __$$DiagnosisDeletedSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$DiagnosisDeletedSuccessImplCopyWithImpl<$Res>
-    extends _$DiagnosisStateCopyWithImpl<$Res, _$DiagnosisDeletedSuccessImpl>
-    implements _$$DiagnosisDeletedSuccessImplCopyWith<$Res> {
-  __$$DiagnosisDeletedSuccessImplCopyWithImpl(
-      _$DiagnosisDeletedSuccessImpl _value,
-      $Res Function(_$DiagnosisDeletedSuccessImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$DiagnosisDeletedSuccessImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DiagnosisDeletedSuccessImpl implements DiagnosisDeletedSuccess {
-  const _$DiagnosisDeletedSuccessImpl(this.message);
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'DiagnosisState.diagnosisDeletedSuccess(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DiagnosisDeletedSuccessImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DiagnosisDeletedSuccessImplCopyWith<_$DiagnosisDeletedSuccessImpl>
-      get copyWith => __$$DiagnosisDeletedSuccessImplCopyWithImpl<
-          _$DiagnosisDeletedSuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
-    required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
-  }) {
-    return diagnosisDeletedSuccess(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
-    TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
-  }) {
-    return diagnosisDeletedSuccess?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
-    TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
-    required TResult orElse(),
-  }) {
-    if (diagnosisDeletedSuccess != null) {
-      return diagnosisDeletedSuccess(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DiagnosisInitial value) initial,
-    required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
-    required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
-  }) {
-    return diagnosisDeletedSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DiagnosisInitial value)? initial,
-    TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
-    TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
-  }) {
-    return diagnosisDeletedSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DiagnosisInitial value)? initial,
-    TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
-    TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
-    required TResult orElse(),
-  }) {
-    if (diagnosisDeletedSuccess != null) {
-      return diagnosisDeletedSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DiagnosisDeletedSuccess implements DiagnosisState {
-  const factory DiagnosisDeletedSuccess(final String message) =
-      _$DiagnosisDeletedSuccessImpl;
-
-  String get message;
-
-  /// Create a copy of DiagnosisState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DiagnosisDeletedSuccessImplCopyWith<_$DiagnosisDeletedSuccessImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2535,12 +1569,12 @@ class _$DiagnosisErrorImpl implements DiagnosisError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
     required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
   }) {
     return error(message);
   }
@@ -2550,12 +1584,12 @@ class _$DiagnosisErrorImpl implements DiagnosisError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
     TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
   }) {
     return error?.call(message);
   }
@@ -2565,12 +1599,12 @@ class _$DiagnosisErrorImpl implements DiagnosisError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
     TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -2584,16 +1618,12 @@ class _$DiagnosisErrorImpl implements DiagnosisError {
   TResult map<TResult extends Object?>({
     required TResult Function(DiagnosisInitial value) initial,
     required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
     required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
   }) {
     return error(this);
   }
@@ -2603,12 +1633,12 @@ class _$DiagnosisErrorImpl implements DiagnosisError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DiagnosisInitial value)? initial,
     TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
   }) {
     return error?.call(this);
   }
@@ -2618,12 +1648,12 @@ class _$DiagnosisErrorImpl implements DiagnosisError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DiagnosisInitial value)? initial,
     TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -2646,20 +1676,195 @@ abstract class DiagnosisError implements DiagnosisState {
 }
 
 /// @nodoc
-abstract class _$$DiagnosisListNavigatedImplCopyWith<$Res> {
-  factory _$$DiagnosisListNavigatedImplCopyWith(
-          _$DiagnosisListNavigatedImpl value,
-          $Res Function(_$DiagnosisListNavigatedImpl) then) =
-      __$$DiagnosisListNavigatedImplCopyWithImpl<$Res>;
+abstract class _$$DiagnosisSuccessImplCopyWith<$Res> {
+  factory _$$DiagnosisSuccessImplCopyWith(_$DiagnosisSuccessImpl value,
+          $Res Function(_$DiagnosisSuccessImpl) then) =
+      __$$DiagnosisSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
-class __$$DiagnosisListNavigatedImplCopyWithImpl<$Res>
-    extends _$DiagnosisStateCopyWithImpl<$Res, _$DiagnosisListNavigatedImpl>
-    implements _$$DiagnosisListNavigatedImplCopyWith<$Res> {
-  __$$DiagnosisListNavigatedImplCopyWithImpl(
-      _$DiagnosisListNavigatedImpl _value,
-      $Res Function(_$DiagnosisListNavigatedImpl) _then)
+class __$$DiagnosisSuccessImplCopyWithImpl<$Res>
+    extends _$DiagnosisStateCopyWithImpl<$Res, _$DiagnosisSuccessImpl>
+    implements _$$DiagnosisSuccessImplCopyWith<$Res> {
+  __$$DiagnosisSuccessImplCopyWithImpl(_$DiagnosisSuccessImpl _value,
+      $Res Function(_$DiagnosisSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$DiagnosisSuccessImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DiagnosisSuccessImpl implements DiagnosisSuccess {
+  const _$DiagnosisSuccessImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'DiagnosisState.success(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DiagnosisSuccessImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DiagnosisSuccessImplCopyWith<_$DiagnosisSuccessImpl> get copyWith =>
+      __$$DiagnosisSuccessImplCopyWithImpl<_$DiagnosisSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
+  }) {
+    return success(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
+  }) {
+    return success?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DiagnosisInitial value) initial,
+    required TResult Function(DiagnosisLoading value) loading,
+    required TResult Function(DiagnosisError value) error,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DiagnosisInitial value)? initial,
+    TResult? Function(DiagnosisLoading value)? loading,
+    TResult? Function(DiagnosisError value)? error,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DiagnosisInitial value)? initial,
+    TResult Function(DiagnosisLoading value)? loading,
+    TResult Function(DiagnosisError value)? error,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DiagnosisSuccess implements DiagnosisState {
+  const factory DiagnosisSuccess(final String message) = _$DiagnosisSuccessImpl;
+
+  String get message;
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DiagnosisSuccessImplCopyWith<_$DiagnosisSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SummaryisLoadingImplCopyWith<$Res> {
+  factory _$$SummaryisLoadingImplCopyWith(_$SummaryisLoadingImpl value,
+          $Res Function(_$SummaryisLoadingImpl) then) =
+      __$$SummaryisLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SummaryisLoadingImplCopyWithImpl<$Res>
+    extends _$DiagnosisStateCopyWithImpl<$Res, _$SummaryisLoadingImpl>
+    implements _$$SummaryisLoadingImplCopyWith<$Res> {
+  __$$SummaryisLoadingImplCopyWithImpl(_$SummaryisLoadingImpl _value,
+      $Res Function(_$SummaryisLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DiagnosisState
@@ -2668,19 +1873,18 @@ class __$$DiagnosisListNavigatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DiagnosisListNavigatedImpl implements DiagnosisListNavigated {
-  const _$DiagnosisListNavigatedImpl();
+class _$SummaryisLoadingImpl implements SummaryisLoading {
+  const _$SummaryisLoadingImpl();
 
   @override
   String toString() {
-    return 'DiagnosisState.diagnosisListNavigated()';
+    return 'DiagnosisState.summaryisLoading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DiagnosisListNavigatedImpl);
+        (other.runtimeType == runtimeType && other is _$SummaryisLoadingImpl);
   }
 
   @override
@@ -2691,14 +1895,14 @@ class _$DiagnosisListNavigatedImpl implements DiagnosisListNavigated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(DiagnosisModel diagnosiss) loaded,
-    required TResult Function(String message) diagnosisUpdatedSuccess,
-    required TResult Function(String message) diagnosisAddedSuccess,
-    required TResult Function(String message) diagnosisDeletedSuccess,
     required TResult Function(String message) error,
-    required TResult Function() diagnosisListNavigated,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
   }) {
-    return diagnosisListNavigated();
+    return summaryisLoading();
   }
 
   @override
@@ -2706,14 +1910,14 @@ class _$DiagnosisListNavigatedImpl implements DiagnosisListNavigated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(DiagnosisModel diagnosiss)? loaded,
-    TResult? Function(String message)? diagnosisUpdatedSuccess,
-    TResult? Function(String message)? diagnosisAddedSuccess,
-    TResult? Function(String message)? diagnosisDeletedSuccess,
     TResult? Function(String message)? error,
-    TResult? Function()? diagnosisListNavigated,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
   }) {
-    return diagnosisListNavigated?.call();
+    return summaryisLoading?.call();
   }
 
   @override
@@ -2721,16 +1925,16 @@ class _$DiagnosisListNavigatedImpl implements DiagnosisListNavigated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(DiagnosisModel diagnosiss)? loaded,
-    TResult Function(String message)? diagnosisUpdatedSuccess,
-    TResult Function(String message)? diagnosisAddedSuccess,
-    TResult Function(String message)? diagnosisDeletedSuccess,
     TResult Function(String message)? error,
-    TResult Function()? diagnosisListNavigated,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
     required TResult orElse(),
   }) {
-    if (diagnosisListNavigated != null) {
-      return diagnosisListNavigated();
+    if (summaryisLoading != null) {
+      return summaryisLoading();
     }
     return orElse();
   }
@@ -2740,18 +1944,14 @@ class _$DiagnosisListNavigatedImpl implements DiagnosisListNavigated {
   TResult map<TResult extends Object?>({
     required TResult Function(DiagnosisInitial value) initial,
     required TResult Function(DiagnosisLoading value) loading,
-    required TResult Function(DiagnosisLoaded value) loaded,
-    required TResult Function(DiagnosisUpdatedSuccess value)
-        diagnosisUpdatedSuccess,
-    required TResult Function(DiagnosisAddedSuccess value)
-        diagnosisAddedSuccess,
-    required TResult Function(DiagnosisDeletedSuccess value)
-        diagnosisDeletedSuccess,
     required TResult Function(DiagnosisError value) error,
-    required TResult Function(DiagnosisListNavigated value)
-        diagnosisListNavigated,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
   }) {
-    return diagnosisListNavigated(this);
+    return summaryisLoading(this);
   }
 
   @override
@@ -2759,14 +1959,14 @@ class _$DiagnosisListNavigatedImpl implements DiagnosisListNavigated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DiagnosisInitial value)? initial,
     TResult? Function(DiagnosisLoading value)? loading,
-    TResult? Function(DiagnosisLoaded value)? loaded,
-    TResult? Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult? Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult? Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult? Function(DiagnosisError value)? error,
-    TResult? Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
   }) {
-    return diagnosisListNavigated?.call(this);
+    return summaryisLoading?.call(this);
   }
 
   @override
@@ -2774,21 +1974,566 @@ class _$DiagnosisListNavigatedImpl implements DiagnosisListNavigated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DiagnosisInitial value)? initial,
     TResult Function(DiagnosisLoading value)? loading,
-    TResult Function(DiagnosisLoaded value)? loaded,
-    TResult Function(DiagnosisUpdatedSuccess value)? diagnosisUpdatedSuccess,
-    TResult Function(DiagnosisAddedSuccess value)? diagnosisAddedSuccess,
-    TResult Function(DiagnosisDeletedSuccess value)? diagnosisDeletedSuccess,
     TResult Function(DiagnosisError value)? error,
-    TResult Function(DiagnosisListNavigated value)? diagnosisListNavigated,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
     required TResult orElse(),
   }) {
-    if (diagnosisListNavigated != null) {
-      return diagnosisListNavigated(this);
+    if (summaryisLoading != null) {
+      return summaryisLoading(this);
     }
     return orElse();
   }
 }
 
-abstract class DiagnosisListNavigated implements DiagnosisState {
-  const factory DiagnosisListNavigated() = _$DiagnosisListNavigatedImpl;
+abstract class SummaryisLoading implements DiagnosisState {
+  const factory SummaryisLoading() = _$SummaryisLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$SummaryisLoadedImplCopyWith<$Res> {
+  factory _$$SummaryisLoadedImplCopyWith(_$SummaryisLoadedImpl value,
+          $Res Function(_$SummaryisLoadedImpl) then) =
+      __$$SummaryisLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PatientSummaryModel summaryData});
+
+  $PatientSummaryModelCopyWith<$Res> get summaryData;
+}
+
+/// @nodoc
+class __$$SummaryisLoadedImplCopyWithImpl<$Res>
+    extends _$DiagnosisStateCopyWithImpl<$Res, _$SummaryisLoadedImpl>
+    implements _$$SummaryisLoadedImplCopyWith<$Res> {
+  __$$SummaryisLoadedImplCopyWithImpl(
+      _$SummaryisLoadedImpl _value, $Res Function(_$SummaryisLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? summaryData = null,
+  }) {
+    return _then(_$SummaryisLoadedImpl(
+      summaryData: null == summaryData
+          ? _value.summaryData
+          : summaryData // ignore: cast_nullable_to_non_nullable
+              as PatientSummaryModel,
+    ));
+  }
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PatientSummaryModelCopyWith<$Res> get summaryData {
+    return $PatientSummaryModelCopyWith<$Res>(_value.summaryData, (value) {
+      return _then(_value.copyWith(summaryData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SummaryisLoadedImpl implements SummaryisLoaded {
+  const _$SummaryisLoadedImpl({required this.summaryData});
+
+  @override
+  final PatientSummaryModel summaryData;
+
+  @override
+  String toString() {
+    return 'DiagnosisState.summaryisLoaded(summaryData: $summaryData)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SummaryisLoadedImpl &&
+            (identical(other.summaryData, summaryData) ||
+                other.summaryData == summaryData));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, summaryData);
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SummaryisLoadedImplCopyWith<_$SummaryisLoadedImpl> get copyWith =>
+      __$$SummaryisLoadedImplCopyWithImpl<_$SummaryisLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
+  }) {
+    return summaryisLoaded(summaryData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
+  }) {
+    return summaryisLoaded?.call(summaryData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
+    required TResult orElse(),
+  }) {
+    if (summaryisLoaded != null) {
+      return summaryisLoaded(summaryData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DiagnosisInitial value) initial,
+    required TResult Function(DiagnosisLoading value) loading,
+    required TResult Function(DiagnosisError value) error,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
+  }) {
+    return summaryisLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DiagnosisInitial value)? initial,
+    TResult? Function(DiagnosisLoading value)? loading,
+    TResult? Function(DiagnosisError value)? error,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
+  }) {
+    return summaryisLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DiagnosisInitial value)? initial,
+    TResult Function(DiagnosisLoading value)? loading,
+    TResult Function(DiagnosisError value)? error,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
+    required TResult orElse(),
+  }) {
+    if (summaryisLoaded != null) {
+      return summaryisLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SummaryisLoaded implements DiagnosisState {
+  const factory SummaryisLoaded(
+      {required final PatientSummaryModel summaryData}) = _$SummaryisLoadedImpl;
+
+  PatientSummaryModel get summaryData;
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SummaryisLoadedImplCopyWith<_$SummaryisLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SummaryisSavedImplCopyWith<$Res> {
+  factory _$$SummaryisSavedImplCopyWith(_$SummaryisSavedImpl value,
+          $Res Function(_$SummaryisSavedImpl) then) =
+      __$$SummaryisSavedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$SummaryisSavedImplCopyWithImpl<$Res>
+    extends _$DiagnosisStateCopyWithImpl<$Res, _$SummaryisSavedImpl>
+    implements _$$SummaryisSavedImplCopyWith<$Res> {
+  __$$SummaryisSavedImplCopyWithImpl(
+      _$SummaryisSavedImpl _value, $Res Function(_$SummaryisSavedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$SummaryisSavedImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SummaryisSavedImpl implements SummaryisSaved {
+  const _$SummaryisSavedImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'DiagnosisState.summaryisSaved(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SummaryisSavedImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SummaryisSavedImplCopyWith<_$SummaryisSavedImpl> get copyWith =>
+      __$$SummaryisSavedImplCopyWithImpl<_$SummaryisSavedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
+  }) {
+    return summaryisSaved(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
+  }) {
+    return summaryisSaved?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
+    required TResult orElse(),
+  }) {
+    if (summaryisSaved != null) {
+      return summaryisSaved(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DiagnosisInitial value) initial,
+    required TResult Function(DiagnosisLoading value) loading,
+    required TResult Function(DiagnosisError value) error,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
+  }) {
+    return summaryisSaved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DiagnosisInitial value)? initial,
+    TResult? Function(DiagnosisLoading value)? loading,
+    TResult? Function(DiagnosisError value)? error,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
+  }) {
+    return summaryisSaved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DiagnosisInitial value)? initial,
+    TResult Function(DiagnosisLoading value)? loading,
+    TResult Function(DiagnosisError value)? error,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
+    required TResult orElse(),
+  }) {
+    if (summaryisSaved != null) {
+      return summaryisSaved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SummaryisSaved implements DiagnosisState {
+  const factory SummaryisSaved(final String message) = _$SummaryisSavedImpl;
+
+  String get message;
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SummaryisSavedImplCopyWith<_$SummaryisSavedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SummaryisErrorImplCopyWith<$Res> {
+  factory _$$SummaryisErrorImplCopyWith(_$SummaryisErrorImpl value,
+          $Res Function(_$SummaryisErrorImpl) then) =
+      __$$SummaryisErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$SummaryisErrorImplCopyWithImpl<$Res>
+    extends _$DiagnosisStateCopyWithImpl<$Res, _$SummaryisErrorImpl>
+    implements _$$SummaryisErrorImplCopyWith<$Res> {
+  __$$SummaryisErrorImplCopyWithImpl(
+      _$SummaryisErrorImpl _value, $Res Function(_$SummaryisErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$SummaryisErrorImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SummaryisErrorImpl implements SummaryisError {
+  const _$SummaryisErrorImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'DiagnosisState.summaryisError(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SummaryisErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SummaryisErrorImplCopyWith<_$SummaryisErrorImpl> get copyWith =>
+      __$$SummaryisErrorImplCopyWithImpl<_$SummaryisErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function(String message) success,
+    required TResult Function() summaryisLoading,
+    required TResult Function(PatientSummaryModel summaryData) summaryisLoaded,
+    required TResult Function(String message) summaryisSaved,
+    required TResult Function(String message) summaryisError,
+  }) {
+    return summaryisError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? success,
+    TResult? Function()? summaryisLoading,
+    TResult? Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult? Function(String message)? summaryisSaved,
+    TResult? Function(String message)? summaryisError,
+  }) {
+    return summaryisError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function(String message)? success,
+    TResult Function()? summaryisLoading,
+    TResult Function(PatientSummaryModel summaryData)? summaryisLoaded,
+    TResult Function(String message)? summaryisSaved,
+    TResult Function(String message)? summaryisError,
+    required TResult orElse(),
+  }) {
+    if (summaryisError != null) {
+      return summaryisError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DiagnosisInitial value) initial,
+    required TResult Function(DiagnosisLoading value) loading,
+    required TResult Function(DiagnosisError value) error,
+    required TResult Function(DiagnosisSuccess value) success,
+    required TResult Function(SummaryisLoading value) summaryisLoading,
+    required TResult Function(SummaryisLoaded value) summaryisLoaded,
+    required TResult Function(SummaryisSaved value) summaryisSaved,
+    required TResult Function(SummaryisError value) summaryisError,
+  }) {
+    return summaryisError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DiagnosisInitial value)? initial,
+    TResult? Function(DiagnosisLoading value)? loading,
+    TResult? Function(DiagnosisError value)? error,
+    TResult? Function(DiagnosisSuccess value)? success,
+    TResult? Function(SummaryisLoading value)? summaryisLoading,
+    TResult? Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult? Function(SummaryisSaved value)? summaryisSaved,
+    TResult? Function(SummaryisError value)? summaryisError,
+  }) {
+    return summaryisError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DiagnosisInitial value)? initial,
+    TResult Function(DiagnosisLoading value)? loading,
+    TResult Function(DiagnosisError value)? error,
+    TResult Function(DiagnosisSuccess value)? success,
+    TResult Function(SummaryisLoading value)? summaryisLoading,
+    TResult Function(SummaryisLoaded value)? summaryisLoaded,
+    TResult Function(SummaryisSaved value)? summaryisSaved,
+    TResult Function(SummaryisError value)? summaryisError,
+    required TResult orElse(),
+  }) {
+    if (summaryisError != null) {
+      return summaryisError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SummaryisError implements DiagnosisState {
+  const factory SummaryisError(final String message) = _$SummaryisErrorImpl;
+
+  String get message;
+
+  /// Create a copy of DiagnosisState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SummaryisErrorImplCopyWith<_$SummaryisErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -129,7 +129,7 @@ class AppRoutes {
               return NoTransitionPage(
                 child: BlocProvider.value(
                   value: context.read<AppointmentBloc>(),
-                  child: const UserDiagnosisHistory(),
+                  child: UserDiagnosisHistory(appointment: appointment),
                 ),
               );
             },
