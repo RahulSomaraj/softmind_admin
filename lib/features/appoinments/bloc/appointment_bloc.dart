@@ -53,7 +53,7 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
       if (apiResponse.success) {
         emit(AppointmentDeletedSuccess(apiResponse.message));
       } else {
-        emit(AppointmentError(apiResponse.message));
+        emit(const AppointmentError("Failed to delete appointment"));
       }
 
       add(const FetchAllAppointments());

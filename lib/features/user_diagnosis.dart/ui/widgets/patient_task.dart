@@ -32,7 +32,6 @@ class _TaskSectionState extends State<TaskSection> {
   void initState() {
     super.initState();
 
-    // Dispatch FetchAssignedTask here
     context.read<TaskBloc>().add(FetchAssignedTask(userId: widget.assignedTo));
   }
 

@@ -4,7 +4,6 @@ import 'package:softmind_admin/common/widgets/common_button.dart';
 import 'package:softmind_admin/common/widgets/common_dialogs.dart';
 import 'package:softmind_admin/common/widgets/common_divider.dart';
 import 'package:softmind_admin/common/widgets/common_pagination.dart';
-import 'package:softmind_admin/common/widgets/common_searchbar.dart';
 import 'package:softmind_admin/common/widgets/common_widget_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,11 +21,9 @@ class AppointmentList extends StatefulWidget {
 class _AppointmentListState extends State<AppointmentList> {
   final TextEditingController _searchPatientController =
       TextEditingController();
-
   final TextEditingController _searchDoctorController = TextEditingController();
 
   int rowsPerPage = 10;
-
   late UserSessionHelper userSession;
 
   @override
@@ -65,8 +62,6 @@ class _AppointmentListState extends State<AppointmentList> {
       listener: (context, state) {
         if (state is AppointmentDeletedSuccess) {
           DialogUtil.showSuccessDialog(context, state.message);
-        } else if (state is AppointmentError) {
-          DialogUtil.showErrorDialog(context, state.message);
         }
       },
       child: _buildTableSection(),
@@ -104,11 +99,12 @@ class _AppointmentListState extends State<AppointmentList> {
 
           if (appointmentList.isEmpty) {
             return const Center(
-                child: Padding(
-              padding: EdgeInsets.all(20.0),
-              child:
-                  Text("No Appointments Found", style: TextStyle(fontSize: 16)),
-            ));
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text("No Appointments Found",
+                    style: TextStyle(fontSize: 16)),
+              ),
+            );
           }
 
           return Column(
@@ -153,8 +149,6 @@ class _AppointmentListState extends State<AppointmentList> {
               _buildPaginationBar(currentPage, totalPages),
             ],
           );
-        } else if (state is AppointmentError) {
-          return WidgetUtil.showError();
         }
         return const Center(child: Text("No Appointments Found"));
       },
@@ -177,9 +171,9 @@ class _AppointmentListState extends State<AppointmentList> {
       DataCell(Text('$rowNumber')),
       DataCell(Text(appointment.appointmentDate)),
       DataCell(Text(appointment.appointmentTime)),
-      DataCell(Text(appointment.patient.name)),
+      DataCell(Text(appointment.patient?.name ?? 'N/A')),
       if (userSession.isSuperAdmin())
-        DataCell(Text(appointment.referredTo.name)),
+        DataCell(Text(appointment.referredTo?.name ?? 'N/A')),
       const DataCell(Text("Pending")),
       DataCell(
         Row(
@@ -244,48 +238,9 @@ class _AppointmentListState extends State<AppointmentList> {
             ),
           ),
           const Spacer(),
-          // _buildPatientSearchBar(),
-          // const SizedBox(width: 8),
-          // if (userSession.isSuperAdmin()) _buildDoctorSearchBar(),
-          // const SizedBox(width: 15),
           if (userSession.isSuperAdmin()) _buildAddButton(),
         ],
       ),
-    );
-  }
-
-  Widget _buildPatientSearchBar() {
-    return GetSearchBar(
-      controller: _searchPatientController,
-      hintText: "Search Patient",
-      onChanged: (query) {
-        if (userSession.isPsychologist()) {
-          context.read<AppointmentBloc>().add(FetchAllAppointments(
-                page: 1,
-                limit: rowsPerPage,
-                patient: query.isNotEmpty ? query : '',
-                referredTo: userSession.userId,
-              ));
-        } else {
-          context.read<AppointmentBloc>().add(FetchAllAppointments(
-              page: 1,
-              limit: rowsPerPage,
-              patient: query.isNotEmpty ? query : ''));
-        }
-      },
-    );
-  }
-
-  Widget _buildDoctorSearchBar() {
-    return GetSearchBar(
-      controller: _searchDoctorController,
-      hintText: "Search Doctor",
-      onChanged: (query) {
-        context.read<AppointmentBloc>().add(FetchAllAppointments(
-            page: 1,
-            limit: rowsPerPage,
-            referredTo: query.isNotEmpty ? query : ''));
-      },
     );
   }
 

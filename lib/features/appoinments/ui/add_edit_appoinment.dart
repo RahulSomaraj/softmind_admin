@@ -54,9 +54,9 @@ class _AddEditAppointmentState extends State<AddEditAppointment> {
     _selectedDoctorId = widget.appointment?.referredTo.id;
 
     _patientSearchController =
-        TextEditingController(text: widget.appointment?.patient.name ?? '');
+        TextEditingController(text: widget.appointment!.patient.name ?? '');
     _doctorSearchController =
-        TextEditingController(text: widget.appointment?.referredTo.name ?? '');
+        TextEditingController(text: widget.appointment!.referredTo.name ?? '');
   }
 
   @override

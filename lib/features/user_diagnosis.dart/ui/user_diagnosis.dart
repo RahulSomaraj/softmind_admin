@@ -31,7 +31,7 @@ class _CreateUserDiagnosisState extends State<CreateUserDiagnosis> {
   void initState() {
     super.initState();
     _appointmentDate = widget.appointment?.appointmentDate ?? '';
-    _username = widget.appointment?.patient.name ?? '';
+    _username = widget.appointment!.patient!.name ?? '';
     _positive = '';
     _negative = '';
     _todaysRemarks = '';
@@ -43,7 +43,7 @@ class _CreateUserDiagnosisState extends State<CreateUserDiagnosis> {
 
       final newDiagnosis = DiagnosisModel(
         appointmentDate: _appointmentDate,
-        userId: widget.appointment!.patient.id,
+        userId: widget.appointment!.patient!.id,
         positive: _positive,
         negative: _negative,
         todaysRemarks: _todaysRemarks,

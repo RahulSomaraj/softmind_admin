@@ -12,7 +12,6 @@ import 'package:softmind_admin/features/user_diagnosis.dart/ui/widgets/patient_t
 import 'package:softmind_admin/models/appointment/appointment_response_model.dart';
 import 'package:softmind_admin/models/patient_summary/patient_summary_model.dart';
 import 'package:softmind_admin/models/task/task_response_model.dart';
-import 'package:softmind_admin/models/task_assigned/assigned_task_model.dart';
 
 class UserDiagnosisHistory extends StatefulWidget {
   final AppointmentModel? appointment;
@@ -30,15 +29,14 @@ class _UserDiagnosisHistoryState extends State<UserDiagnosisHistory> {
   List<HistoryEntry> _historyList = [];
 
   TaskResponseModel? _allTasks;
-  List<AssignedTaskModel> _assignedTasks = [];
 
   late int _patientId;
 
   @override
   void initState() {
     super.initState();
-    _patientName = widget.appointment?.patient.name ?? '';
-    _patientId = widget.appointment!.patient.id;
+    _patientName = widget.appointment!.patient!.name ?? '';
+    _patientId = widget.appointment!.patient!.id!;
 
     context.read<DiagnosisBloc>().add(
           DiagnosisEvent.fetchSummary(patientId: _patientId),
@@ -82,12 +80,6 @@ class _UserDiagnosisHistoryState extends State<UserDiagnosisHistory> {
           listener: (context, state) {
             if (state is TaskLoaded) {
               _allTasks = state.tasks;
-              setState(() {});
-            } else if (state is AssignedTaskLoaded) {
-              _assignedTasks = state.tasks;
-
-           
-
               setState(() {});
             }
 

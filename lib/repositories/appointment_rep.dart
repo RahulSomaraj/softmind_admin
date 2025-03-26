@@ -28,9 +28,10 @@ class AppointmentRepository {
         },
       );
 
-      if (response.statusCode != null &&
-          response.statusCode! >= 200 &&
-          response.statusCode! < 300) {
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        print("response.data");
+        print(response.data);
+
         final appointments = AppointmentResponseModel.fromJson(response.data);
 
         return ApiResponse(
@@ -44,6 +45,7 @@ class AppointmentRepository {
     } on DioException catch (e) {
       return ApiErrorHandler.handleError(e);
     } catch (e) {
+      print(e);
       return ApiResponse(success: false, message: "Unexpected error");
     }
   }
@@ -54,7 +56,7 @@ class AppointmentRepository {
     }
 
     try {
-      final response = await _dio.delete('/appointments/$appointmentId');
+      final response = await _dio.delete('/appoinments/$appointmentId');
 
       if (response.statusCode != null &&
           response.statusCode! >= 200 &&

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:softmind_admin/models/patient_summary/patient_summary_model.dart';
 
 class AppointmentHistoryList extends StatelessWidget {
-  final List<dynamic>? historyList;
-  // final Function(Map<String, String>) onItemTap;
+  final List<HistoryEntry>? historyList;
 
-  const AppointmentHistoryList({
-    super.key,
-    required this.historyList,
-    // required this.onItemTap,
-  });
+  const AppointmentHistoryList({super.key, required this.historyList});
 
   @override
   Widget build(BuildContext context) {
+    final ScrollController _scrollController = ScrollController();
+
     if (historyList == null || historyList!.isEmpty) {
       return _buildCard(
         title: "Appointments",
@@ -33,27 +31,27 @@ class AppointmentHistoryList extends StatelessWidget {
         height: 300,
         child: Scrollbar(
           thumbVisibility: true,
+          controller: _scrollController,
           child: ListView.builder(
+            controller: _scrollController,
             itemCount: historyList!.length,
             itemBuilder: (context, index) {
               final item = historyList![index];
-              final editedAt = item['editedAt'] ?? '';
-              final description = item['description'] ?? 'No description';
-
-              final appointment = {
-                'date': editedAt.toString().split('T').first,
-                'diagnosis': description,
-              };
+              final date = item.editedAt?.toString().split('T').first ?? '—';
+              final description = item.description ?? 'No description';
 
               return ListTile(
-                title: Text("Date: ${appointment['date']}"),
+                title: Text("Date: $date"),
                 subtitle: Text(
-                  "Diagnosis: ${appointment['diagnosis']}",
+                  "Diagnosis: $description",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                // onTap: () => _showDiagnosisDetails(appointment),
+                onTap: () => _showDiagnosisDetails(context, {
+                  'date': date,
+                  'diagnosis': description,
+                }),
               );
             },
           ),
